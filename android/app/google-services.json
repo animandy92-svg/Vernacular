@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "860736290949",
+    "project_id": "vernacular-bace0",
+    "storage_bucket": "vernacular-bace0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860736290949:android:833cca1d9d04ec838ea9ec",
+        "android_client_info": {
+          "package_name": "com.vernacular.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVW_7TAA1motQvOZ-aPSk_bhugALzOHGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Vernacular — Learn through play",
+  "short_name": "Vernacular",
+  "description": "Learn Ghanaian languages one puzzle at a time.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f1e7",
+  "theme_color": "#18392f",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

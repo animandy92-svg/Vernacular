@@ -1,0 +1,101 @@
+import type { Language, LanguageCode, WordEntry } from '../types'
+
+export const LANGUAGES: Language[] = [
+  {
+    code: 'twi',
+    name: 'Twi',
+    nativeName: 'Asante Twi',
+    region: 'Ashanti & central Ghana',
+    greeting: 'Akwaaba!',
+    color: '#e85d3f',
+    description: 'Build everyday vocabulary through short, playful challenges.',
+  },
+  {
+    code: 'fante',
+    name: 'Fante',
+    nativeName: 'Mfantse',
+    region: 'Central & coastal Ghana',
+    greeting: 'Akwaaba!',
+    color: '#2f7c6d',
+    description: 'Practice useful words from greetings to home and community.',
+  },
+]
+
+const word = (
+  language: LanguageCode,
+  id: string,
+  spelling: string,
+  translation: string,
+  category: string,
+  phonetic: string,
+  example: string,
+  difficulty: WordEntry['difficulty'] = 'beginner',
+): WordEntry => ({
+  id: `${language}-${id}`,
+  language,
+  word: spelling,
+  translation,
+  category,
+  difficulty,
+  phonetic,
+  example,
+  reviewStatus: 'needs-review',
+  visibility: 'public',
+})
+
+export const FALLBACK_WORDS: WordEntry[] = [
+  word('twi', 'akwaaba', 'akwaaba', 'welcome', 'Greetings', 'ah-KWAH-bah', 'Akwaaba — you are welcome here.'),
+  word('twi', 'maakye', 'maakye', 'good morning', 'Greetings', 'mah-CHAY', 'Say maakye when the day begins.'),
+  word('twi', 'maaha', 'maaha', 'good afternoon', 'Greetings', 'mah-HAH', 'Use maaha in the afternoon.'),
+  word('twi', 'maadwo', 'maadwo', 'good evening', 'Greetings', 'mah-JWOH', 'Use maadwo later in the day.'),
+  word('twi', 'medaase', 'medaase', 'thank you', 'Greetings', 'meh-DAH-seh', 'Medaase for your kindness.'),
+  word('twi', 'nsuo', 'nsuo', 'water', 'Food & drink', 'n-SOO-oh', 'Ask for nsuo when you are thirsty.'),
+  word('twi', 'aduane', 'aduane', 'food', 'Food & drink', 'ah-doo-AH-neh', 'Aduane brings the family together.'),
+  word('twi', 'fie', 'fie', 'home', 'Everyday life', 'fee-EH', 'Fie is a place of belonging.'),
+  word('twi', 'abofra', 'abofra', 'child', 'Family', 'ah-BOH-frah', 'The abofra is learning a new word.'),
+  word('twi', 'ena', 'ɛna', 'mother', 'Family', 'EH-nah', 'Ɛna is the word for mother.'),
+  word('twi', 'agya', 'agya', 'father', 'Family', 'ah-JAH', 'Agya is the word for father.'),
+  word('twi', 'owia', 'owia', 'sun', 'Nature', 'oh-WEE-ah', 'The owia is bright today.'),
+  word('twi', 'osram', 'ɔsram', 'moon', 'Nature', 'AW-srahm', 'Look for the ɔsram at night.'),
+  word('twi', 'nwoma', 'nwoma', 'book', 'Learning', 'n-WOH-mah', 'Open your nwoma and learn.'),
+  word('twi', 'sukuu', 'sukuu', 'school', 'Learning', 'soo-KOO', 'We learn together at sukuu.'),
+  word('twi', 'adamfo', 'adamfo', 'friend', 'Community', 'ah-DAHM-foh', 'An adamfo practices with you.'),
+  word('twi', 'odo', 'ɔdɔ', 'love', 'Feelings', 'AW-daw', 'Ɔdɔ connects families and friends.'),
+  word('twi', 'din', 'din', 'name', 'Everyday life', 'deen', 'Tell your new adamfo your din.'),
+  word('twi', 'aane', 'aane', 'yes', 'Essentials', 'ah-ah-NEH', 'Aane means yes.'),
+  word('twi', 'daabi', 'daabi', 'no', 'Essentials', 'dah-AH-bee', 'Daabi means no.'),
+  word('twi', 'baako', 'baako', 'one', 'Numbers', 'BAH-koh', 'Baako is the number one.'),
+  word('twi', 'mmienu', 'mmienu', 'two', 'Numbers', 'mee-EH-noo', 'Mmienu is the number two.'),
+  word('twi', 'mmiensa', 'mmiɛnsa', 'three', 'Numbers', 'mee-EN-sah', 'Mmiɛnsa is the number three.'),
+  word('twi', 'anopa', 'anɔpa', 'morning', 'Time', 'ah-NAW-pah', 'Anɔpa begins a new day.'),
+
+  word('fante', 'akwaaba', 'akwaaba', 'welcome', 'Greetings', 'ah-KWAH-bah', 'Akwaaba — come and learn with us.'),
+  word('fante', 'maakye', 'maakye', 'good morning', 'Greetings', 'mah-CHAY', 'Greet someone with maakye.'),
+  word('fante', 'maaha', 'maaha', 'good afternoon', 'Greetings', 'mah-HAH', 'Use maaha in the afternoon.'),
+  word('fante', 'maadwo', 'maadwo', 'good evening', 'Greetings', 'mah-JWOH', 'Use maadwo in the evening.'),
+  word('fante', 'medaase', 'medaase', 'thank you', 'Greetings', 'meh-DAH-seh', 'Medaase shows appreciation.'),
+  word('fante', 'nsu', 'nsu', 'water', 'Food & drink', 'n-SOO', 'Nsu is refreshing.'),
+  word('fante', 'edziban', 'edziban', 'food', 'Food & drink', 'eh-JEE-bahn', 'Edziban is shared at the table.'),
+  word('fante', 'fie', 'fie', 'home', 'Everyday life', 'fee-EH', 'Fie is where we return.'),
+  word('fante', 'abofra', 'abofra', 'child', 'Family', 'ah-BOH-frah', 'The abofra practices every day.'),
+  word('fante', 'maame', 'maame', 'mother', 'Family', 'MAH-meh', 'Maame is the word for mother.'),
+  word('fante', 'egya', 'egya', 'father', 'Family', 'eh-JAH', 'Egya is the word for father.'),
+  word('fante', 'ewia', 'ewia', 'sun', 'Nature', 'eh-WEE-ah', 'The ewia warms the day.'),
+  word('fante', 'bosoom', 'bosoom', 'moon', 'Nature', 'boh-SOHM', 'The bosoom appears at night.'),
+  word('fante', 'nwoma', 'nwoma', 'book', 'Learning', 'n-WOH-mah', 'A nwoma holds many stories.'),
+  word('fante', 'skuul', 'skuul', 'school', 'Learning', 'skool', 'We meet friends at skuul.'),
+  word('fante', 'nyenko', 'nyɛnko', 'friend', 'Community', 'nyEN-koh', 'A nyɛnko can learn beside you.'),
+  word('fante', 'odo', 'ɔdɔ', 'love', 'Feelings', 'AW-daw', 'Ɔdɔ connects a community.'),
+  word('fante', 'dzin', 'dzin', 'name', 'Everyday life', 'jeen', 'Share your dzin when you meet.'),
+  word('fante', 'nyew', 'nyew', 'yes', 'Essentials', 'nyeh-OO', 'Nyew means yes.'),
+  word('fante', 'daabi', 'daabi', 'no', 'Essentials', 'dah-AH-bee', 'Daabi means no.'),
+  word('fante', 'kor', 'kor', 'one', 'Numbers', 'kor', 'Kor is the number one.'),
+  word('fante', 'ebien', 'ebien', 'two', 'Numbers', 'eh-bee-EN', 'Ebien is the number two.'),
+  word('fante', 'ebiasa', 'ebiasa', 'three', 'Numbers', 'eh-bee-AH-sah', 'Ebiasa is the number three.'),
+  word('fante', 'anapa', 'anapa', 'morning', 'Time', 'ah-NAH-pah', 'Anapa begins a new day.'),
+]
+
+export const getLanguage = (code: LanguageCode) => LANGUAGES.find((item) => item.code === code) ?? LANGUAGES[0]
+
+export const getWords = (code: LanguageCode, entries: WordEntry[] = FALLBACK_WORDS) =>
+  entries.filter((entry) => entry.language === code)
