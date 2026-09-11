@@ -1,4 +1,4 @@
-const CACHE = 'vernacular-v1'
+const CACHE = 'vernacular-v2'
 const CORE = ['/', '/manifest.webmanifest', '/icon.svg']
 
 self.addEventListener('install', (event) => {

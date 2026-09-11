@@ -1,6 +1,6 @@
-export type LanguageCode = 'twi' | 'fante'
+export type LanguageCode = 'twi' | 'fante' | 'kasem'
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
-export type GameMode = 'unscramble' | 'match' | 'search' | 'daily'
+export type GameMode = 'unscramble' | 'match' | 'search' | 'crossword' | 'picture' | 'listening' | 'proverb' | 'phrase' | 'daily'
 export type Screen = 'home' | 'play' | 'progress' | 'library' | 'leaderboard'
 
 export interface Language {
@@ -24,6 +24,21 @@ export interface WordEntry {
   example: string
   reviewStatus: 'needs-review' | 'reviewed'
   visibility: 'public'
+}
+
+export interface CulturalProverb {
+  id: string
+  language: LanguageCode | 'akan'
+  text: string
+  literal: string
+  meaning: string
+}
+
+export interface PhraseEntry {
+  id: string
+  language: LanguageCode
+  phrase: string
+  translation: string
 }
 
 export interface Profile {

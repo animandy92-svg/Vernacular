@@ -24,7 +24,11 @@ export default function App() {
     setWords(getWords(language))
     let active = true
     import('./lib/firebase').then(({ fetchWords }) => fetchWords(language)).then((remote) => {
-      if (active && remote?.length) setWords(remote)
+      if (active && remote?.length) {
+        const merged = new Map(getWords(language).map((entry) => [entry.id, entry]))
+        remote.forEach((entry) => merged.set(entry.id, entry))
+        setWords([...merged.values()])
+      }
     })
     return () => { active = false }
   }, [state.profile?.language])

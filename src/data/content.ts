@@ -1,4 +1,4 @@
-import type { Language, LanguageCode, WordEntry } from '../types'
+import type { CulturalProverb, Language, LanguageCode, PhraseEntry, WordEntry } from '../types'
 
 export const LANGUAGES: Language[] = [
   {
@@ -18,6 +18,15 @@ export const LANGUAGES: Language[] = [
     greeting: 'Akwaaba!',
     color: '#2f7c6d',
     description: 'Practice useful words from greetings to home and community.',
+  },
+  {
+    code: 'kasem',
+    name: 'Kasem',
+    nativeName: 'Kasɩm',
+    region: 'Upper East Ghana & southern Burkina Faso',
+    greeting: 'Dɩnle!',
+    color: '#6f55b5',
+    description: 'Discover Kasena words for family, place, nature and daily life.',
   },
 ]
 
@@ -93,7 +102,103 @@ export const FALLBACK_WORDS: WordEntry[] = [
   word('fante', 'ebien', 'ebien', 'two', 'Numbers', 'eh-bee-EN', 'Ebien is the number two.'),
   word('fante', 'ebiasa', 'ebiasa', 'three', 'Numbers', 'eh-bee-AH-sah', 'Ebiasa is the number three.'),
   word('fante', 'anapa', 'anapa', 'morning', 'Time', 'ah-NAH-pah', 'Anapa begins a new day.'),
+
+  // Kasem spellings follow the Kasɩm–French–English dictionary (SIL, 2015).
+  // The pack remains marked needs-review because pronunciation and dialect choices
+  // should be confirmed by Ghanaian Kasena speakers before classroom release.
+  word('kasem', 'dinle', 'dɩnle', 'hello', 'Greetings', 'din-leh', 'Dɩnle is a friendly hello.'),
+  word('kasem', 'besem', 'bəsəm', 'greeting at a home', 'Greetings', 'buh-sum', 'Use bəsəm when arriving at someone’s home.'),
+  word('kasem', 'ehee', 'ɛhɛɛ', 'yes', 'Essentials', 'eh-heh', 'Ɛhɛɛ means yes.'),
+  word('kasem', 'awo', 'awo', 'no', 'Essentials', 'ah-woh', 'Awo means no.'),
+  word('kasem', 'na', 'na', 'water', 'Food & drink', 'nah', 'Na is water.'),
+  word('kasem', 'dwe', 'dwə', 'soup or stew', 'Food & drink', 'dwuh', 'Dwə is served with a meal.'),
+  word('kasem', 'nu', 'nu', 'mother', 'Family', 'noo', 'Nu is the word for mother.'),
+  word('kasem', 'ko', 'ko', 'father', 'Family', 'koh', 'Ko is the word for father.'),
+  word('kasem', 'bu', 'bu', 'child', 'Family', 'boo', 'Bu is the word for child.'),
+  word('kasem', 'cilong', 'ciloŋ', 'friend', 'Community', 'chee-long', 'A ciloŋ learns beside you.'),
+  word('kasem', 'sono', 'sono', 'love', 'Feelings', 'soh-noh', 'Sono connects a community.'),
+  word('kasem', 'we', 'wɛ', 'sun', 'Nature', 'weh', 'The wɛ lights the day.'),
+  word('kasem', 'cana', 'cana', 'moon or month', 'Nature', 'chah-nah', 'Look for the cana at night.'),
+  word('kasem', 'zizinga', 'zɩzɩŋa', 'morning', 'Time', 'zi-zing-ah', 'Zɩzɩŋa begins a new day.'),
+  word('kasem', 'titii', 'tɩtɩɩ', 'night', 'Time', 'ti-tee', 'Tɩtɩɩ is the quiet night.'),
+  word('kasem', 'karadige', 'karadigə', 'school', 'Learning', 'kah-rah-dee-guh', 'Learning happens at karadigə.'),
+  word('kasem', 'tono', 'tɔnɔ', 'book', 'Learning', 'taw-naw', 'Open a tɔnɔ and learn.'),
+  word('kasem', 'yiri', 'yɩrɩ', 'name', 'Everyday life', 'yi-ri', 'Share your yɩrɩ when you meet.'),
+  word('kasem', 'yuu', 'yuu', 'head', 'Body', 'yoo', 'Yuu is the head.'),
+  word('kasem', 'jinga', 'jiŋa', 'hand', 'Body', 'jing-ah', 'Jiŋa is the hand.'),
+  word('kasem', 'naga', 'naga', 'leg', 'Body', 'nah-gah', 'Naga is the leg.'),
+  word('kasem', 'wo', 'wɔ', 'stomach', 'Body', 'waw', 'Wɔ is the stomach.'),
+  word('kasem', 'yi', 'yi', 'eye', 'Body', 'yee', 'Yi is the eye.'),
+  word('kasem', 'zunge', 'zuŋə', 'bird', 'Animals', 'zoong-uh', 'A zuŋə is a bird.'),
+  word('kasem', 'tiu', 'tiu', 'tree', 'Nature', 'tee-oo', 'A tiu grows from the earth.'),
+  word('kasem', 'siu', 'siu', 'knife', 'Everyday life', 'see-oo', 'Siu is a knife.'),
+  word('kasem', 'pe', 'pɛ', 'chief or king', 'Community', 'peh', 'Pɛ is a chief or king.'),
+  word('kasem', 'didua', 'dɩdʋa', 'one', 'Numbers', 'di-doo-ah', 'Dɩdʋa is the number one.'),
+  word('kasem', 'sile', 'sɩle', 'two', 'Numbers', 'si-leh', 'Sɩle is the number two.'),
+  word('kasem', 'nto', 'ntɔ', 'three', 'Numbers', 'n-taw', 'Ntɔ is the number three.'),
+  word('kasem', 'dua', 'dʋa', 'rain', 'Nature', 'doo-ah', 'Dʋa brings rain.'),
+  word('kasem', 'yaga', 'yaga', 'market', 'Places', 'yah-gah', 'People meet at the yaga.'),
+  word('kasem', 'cwenge', 'cwəŋə', 'road or way', 'Places', 'chwung-uh', 'A cwəŋə leads to another place.'),
 ]
+
+export const PROVERBS: CulturalProverb[] = [
+  {
+    id: 'akan-one-hand',
+    language: 'akan',
+    text: 'Nsa baako nkura adesoa.',
+    literal: 'One hand cannot lift a load.',
+    meaning: 'Working together makes difficult tasks possible.',
+  },
+  {
+    id: 'akan-one-teaches',
+    language: 'akan',
+    text: 'Obi nnim a, obi kyerɛ.',
+    literal: 'When one person does not know, another teaches.',
+    meaning: 'Knowledge grows when people learn from one another.',
+  },
+  {
+    id: 'akan-wisdom',
+    language: 'akan',
+    text: 'Nyansa nni nipa baako tirim.',
+    literal: 'Wisdom is not in one person’s head alone.',
+    meaning: 'Listen to others because no one holds all wisdom.',
+  },
+  {
+    id: 'kasem-one-hand',
+    language: 'kasem',
+    text: 'Jɩŋa dɩdʋa warɩ muni ka pɛ.',
+    literal: 'One hand alone cannot collect flour.',
+    meaning: 'Cooperation and every person’s contribution make good work possible.',
+  },
+  {
+    id: 'kasem-eye',
+    language: 'kasem',
+    text: 'Yi ba mwaanu fɔga.',
+    literal: 'The eye is not a game.',
+    meaning: 'Treat sight and serious matters with care.',
+  },
+]
+
+export const PHRASES: PhraseEntry[] = [
+  { id: 'twi-good-morning', language: 'twi', phrase: 'Mema wo akye', translation: 'Good morning' },
+  { id: 'twi-how-are-you', language: 'twi', phrase: 'Wo ho te sɛn?', translation: 'How are you?' },
+  { id: 'twi-i-am-well', language: 'twi', phrase: 'Me ho yɛ', translation: 'I am well' },
+  { id: 'twi-my-name', language: 'twi', phrase: 'Me din de Ama', translation: 'My name is Ama' },
+  { id: 'fante-good-morning', language: 'fante', phrase: 'Me ma wo akye', translation: 'Good morning' },
+  { id: 'fante-how-are-you', language: 'fante', phrase: 'Wo ho tse dɛn?', translation: 'How are you?' },
+  { id: 'fante-i-am-well', language: 'fante', phrase: 'Me ho yɛ', translation: 'I am well' },
+  { id: 'fante-my-name', language: 'fante', phrase: 'Me dzin dze Esi', translation: 'My name is Esi' },
+  { id: 'kasem-good-morning', language: 'kasem', phrase: 'De n zezenga', translation: 'Good morning' },
+  { id: 'kasem-how-is-it', language: 'kasem', phrase: 'Ko ye te mo?', translation: 'How is it?' },
+  { id: 'kasem-it-is-well', language: 'kasem', phrase: 'Ko gara', translation: 'It is well' },
+  { id: 'kasem-your-name', language: 'kasem', phrase: 'N yere mo be?', translation: 'What is your name?' },
+  { id: 'kasem-learning', language: 'kasem', phrase: 'Amo wora a zamese Kasem mo', translation: 'I am learning Kasem' },
+]
+
+export const getProverbs = (code: LanguageCode) =>
+  PROVERBS.filter((entry) => entry.language === code || (entry.language === 'akan' && (code === 'twi' || code === 'fante')))
+
+export const getPhrases = (code: LanguageCode) => PHRASES.filter((entry) => entry.language === code)
 
 export const getLanguage = (code: LanguageCode) => LANGUAGES.find((item) => item.code === code) ?? LANGUAGES[0]
 

@@ -1,4 +1,4 @@
-import { ArrowRight, Award, BookOpen, Check, Flame, Globe2, LockKeyhole, Search, Settings2, ShieldCheck, Shuffle, Sparkles, Trophy, Volume2, Zap } from 'lucide-react'
+import { ArrowRight, Award, BookOpen, Check, Flame, Globe2, Grid3X3, Headphones, Image, LockKeyhole, MessageSquareText, Quote, Search, Settings2, ShieldCheck, Shuffle, Sparkles, Trophy, Volume2, Zap } from 'lucide-react'
 import { LANGUAGES, getLanguage } from '../data/content'
 import type { LeaderboardEntry } from '../lib/firebase'
 import { levelFromXp } from '../lib/progress'
@@ -28,8 +28,8 @@ export function PlayScreen({ profile, words, onGame }: { profile: Profile; words
       <section className="section-block path-section">
         <div className="section-heading"><div><span className="eyebrow">YOUR PACK</span><h2>Everyday essentials</h2></div><span>{words.length} words</span></div>
         <div className="category-chips">{categories.map((category) => <span key={category}>{category}</span>)}</div>
-        <div className="path-progress"><span style={{ width: `${Math.min(100, (words.length ? 1 : 0) * 18)}%` }} /></div>
-        <p>Complete puzzles to reveal more categories and cultural stories.</p>
+        <div className="path-progress"><span style={{ width: `${words.length ? 100 : 0}%` }} /></div>
+        <p>{words.length} offline-ready words across {categories.length} themes. Complete puzzles to make them yours.</p>
       </section>
     </div>
   )
@@ -125,4 +125,14 @@ export function LeaderboardScreen({ profile, progress, entries }: { profile: Pro
   )
 }
 
-export const gameIcon = (mode: GameMode) => mode === 'unscramble' ? Shuffle : mode === 'match' ? Zap : Search
+export const gameIcon = (mode: GameMode) => ({
+  unscramble: Shuffle,
+  match: Zap,
+  search: Search,
+  crossword: Grid3X3,
+  picture: Image,
+  listening: Headphones,
+  proverb: Quote,
+  phrase: MessageSquareText,
+  daily: Trophy,
+}[mode])

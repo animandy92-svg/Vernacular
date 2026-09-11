@@ -1,6 +1,6 @@
 # Vernacular
 
-Vernacular is an Android-first language-learning game for practicing Ghanaian languages through short word puzzles. The MVP launches with Twi and Fante demonstration packs, three playable modes, daily challenges, offline progress, XP, streaks, achievements, language switching, and a read-only community leaderboard.
+Vernacular is an Android-first language-learning game for practicing Ghanaian languages through short word puzzles. It includes Twi, Fante and Kasem learning packs, eight playable modes, daily challenges, offline progress, XP, streaks, achievements, language switching, and a read-only community leaderboard.
 
 Live app: <https://vernacular-bace0.web.app>
 
@@ -17,8 +17,8 @@ This APK is suitable for direct device testing on Android 7.0 (API 24) or newer.
 ## What is included
 
 - Guided onboarding with language, level, and daily-goal selection
-- Twi and Fante language packs with 48 structured demonstration entries
-- Unscramble, Word Match, and Word Search game modes
+- Twi, Fante and Kasem packs with 81 structured vocabulary entries
+- Word Search, Crossword, Unscramble, Picture Quiz, Listening Challenge, Word Match, Proverb Challenge and Phrase Builder
 - Daily challenge, XP, levels, streaks, badges, and learned-word tracking
 - Pronunciation controls using the device speech service
 - Offline-first progress and cached app shell
@@ -39,7 +39,9 @@ Guest progress intentionally stays on the device in this MVP. Firestore rules al
 
 ## Content governance
 
-The included vocabulary is marked `needs-review`. It demonstrates the product structure and game loops, but it must be reviewed by qualified Twi and Fante speakers before an educational or public-store release. The data model records language, spelling, translation, category, difficulty, pronunciation guidance, example usage, review status, and visibility.
+The included vocabulary is marked `needs-review`. It demonstrates the product structure and game loops, but it must be reviewed by qualified Twi, Fante and Kasem speakers before an educational or public-store release. The data model records language, spelling, translation, category, difficulty, pronunciation guidance, example usage, review status, and visibility.
+
+Kasem vocabulary and orthography were checked against the [Kasɩm–French–English dictionary by Urs Niggli/SIL](https://www.kassena.org/sites/www.kassena.org/files/uploads/Dictionnaire%20Kassem%20francais%20anglais%20A%20-%20K.pdf), its [L–Z volume and English index](https://www.kassena.org/sites/www.kassena.org/files/uploads/Dictionnaire%20Kassem%20francais%20anglais%20L%20-%20Z.pdf), the [Ghana Ministry of Education Kasem resources](https://curriculumresources.edu.gh/trs_year1_ghanaian-language_kasem/), and the [Kasena language and culture resource site](https://www.kassena.org/en). Phrase examples also reference the [Kasem phrasebook](https://en.wikivoyage.org/wiki/Kasem_phrasebook). Akan proverb interpretations are supported by published Ghanaian educational and university sources. These references improve provenance; they do not replace native-speaker and dialect review.
 
 ## Development
 

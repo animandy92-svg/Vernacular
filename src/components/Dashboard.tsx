@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Check, Flame, Headphones, Search, Shuffle, Sparkles, Trophy, Volume2, Zap } from 'lucide-react'
+import { ArrowRight, BookOpen, Check, Flame, Grid3X3, Headphones, Image, MessageSquareText, Quote, Search, Shuffle, Sparkles, Trophy, Volume2, Zap } from 'lucide-react'
 import { getLanguage } from '../data/content'
 import { dateKey, levelFromXp } from '../lib/progress'
 import type { GameMode, Profile, Progress, Screen, WordEntry } from '../types'
@@ -13,16 +13,21 @@ interface Props {
 }
 
 const MODES = [
-  { id: 'unscramble' as const, title: 'Unscramble', description: 'Put every letter in its place', icon: Shuffle, tone: 'coral', time: '3 min' },
-  { id: 'match' as const, title: 'Word match', description: 'Connect words and meanings', icon: Zap, tone: 'gold', time: '4 min' },
-  { id: 'search' as const, title: 'Word search', description: 'Find words hiding in the grid', icon: Search, tone: 'green', time: '5 min' },
+  { id: 'search' as const, title: 'Word Search', description: 'Find hidden words in a lively letter grid', icon: Search, tone: 'green', time: '5 min' },
+  { id: 'crossword' as const, title: 'Crossword', description: 'Solve crossing words from English clues', icon: Grid3X3, tone: 'purple', time: '6 min' },
+  { id: 'unscramble' as const, title: 'Unscramble', description: 'Rearrange letters to reveal the word', icon: Shuffle, tone: 'coral', time: '3 min' },
+  { id: 'picture' as const, title: 'Picture Quiz', description: 'Name what you see in the picture', icon: Image, tone: 'sky', time: '3 min' },
+  { id: 'listening' as const, title: 'Listening Challenge', description: 'Hear a word and choose its meaning', icon: Headphones, tone: 'purple', time: '4 min' },
+  { id: 'match' as const, title: 'Word Match', description: 'Connect indigenous words and meanings', icon: Zap, tone: 'gold', time: '4 min' },
+  { id: 'proverb' as const, title: 'Proverb Challenge', description: 'Discover the lesson inside each saying', icon: Quote, tone: 'green', time: '4 min' },
+  { id: 'phrase' as const, title: 'Phrase Builder', description: 'Put useful phrases in speaking order', icon: MessageSquareText, tone: 'sky', time: '4 min' },
 ]
 
 export function speakWord(entry: WordEntry) {
   if (!('speechSynthesis' in window)) return
   window.speechSynthesis.cancel()
   const utterance = new SpeechSynthesisUtterance(entry.word)
-  utterance.lang = 'ak-GH'
+  utterance.lang = entry.language === 'kasem' ? 'xsm-GH' : 'ak-GH'
   utterance.rate = 0.72
   window.speechSynthesis.speak(utterance)
 }
@@ -82,7 +87,7 @@ export function Dashboard({ profile, progress, words, onNavigate, onGame }: Prop
       <section className="section-block">
         <div className="section-heading"><div><span className="eyebrow">QUICK PLAY</span><h2>Choose a puzzle</h2></div><button onClick={() => onNavigate('play')}>See all <ArrowRight size={16} /></button></div>
         <div className="mode-grid">
-          {MODES.map((mode) => {
+          {MODES.slice(0, 4).map((mode) => {
             const Icon = mode.icon
             return (
               <button className={`mode-card mode-card--${mode.tone}`} key={mode.id} onClick={() => onGame(mode.id)}>
@@ -111,7 +116,7 @@ export function Dashboard({ profile, progress, words, onNavigate, onGame }: Prop
 
       <aside className="review-note">
         <span>CONTENT NOTE</span>
-        The launch vocabulary is a demonstration pack awaiting native-speaker review before educational release.
+        Vocabulary and pronunciation guides are sourced learning aids awaiting native-speaker review before educational release.
       </aside>
     </div>
   )

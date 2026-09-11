@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { FALLBACK_WORDS } from '../data/content'
-import { areAdjacent, generateWordGrid, normalizeWord, scramble, samePath } from './game'
+import { areAdjacent, generateCrossword, generateWordGrid, normalizeWord, scramble, samePath } from './game'
 import { completeSession, levelFromXp } from './progress'
 
 describe('game helpers', () => {
@@ -24,6 +24,22 @@ describe('game helpers', () => {
     const path = [{ row: 0, col: 0 }, { row: 1, col: 1 }]
     expect(areAdjacent(path[0], path[1])).toBe(true)
     expect(samePath(path, [...path].reverse())).toBe(false)
+  })
+
+  it('keeps Kasem letters in a word-search grid', () => {
+    const kasem = FALLBACK_WORDS.filter((entry) => entry.language === 'kasem' && ['kasem-zizinga', 'kasem-cwenge'].includes(entry.id))
+    const result = generateWordGrid(kasem, 9, () => 0.31)
+    const letters = result.placements.flatMap((placement) => placement.cells.map((cell) => result.grid[cell.row][cell.col]))
+    expect(letters).toContain('Ɩ')
+    expect(letters).toContain('Ŋ')
+    expect(result.placements.length).toBeGreaterThan(0)
+  })
+
+  it('creates a connected crossword with numbered clues', () => {
+    const result = generateCrossword(FALLBACK_WORDS.filter((entry) => entry.language === 'twi'))
+    expect(result.placements.length).toBeGreaterThanOrEqual(3)
+    expect(result.placements.every((placement) => placement.number > 0)).toBe(true)
+    expect(result.cells.size).toBeGreaterThan(10)
   })
 })
 

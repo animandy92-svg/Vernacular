@@ -23,11 +23,12 @@ while ((match = wordPattern.exec(source))) {
   })
 }
 
-if (words.length < 40) throw new Error(`Expected at least 40 word records, found ${words.length}`)
+if (words.length < 80) throw new Error(`Expected at least 80 word records, found ${words.length}`)
 
 const languages = [
   { id: 'twi', name: 'Twi', nativeName: 'Asante Twi', region: 'Ashanti & central Ghana', status: 'draft', visibility: 'public', wordCount: words.filter((item) => item.language === 'twi').length },
   { id: 'fante', name: 'Fante', nativeName: 'Mfantse', region: 'Central & coastal Ghana', status: 'draft', visibility: 'public', wordCount: words.filter((item) => item.language === 'fante').length },
+  { id: 'kasem', name: 'Kasem', nativeName: 'Kasɩm', region: 'Upper East Ghana & southern Burkina Faso', status: 'draft', visibility: 'public', wordCount: words.filter((item) => item.language === 'kasem').length },
 ]
 
 const leaders = [
