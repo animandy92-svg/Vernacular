@@ -2,6 +2,13 @@ export type LanguageCode = 'twi' | 'fante' | 'kasem'
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
 export type GameMode = 'unscramble' | 'match' | 'search' | 'crossword' | 'picture' | 'listening' | 'proverb' | 'phrase' | 'daily'
 export type Screen = 'home' | 'play' | 'progress' | 'library' | 'leaderboard'
+export type EnvironmentId = 'courtyard' | 'market' | 'grove' | 'library'
+export type CompanionAvatar = 'ama' | 'kofi' | 'esi' | 'kojo'
+
+export interface CompanionStyle {
+  name: string
+  avatar: CompanionAvatar
+}
 
 export interface Language {
   code: LanguageCode
@@ -43,13 +50,16 @@ export interface PhraseEntry {
 
 export interface Profile {
   name: string
+  localName: string
   language: LanguageCode
   level: Difficulty
   dailyGoal: number
+  companion: CompanionStyle
 }
 
 export interface Progress {
   xp: number
+  stars: number
   streak: number
   lastPlayed: string | null
   sessions: number
@@ -61,6 +71,7 @@ export interface Progress {
 export interface StoredState {
   profile: Profile | null
   progress: Progress
+  environment: EnvironmentId
 }
 
 export interface GameResult {

@@ -1,6 +1,6 @@
 # Vernacular
 
-Vernacular is an Android-first language-learning game for practicing Ghanaian languages through short word puzzles. It includes Twi, Fante and Kasem learning packs, eight playable modes, daily challenges, offline progress, XP, streaks, achievements, language switching, and a read-only community leaderboard.
+Vernacular is an Android-first language-learning adventure for practicing Ghanaian languages through short word puzzles. Learners create an animated companion who walks, talks, points, carries clues and celebrates throughout lessons. It includes Twi, Fante and Kasem learning packs, eight playable modes, daily challenges, offline progress, XP, stars, streaks, achievements, unlockable cultural environments, language switching, and a read-only community leaderboard.
 
 Live app: <https://vernacular-bace0.web.app>
 
@@ -9,17 +9,20 @@ Live app: <https://vernacular-bace0.web.app>
 The Android package is `com.vernacular.app`. The installable, debug-signed APK is committed at:
 
 ```text
-artifacts/Vernacular-1.0.0-debug.apk
+artifacts/Vernacular-1.1.0-debug.apk
 ```
 
 This APK is suitable for direct device testing on Android 7.0 (API 24) or newer. A Play Store release should use a private production signing key and a release build.
 
 ## What is included
 
-- Guided onboarding with language, level, and daily-goal selection
+- Guided onboarding for preferred and local names, language, companion customization, level, and daily goal
+- An interactive learning companion with animated lesson prompts, reactions, carried objects and celebrations
+- Four original dimensional companion looks, with transparent pose art and local-only name customization
 - Twi, Fante and Kasem packs with 81 structured vocabulary entries
 - Word Search, Crossword, Unscramble, Picture Quiz, Listening Challenge, Word Match, Proverb Challenge and Phrase Builder
-- Daily challenge, XP, levels, streaks, badges, and learned-word tracking
+- Daily challenge, XP, stars, levels, streaks, badges, learned-word tracking and activity unlocks
+- Four illustrated adventure environments: Welcome Courtyard, Market Day, Story Grove and Moonlit Library
 - Pronunciation controls using the device speech service
 - Offline-first progress and cached app shell
 - Responsive tablet/desktop companion experience

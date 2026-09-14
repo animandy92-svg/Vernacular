@@ -1,26 +1,29 @@
-import { ArrowRight, BookOpen, Check, Flame, Grid3X3, Headphones, Image, MessageSquareText, Quote, Search, Shuffle, Sparkles, Trophy, Volume2, Zap } from 'lucide-react'
+import { ArrowRight, BookOpen, Check, Flame, Grid3X3, Headphones, Image, LockKeyhole, MessageSquareText, Quote, Search, Shuffle, Sparkles, Star, Trophy, Volume2, Zap } from 'lucide-react'
 import { getLanguage } from '../data/content'
-import { dateKey, levelFromXp } from '../lib/progress'
-import type { GameMode, Profile, Progress, Screen, WordEntry } from '../types'
+import { ACTIVITY_UNLOCKS, dateKey, ENVIRONMENTS, isModeUnlocked, levelFromXp } from '../lib/progress'
+import type { EnvironmentId, GameMode, Profile, Progress, Screen, WordEntry } from '../types'
+import { Companion } from './Companion'
 import { LanguageBadge } from './Shell'
 
 interface Props {
   profile: Profile
   progress: Progress
+  environment: EnvironmentId
   words: WordEntry[]
   onNavigate: (screen: Screen) => void
   onGame: (mode: GameMode) => void
+  onEnvironment: (environment: EnvironmentId) => void
 }
 
 const MODES = [
-  { id: 'search' as const, title: 'Word Search', description: 'Find hidden words in a lively letter grid', icon: Search, tone: 'green', time: '5 min' },
-  { id: 'crossword' as const, title: 'Crossword', description: 'Solve crossing words from English clues', icon: Grid3X3, tone: 'purple', time: '6 min' },
   { id: 'unscramble' as const, title: 'Unscramble', description: 'Rearrange letters to reveal the word', icon: Shuffle, tone: 'coral', time: '3 min' },
   { id: 'picture' as const, title: 'Picture Quiz', description: 'Name what you see in the picture', icon: Image, tone: 'sky', time: '3 min' },
-  { id: 'listening' as const, title: 'Listening Challenge', description: 'Hear a word and choose its meaning', icon: Headphones, tone: 'purple', time: '4 min' },
   { id: 'match' as const, title: 'Word Match', description: 'Connect indigenous words and meanings', icon: Zap, tone: 'gold', time: '4 min' },
-  { id: 'proverb' as const, title: 'Proverb Challenge', description: 'Discover the lesson inside each saying', icon: Quote, tone: 'green', time: '4 min' },
+  { id: 'listening' as const, title: 'Listening Challenge', description: 'Hear a word and choose its meaning', icon: Headphones, tone: 'purple', time: '4 min' },
+  { id: 'search' as const, title: 'Word Search', description: 'Find hidden words in a lively letter grid', icon: Search, tone: 'green', time: '5 min' },
   { id: 'phrase' as const, title: 'Phrase Builder', description: 'Put useful phrases in speaking order', icon: MessageSquareText, tone: 'sky', time: '4 min' },
+  { id: 'crossword' as const, title: 'Crossword', description: 'Solve crossing words from English clues', icon: Grid3X3, tone: 'purple', time: '6 min' },
+  { id: 'proverb' as const, title: 'Proverb Challenge', description: 'Discover the lesson inside each saying', icon: Quote, tone: 'green', time: '4 min' },
 ]
 
 export function speakWord(entry: WordEntry) {
@@ -32,43 +35,46 @@ export function speakWord(entry: WordEntry) {
   window.speechSynthesis.speak(utterance)
 }
 
-export function Dashboard({ profile, progress, words, onNavigate, onGame }: Props) {
+export function Dashboard({ profile, progress, environment, words, onNavigate, onGame, onEnvironment }: Props) {
   const language = getLanguage(profile.language)
   const level = levelFromXp(progress.xp)
   const dayNumber = Math.floor(Date.now() / 86_400_000)
   const wordOfDay = words[dayNumber % Math.max(words.length, 1)]
   const dailyDone = progress.dailyCompleted === dateKey()
+  const learnerName = profile.localName || profile.name
+  const nextEnvironment = ENVIRONMENTS.find((environment) => progress.xp < environment.xp)
+  const activeEnvironment = ENVIRONMENTS.find((item) => item.id === environment) ?? ENVIRONMENTS[0]
 
   return (
     <div className="dashboard page-enter">
       <section className="welcome-row">
         <div>
           <span className="eyebrow">{language.greeting}</span>
-          <h1>Ready for another word, {profile.name}?</h1>
+          <h1>Ready for another word, {learnerName}?</h1>
           <p>Small steps, spoken often. Keep your {language.name} journey moving.</p>
         </div>
         <LanguageBadge profile={profile} />
       </section>
 
-      <section className="hero-card">
+      <section className={`hero-card hero-card--${activeEnvironment.id}`}>
         <div className="hero-pattern" aria-hidden="true"><i /><i /><i /><i /></div>
         <div className="hero-copy">
-          <span className="eyebrow eyebrow--gold">CONTINUE YOUR PATH</span>
-          <h2>Everyday essentials</h2>
-          <p>Greetings, family and the words you reach for most.</p>
+          <span className="eyebrow eyebrow--gold">EXPLORING · {activeEnvironment.name.toUpperCase()}</span>
+          <h2>{activeEnvironment.name}</h2>
+          <p>{activeEnvironment.detail}. Take your companion into the next lesson.</p>
           <button className="button button--cream" onClick={() => onGame('unscramble')}>Keep learning <ArrowRight size={18} /></button>
         </div>
-        <div className="level-orbit">
-          <div className="level-ring" style={{ '--progress': `${Math.round((level.currentXp / level.targetXp) * 360)}deg` } as React.CSSProperties}>
-            <span><small>LEVEL</small>{level.level}</span>
-          </div>
-          <p>{level.currentXp} / {level.targetXp} XP</p>
+        <div className="hero-companion">
+          <div className="hero-companion-speech"><strong>{profile.companion.name}</strong><span>Our next stop: {activeEnvironment.name}. Let’s find a new word!</span></div>
+          <Companion character={profile.companion} pose="carry" item="map" size={190} />
+          <span className="hero-level-pill">Level {level.level} · {level.currentXp}/{level.targetXp} XP</span>
         </div>
       </section>
 
-      <section className="stat-strip" aria-label="Learning statistics">
+      <section className="stat-strip stat-strip--four" aria-label="Learning statistics">
         <div><span className="stat-icon stat-icon--coral"><Flame size={20} /></span><span><strong>{progress.streak}</strong><small>day streak</small></span></div>
         <div><span className="stat-icon stat-icon--gold"><Sparkles size={20} /></span><span><strong>{progress.xp}</strong><small>total XP</small></span></div>
+        <div><span className="stat-icon stat-icon--gold"><Star size={20} /></span><span><strong>{progress.stars}</strong><small>stars earned</small></span></div>
         <div><span className="stat-icon stat-icon--green"><BookOpen size={20} /></span><span><strong>{progress.masteredWords.length}</strong><small>words learned</small></span></div>
       </section>
 
@@ -84,15 +90,26 @@ export function Dashboard({ profile, progress, words, onNavigate, onGame }: Prop
         </button>
       </section>
 
+      <section className="section-block journey-section">
+        <div className="section-heading"><div><span className="eyebrow">YOUR WORLD</span><h2>Adventure map</h2></div><span>{nextEnvironment ? `${nextEnvironment.xp - progress.xp} XP to ${nextEnvironment.name}` : 'All places unlocked'}</span></div>
+        <div className="environment-path">
+          {ENVIRONMENTS.map((place, index) => {
+            const unlocked = progress.xp >= place.xp
+            return <button type="button" disabled={!unlocked} onClick={() => onEnvironment(place.id)} aria-pressed={environment === place.id} className={`environment-card environment-card--${place.id} ${unlocked ? 'unlocked' : 'locked'} ${environment === place.id ? 'active' : ''}`} key={place.id}><span className="environment-number">{index + 1}</span><span className="environment-icon">{unlocked ? place.icon : <LockKeyhole size={22} />}</span><span className="environment-copy"><strong>{place.name}</strong><small>{unlocked ? environment === place.id ? 'Exploring now · tap another place to travel' : place.detail : `Unlock at ${place.xp} XP`}</small></span>{environment === place.id && <Check size={18} />}</button>
+          })}
+        </div>
+      </section>
+
       <section className="section-block">
         <div className="section-heading"><div><span className="eyebrow">QUICK PLAY</span><h2>Choose a puzzle</h2></div><button onClick={() => onNavigate('play')}>See all <ArrowRight size={16} /></button></div>
         <div className="mode-grid">
           {MODES.slice(0, 4).map((mode) => {
             const Icon = mode.icon
+            const unlocked = isModeUnlocked(mode.id, progress)
             return (
-              <button className={`mode-card mode-card--${mode.tone}`} key={mode.id} onClick={() => onGame(mode.id)}>
-                <span className="mode-icon"><Icon size={25} /></span>
-                <span className="mode-time">{mode.time}</span>
+              <button className={`mode-card mode-card--${mode.tone} ${unlocked ? '' : 'mode-card--locked'}`} disabled={!unlocked} key={mode.id} onClick={() => onGame(mode.id)}>
+                <span className="mode-icon">{unlocked ? <Icon size={25} /> : <LockKeyhole size={23} />}</span>
+                <span className="mode-time">{unlocked ? mode.time : `${ACTIVITY_UNLOCKS[mode.id]} puzzle${ACTIVITY_UNLOCKS[mode.id] === 1 ? '' : 's'}`}</span>
                 <strong>{mode.title}</strong>
                 <small>{mode.description}</small>
                 <span className="round-arrow"><ArrowRight size={17} /></span>

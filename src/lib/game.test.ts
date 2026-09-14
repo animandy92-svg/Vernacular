@@ -1,7 +1,9 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { FALLBACK_WORDS } from '../data/content'
 import { areAdjacent, generateCrossword, generateWordGrid, normalizeWord, scramble, samePath } from './game'
-import { completeSession, levelFromXp } from './progress'
+import { completeSession, earnedStars, isModeUnlocked, levelFromXp, loadState } from './progress'
+
+afterEach(() => vi.unstubAllGlobals())
 
 describe('game helpers', () => {
   it('scrambles without changing the available letters', () => {
@@ -46,12 +48,13 @@ describe('game helpers', () => {
 describe('progress helpers', () => {
   it('awards XP and begins a streak after a completed session', () => {
     const next = completeSession(
-      { xp: 0, streak: 0, lastPlayed: null, sessions: 0, masteredWords: [], dailyCompleted: null, perfectRounds: 0 },
+      { xp: 0, stars: 0, streak: 0, lastPlayed: null, sessions: 0, masteredWords: [], dailyCompleted: null, perfectRounds: 0 },
       { score: 3, total: 3, wordIds: ['twi-fie'], perfect: true },
       true,
       new Date('2026-09-06T12:00:00Z'),
     )
     expect(next.xp).toBe(61)
+    expect(next.stars).toBe(3)
     expect(next.streak).toBe(1)
     expect(next.dailyCompleted).toBe('2026-09-06')
   })
@@ -59,5 +62,28 @@ describe('progress helpers', () => {
   it('calculates level progress', () => {
     expect(levelFromXp(0).level).toBe(1)
     expect(levelFromXp(180).level).toBe(2)
+  })
+
+  it('unlocks new activities as puzzles are completed', () => {
+    const progress = { xp: 61, stars: 3, streak: 1, lastPlayed: '2026-09-06', sessions: 1, masteredWords: [], dailyCompleted: null, perfectRounds: 1 }
+    expect(isModeUnlocked('unscramble', progress)).toBe(true)
+    expect(isModeUnlocked('listening', progress)).toBe(true)
+    expect(isModeUnlocked('phrase', progress)).toBe(false)
+  })
+
+  it('awards one to three stars based on the round result', () => {
+    expect(earnedStars({ score: 0, total: 5, wordIds: [], perfect: false })).toBe(1)
+    expect(earnedStars({ score: 3, total: 5, wordIds: [], perfect: false })).toBe(2)
+    expect(earnedStars({ score: 5, total: 5, wordIds: [], perfect: true })).toBe(3)
+  })
+
+  it('migrates saved profiles without resetting their learning', () => {
+    vi.stubGlobal('localStorage', { getItem: () => JSON.stringify({ profile: { name: 'Ama', language: 'kasem', level: 'beginner', dailyGoal: 5 }, progress: { xp: 240, sessions: 3 } }) })
+    const state = loadState()
+    expect(state.profile?.name).toBe('Ama')
+    expect(state.profile?.companion.avatar).toBe('ama')
+    expect(state.progress.xp).toBe(240)
+    expect(state.progress.stars).toBe(0)
+    expect(state.environment).toBe('courtyard')
   })
 })

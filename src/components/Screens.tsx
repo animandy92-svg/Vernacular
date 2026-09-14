@@ -1,12 +1,13 @@
-import { ArrowRight, Award, BookOpen, Check, Flame, Globe2, Grid3X3, Headphones, Image, LockKeyhole, MessageSquareText, Quote, Search, Settings2, ShieldCheck, Shuffle, Sparkles, Trophy, Volume2, Zap } from 'lucide-react'
+import { ArrowRight, Award, BookOpen, Check, Flame, Globe2, Grid3X3, Headphones, Image, LockKeyhole, MessageSquareText, Quote, Search, Settings2, ShieldCheck, Shuffle, Sparkles, Star, Trophy, Volume2, Zap } from 'lucide-react'
 import { LANGUAGES, getLanguage } from '../data/content'
 import type { LeaderboardEntry } from '../lib/firebase'
-import { levelFromXp } from '../lib/progress'
+import { ACTIVITY_UNLOCKS, ENVIRONMENTS, isModeUnlocked, levelFromXp } from '../lib/progress'
 import type { GameMode, LanguageCode, Profile, Progress, WordEntry } from '../types'
 import { MODES, speakWord } from './Dashboard'
+import { Companion } from './Companion'
 import { PageIntro } from './Shell'
 
-export function PlayScreen({ profile, words, onGame }: { profile: Profile; words: WordEntry[]; onGame: (mode: GameMode) => void }) {
+export function PlayScreen({ profile, progress, words, onGame }: { profile: Profile; progress: Progress; words: WordEntry[]; onGame: (mode: GameMode) => void }) {
   const categories = [...new Set(words.map((entry) => entry.category))]
   return (
     <div className="page-enter">
@@ -14,13 +15,14 @@ export function PlayScreen({ profile, words, onGame }: { profile: Profile; words
       <div className="mode-list">
         {MODES.map((mode, index) => {
           const Icon = mode.icon
+          const unlocked = isModeUnlocked(mode.id, progress)
           return (
-            <button className={`mode-row mode-row--${mode.tone}`} key={mode.id} onClick={() => onGame(mode.id)}>
+            <button className={`mode-row mode-row--${mode.tone} ${unlocked ? '' : 'mode-row--locked'}`} disabled={!unlocked} key={mode.id} onClick={() => onGame(mode.id)}>
               <span className="mode-index">0{index + 1}</span>
-              <span className="mode-icon"><Icon size={28} /></span>
-              <span className="mode-row-copy"><strong>{mode.title}</strong><small>{mode.description}</small></span>
-              <span className="mode-meta">{mode.time}</span>
-              <span className="round-arrow"><ArrowRight size={18} /></span>
+              <span className="mode-icon">{unlocked ? <Icon size={28} /> : <LockKeyhole size={25} />}</span>
+              <span className="mode-row-copy"><strong>{mode.title}</strong><small>{unlocked ? mode.description : `Finish ${ACTIVITY_UNLOCKS[mode.id]} puzzle${ACTIVITY_UNLOCKS[mode.id] === 1 ? '' : 's'} to unlock with ${profile.companion.name}.`}</small></span>
+              <span className="mode-meta">{unlocked ? mode.time : 'Locked'}</span>
+              <span className="round-arrow">{unlocked ? <ArrowRight size={18} /> : <LockKeyhole size={16} />}</span>
             </button>
           )
         })}
@@ -55,9 +57,14 @@ export function ProgressScreen({ profile, progress, words, onEdit }: { profile: 
       <div className="profile-stat-grid">
         <div><Flame /><strong>{progress.streak}</strong><span>Day streak</span></div>
         <div><Zap /><strong>{progress.xp}</strong><span>Total XP</span></div>
-        <div><BookOpen /><strong>{progress.masteredWords.length}</strong><span>Words learned</span></div>
+        <div><Star /><strong>{progress.stars}</strong><span>Stars earned</span></div>
         <div><Trophy /><strong>{progress.sessions}</strong><span>Puzzles finished</span></div>
       </div>
+
+      <section className="companion-profile-card">
+        <Companion character={profile.companion} pose="carry" item="book" size={145} />
+        <div><span className="eyebrow">YOUR LEARNING COMPANION</span><h2>{profile.companion.name}</h2><p>“We’ve learned {progress.masteredWords.length} words and unlocked {ENVIRONMENTS.filter((environment) => progress.xp >= environment.xp).length} places together, {profile.localName || profile.name}.”</p></div>
+      </section>
 
       <section className="section-block">
         <div className="section-heading"><div><span className="eyebrow">MILESTONES</span><h2>Your badges</h2></div></div>

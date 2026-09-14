@@ -7,10 +7,11 @@ import { AppHeader, AppNav } from './components/Shell'
 import { FALLBACK_WORDS, getWords } from './data/content'
 import type { LeaderboardEntry } from './lib/firebase'
 import { completeSession, loadState, saveState } from './lib/progress'
-import type { GameMode, GameResult, LanguageCode, Profile, Screen, StoredState, WordEntry } from './types'
+import type { EnvironmentId, GameMode, GameResult, LanguageCode, Profile, Screen, StoredState, WordEntry } from './types'
 
 export default function App() {
   const [state, setState] = useState<StoredState>(() => loadState())
+  const [editingProfile, setEditingProfile] = useState<Profile | null>(null)
   const [screen, setScreen] = useState<Screen>('home')
   const [gameMode, setGameMode] = useState<GameMode | null>(null)
   const [gameResult, setGameResult] = useState<GameResult | null>(null)
@@ -40,12 +41,21 @@ export default function App() {
 
   const saveProfile = (profile: Profile) => {
     setState((current) => ({ ...current, profile }))
+    setEditingProfile(null)
     setScreen('home')
+  }
+
+  const editProfile = () => {
+    setEditingProfile(state.profile)
   }
 
   const switchLanguage = (language: LanguageCode) => {
     setState((current) => current.profile ? { ...current, profile: { ...current.profile, language } } : current)
     setScreen('home')
+  }
+
+  const switchEnvironment = (environment: EnvironmentId) => {
+    setState((current) => ({ ...current, environment }))
   }
 
   const finishGame = (result: GameResult) => {
@@ -59,22 +69,22 @@ export default function App() {
     setScreen('home')
   }
 
-  if (!state.profile) return <Onboarding onComplete={saveProfile} />
+  if (!state.profile || editingProfile) return <Onboarding initialProfile={editingProfile} onComplete={saveProfile} />
 
   if (gameMode && gameResult) {
-    return <ResultScreen result={gameResult} mode={gameMode} onDone={leaveGame} onReplay={() => setGameResult(null)} />
+    return <ResultScreen result={gameResult} mode={gameMode} profile={state.profile} progress={state.progress} onDone={leaveGame} onReplay={() => setGameResult(null)} />
   }
 
   if (gameMode) {
-    return <GamePlay mode={gameMode} words={words.length ? words : getWords(state.profile.language, FALLBACK_WORDS)} onFinish={finishGame} onExit={leaveGame} />
+    return <GamePlay mode={gameMode} profile={state.profile} environment={state.environment} words={words.length ? words : getWords(state.profile.language, FALLBACK_WORDS)} onFinish={finishGame} onExit={leaveGame} />
   }
 
   const content = (() => {
-    if (screen === 'play') return <PlayScreen profile={state.profile} words={words} onGame={setGameMode} />
-    if (screen === 'progress') return <ProgressScreen profile={state.profile} progress={state.progress} words={words} onEdit={() => setState((current) => ({ ...current, profile: null }))} />
+    if (screen === 'play') return <PlayScreen profile={state.profile} progress={state.progress} words={words} onGame={setGameMode} />
+    if (screen === 'progress') return <ProgressScreen profile={state.profile} progress={state.progress} words={words} onEdit={editProfile} />
     if (screen === 'library') return <LibraryScreen active={state.profile.language} onSwitch={switchLanguage} />
     if (screen === 'leaderboard') return <LeaderboardScreen profile={state.profile} progress={state.progress} entries={leaders} />
-    return <Dashboard profile={state.profile} progress={state.progress} words={words} onNavigate={setScreen} onGame={setGameMode} />
+    return <Dashboard profile={state.profile} progress={state.progress} environment={state.environment} words={words} onNavigate={setScreen} onGame={setGameMode} onEnvironment={switchEnvironment} />
   })()
 
   return (

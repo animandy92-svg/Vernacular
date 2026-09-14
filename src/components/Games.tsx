@@ -1,18 +1,58 @@
-import { useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, Delete, Lightbulb, RotateCcw, Sparkles, Trophy, Volume2, X } from 'lucide-react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { ArrowLeft, ArrowRight, Check, Delete, Lightbulb, RotateCcw, Sparkles, Star, Trophy, Volume2, X } from 'lucide-react'
 import { getPhrases, getProverbs, PROVERBS } from '../data/content'
 import { areAdjacent, generateCrossword, generateWordGrid, normalizeWord, samePath, scramble, shuffle, type GridPosition } from '../lib/game'
-import type { GameMode, GameResult, WordEntry } from '../types'
+import { earnedStars } from '../lib/progress'
+import type { EnvironmentId, GameMode, GameResult, Profile, Progress, WordEntry } from '../types'
+import { Companion } from './Companion'
 import { speakWord } from './Dashboard'
 
 interface GameProps {
   mode: GameMode
+  profile: Profile
+  environment: EnvironmentId
   words: WordEntry[]
   onFinish: (result: GameResult) => void
   onExit: () => void
 }
 
 type Feedback = 'correct' | 'wrong' | null
+
+const CompanionContext = createContext<Profile | null>(null)
+
+const GUIDE_PROMPTS: Record<GameMode, string> = {
+  daily: 'I’ll carry the clues. You protect our streak!',
+  unscramble: 'Point to each letter in the order the word is spoken.',
+  match: 'I’m watching both sides. Find the pair that belongs together.',
+  search: 'Trace one straight path. I’ll keep the word list in sight.',
+  crossword: 'Start with a short clue, then use the crossing letters.',
+  picture: 'Look closely at what I’m holding, then name it.',
+  listening: 'Tap the sound again whenever your ears need another turn.',
+  proverb: 'Picture the story behind the words before you choose.',
+  phrase: 'Build the thought from its first word to its last.',
+}
+
+function LessonGuide({ mode }: { mode: GameMode }) {
+  const profile = useContext(CompanionContext)
+  const [talking, setTalking] = useState(false)
+  if (!profile) return null
+  const speak = () => {
+    setTalking(true)
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel()
+      const utterance = new SpeechSynthesisUtterance(`${profile.name}, ${GUIDE_PROMPTS[mode]}`)
+      utterance.rate = 0.9
+      window.speechSynthesis.speak(utterance)
+    }
+    window.setTimeout(() => setTalking(false), 900)
+  }
+  return (
+    <button className="lesson-guide" type="button" onClick={speak} aria-label={`Hear a tip from ${profile.companion.name}`}>
+      <Companion character={profile.companion} pose={talking ? 'talk' : 'point'} item={mode === 'picture' ? 'basket' : mode === 'daily' ? 'star' : 'none'} size={112} />
+      <span><strong>{profile.companion.name}</strong><small>{GUIDE_PROMPTS[mode]}</small><em><Volume2 size={13} /> Tap me</em></span>
+    </button>
+  )
+}
 
 function GameHeader({ label, current, total, onExit }: { label: string; current: number; total: number; onExit: () => void }) {
   const progress = total ? Math.round((current / total) * 100) : 0
@@ -30,10 +70,11 @@ function EmptyGame({ onExit }: { onExit: () => void }) {
 }
 
 function FeedbackCard({ feedback, success, retry }: { feedback: Feedback; success: string; retry?: string }) {
+  const profile = useContext(CompanionContext)
   if (!feedback) return null
   return (
     <div className={`feedback feedback--${feedback}`} role="status" aria-live="polite">
-      <span>{feedback === 'correct' ? <Check /> : <RotateCcw />}</span>
+      {profile ? <Companion character={profile.companion} pose={feedback === 'correct' ? 'celebrate' : 'point'} item={feedback === 'correct' ? 'star' : 'none'} size={76} /> : <span>{feedback === 'correct' ? <Check /> : <RotateCcw />}</span>}
       <div><strong>{feedback === 'correct' ? success : 'Not quite — have another go.'}</strong>{retry && <p>{retry}</p>}</div>
     </div>
   )
@@ -156,6 +197,7 @@ function MatchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
           <div>{translations.map((entry) => <button className={`${right === entry.id ? 'selected' : ''} ${matched.includes(entry.id) ? 'matched' : ''}`} disabled={matched.includes(entry.id)} onClick={() => chooseRight(entry.id)} key={entry.id}>{entry.translation}</button>)}</div>
         </div>
         <div className="match-count"><Check size={17} /> {matched.length} of {pairs.length} pairs found</div>
+        <FeedbackCard feedback={wrong ? 'wrong' : matched.length ? 'correct' : null} success="That pair belongs together!" retry={wrong ? 'Try the meaning on the other side.' : 'Keep matching with your companion.'} />
       </main>
     </div>
   )
@@ -209,6 +251,7 @@ function SearchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
           }))}
         </div>
         <button className="clear-answer" disabled={!path.length} onClick={() => setPath([])}><RotateCcw size={16} /> Clear selection</button>
+        <FeedbackCard feedback={found.length ? 'correct' : null} success="You found a hidden word!" retry="Follow the next path with your companion." />
       </main>
     </div>
   )
@@ -401,27 +444,33 @@ function CrosswordGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
   )
 }
 
-export function GamePlay({ mode, words, onFinish, onExit }: GameProps) {
-  if (mode === 'match') return <MatchGame words={words} onFinish={onFinish} onExit={onExit} />
-  if (mode === 'search') return <SearchGame words={words} onFinish={onFinish} onExit={onExit} />
-  if (mode === 'crossword') return <CrosswordGame words={words} onFinish={onFinish} onExit={onExit} />
-  if (mode === 'picture') return <ChoiceRound kind="picture" words={words} onFinish={onFinish} onExit={onExit} />
-  if (mode === 'listening') return <ChoiceRound kind="listening" words={words} onFinish={onFinish} onExit={onExit} />
-  if (mode === 'proverb') return <ProverbGame words={words} onFinish={onFinish} onExit={onExit} />
-  if (mode === 'phrase') return <PhraseGame words={words} onFinish={onFinish} onExit={onExit} />
-  return <UnscrambleGame words={words} daily={mode === 'daily'} onFinish={onFinish} onExit={onExit} />
+export function GamePlay({ mode, profile, environment, words, onFinish, onExit }: GameProps) {
+  let game
+  if (mode === 'match') game = <MatchGame words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
+  else if (mode === 'search') game = <SearchGame words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
+  else if (mode === 'crossword') game = <CrosswordGame words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
+  else if (mode === 'picture') game = <ChoiceRound kind="picture" words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
+  else if (mode === 'listening') game = <ChoiceRound kind="listening" words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
+  else if (mode === 'proverb') game = <ProverbGame words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
+  else if (mode === 'phrase') game = <PhraseGame words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
+  else game = <UnscrambleGame words={words} profile={profile} environment={environment} daily={mode === 'daily'} onFinish={onFinish} onExit={onExit} />
+
+  return <CompanionContext.Provider value={profile}><div className={`game-session game-session--world-${environment}`}>{game}<LessonGuide mode={mode} /></div></CompanionContext.Provider>
 }
 
-export function ResultScreen({ result, mode, onDone, onReplay }: { result: GameResult; mode: GameMode; onDone: () => void; onReplay: () => void }) {
+export function ResultScreen({ result, mode, profile, progress, onDone, onReplay }: { result: GameResult; mode: GameMode; profile: Profile; progress: Progress; onDone: () => void; onReplay: () => void }) {
   const earnedXp = result.score * 12 + (result.perfect ? 25 : 10)
+  const stars = earnedStars(result)
   const percent = Math.round((result.score / Math.max(result.total, 1)) * 100)
+  const unlockMessage = progress.sessions === 1 ? 'Listening Challenge and Word Search unlocked!' : progress.sessions === 3 ? 'Phrase Builder unlocked!' : progress.sessions === 5 ? 'Crossword and Proverb Challenge unlocked!' : null
   return (
     <div className="results-screen page-enter">
       <div className="result-burst" aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /></div>
-      <span className="result-icon">{result.perfect ? <Trophy size={40} /> : <Sparkles size={40} />}</span><span className="eyebrow">PUZZLE COMPLETE</span>
-      <h1>{result.perfect ? 'A perfect round!' : percent >= 60 ? 'You’re finding your rhythm.' : 'Every try teaches something.'}</h1>
+      <div className="result-companion"><Companion character={profile.companion} pose="celebrate" item="star" size={180} /><span className="result-icon">{result.perfect ? <Trophy size={34} /> : <Sparkles size={34} />}</span></div><span className="eyebrow">PUZZLE COMPLETE</span>
+      <h1>{result.perfect ? `${profile.companion.name} is cheering for you!` : percent >= 60 ? 'You’re finding your rhythm.' : 'Every try teaches something.'}</h1>
       <p>{mode === 'daily' ? 'Today’s challenge is complete and your streak is safe.' : 'That practice is now part of your learning journey.'}</p>
-      <div className="result-score"><span><strong>{result.score}/{result.total}</strong><small>correct</small></span><span><strong>+{earnedXp}</strong><small>XP earned</small></span><span><strong>{result.wordIds.length}</strong><small>words learned</small></span></div>
+      <div className="result-score"><span><strong>{result.score}/{result.total}</strong><small>correct</small></span><span><strong>+{earnedXp}</strong><small>XP earned</small></span><span><strong>+{stars} <Star size={16} /></strong><small>stars earned</small></span></div>
+      {unlockMessage && <div className="unlock-toast"><Sparkles size={18} /><strong>{unlockMessage}</strong></div>}
       <div className="result-actions"><button className="button button--primary" onClick={onDone}>Back home <ArrowRight size={18} /></button><button className="button button--ghost" onClick={onReplay}><RotateCcw size={18} /> Play again</button></div>
       <button className="result-exit" onClick={onDone}><ArrowLeft size={16} /> Leave results</button><div className="result-tip"><Lightbulb size={16} /> Short, frequent practice builds stronger recall.</div>
     </div>
