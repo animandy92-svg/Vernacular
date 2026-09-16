@@ -51,7 +51,7 @@ describe('progress helpers', () => {
       { xp: 0, stars: 0, streak: 0, lastPlayed: null, sessions: 0, masteredWords: [], dailyCompleted: null, perfectRounds: 0 },
       { score: 3, total: 3, wordIds: ['twi-fie'], perfect: true },
       true,
-      new Date('2026-09-06T12:00:00Z'),
+      new Date(2026, 8, 6, 12),
     )
     expect(next.xp).toBe(61)
     expect(next.stars).toBe(3)

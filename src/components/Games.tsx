@@ -1,11 +1,12 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, Delete, Lightbulb, RotateCcw, Sparkles, Star, Trophy, Volume2, X } from 'lucide-react'
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { ArrowLeft, ArrowRight, BookOpen, Check, Delete, Lightbulb, RotateCcw, Sparkles, Star, Trophy, Volume2, X } from 'lucide-react'
 import { getPhrases, getProverbs, PROVERBS } from '../data/content'
-import { areAdjacent, generateCrossword, generateWordGrid, normalizeWord, samePath, scramble, shuffle, type GridPosition } from '../lib/game'
-import { earnedStars } from '../lib/progress'
+import { areAdjacent, generateCrossword, generateWordGrid, normalizeWord, samePath, scramble, seededRandom, shuffle, type GridPosition } from '../lib/game'
+import { dateKey, earnedStars } from '../lib/progress'
 import type { EnvironmentId, GameMode, GameResult, Profile, Progress, WordEntry } from '../types'
 import { Companion } from './Companion'
-import { speakWord } from './Dashboard'
+import { Pronunciation } from './Pronunciation'
+import { DailyActivity } from './DailyActivity'
 
 interface GameProps {
   mode: GameMode
@@ -18,6 +19,8 @@ interface GameProps {
 
 type Feedback = 'correct' | 'wrong' | null
 
+const GuideModeContext = createContext<GameMode>('unscramble')
+
 const CompanionContext = createContext<Profile | null>(null)
 
 const GUIDE_PROMPTS: Record<GameMode, string> = {
@@ -26,25 +29,42 @@ const GUIDE_PROMPTS: Record<GameMode, string> = {
   match: 'I’m watching both sides. Find the pair that belongs together.',
   search: 'Trace one straight path. I’ll keep the word list in sight.',
   crossword: 'Start with a short clue, then use the crossing letters.',
-  picture: 'Look closely at what I’m holding, then name it.',
+  picture: 'Look closely at the picture, then choose its name.',
   listening: 'Tap the sound again whenever your ears need another turn.',
   proverb: 'Picture the story behind the words before you choose.',
   phrase: 'Build the thought from its first word to its last.',
 }
 
-function LessonGuide({ mode }: { mode: GameMode }) {
+function LessonGuide() {
+  const mode = useContext(GuideModeContext)
   const profile = useContext(CompanionContext)
   const [talking, setTalking] = useState(false)
+  const speech = useRef<SpeechSynthesisUtterance | null>(null)
+  const speechTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  useEffect(() => () => {
+    clearTimeout(speechTimeout.current)
+    if (speech.current) {
+      speech.current.onend = null
+      speech.current.onerror = null
+      window.speechSynthesis?.cancel()
+    }
+  }, [])
   if (!profile) return null
   const speak = () => {
+    clearTimeout(speechTimeout.current)
+    if (speech.current) { speech.current.onend = null; speech.current.onerror = null }
     setTalking(true)
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel()
       const utterance = new SpeechSynthesisUtterance(`${profile.name}, ${GUIDE_PROMPTS[mode]}`)
       utterance.rate = 0.9
+      speech.current = utterance
+      const finish = () => { clearTimeout(speechTimeout.current); setTalking(false); speech.current = null }
+      utterance.onend = finish
+      utterance.onerror = finish
       window.speechSynthesis.speak(utterance)
     }
-    window.setTimeout(() => setTalking(false), 900)
+    speechTimeout.current = setTimeout(() => setTalking(false), 'speechSynthesis' in window ? 15000 : 1800)
   }
   return (
     <button className="lesson-guide" type="button" onClick={speak} aria-label={`Hear a tip from ${profile.companion.name}`}>
@@ -55,12 +75,31 @@ function LessonGuide({ mode }: { mode: GameMode }) {
 }
 
 function GameHeader({ label, current, total, onExit }: { label: string; current: number; total: number; onExit: () => void }) {
+  const [confirming, setConfirming] = useState(false)
+  const dialog = useRef<HTMLDialogElement>(null)
+  useEffect(() => {
+    const back = (event: Event) => { event.preventDefault(); setConfirming((current) => !current) }
+    window.addEventListener('vernacular-back', back)
+    return () => window.removeEventListener('vernacular-back', back)
+  }, [])
+  useEffect(() => {
+    if (!confirming) return
+    const element = dialog.current
+    element?.showModal()
+    return () => element?.close()
+  }, [confirming])
   const progress = total ? Math.round((current / total) * 100) : 0
   return (
     <header className="game-header">
-      <button className="icon-button" onClick={onExit} aria-label="Exit puzzle"><X size={22} /></button>
-      <div><span>{label}</span><div className="game-progress"><i style={{ width: `${progress}%` }} /></div></div>
+      <button className="icon-button" onClick={() => setConfirming(true)} aria-label="Exit puzzle"><X size={22} /></button>
+      <div><span>{label}</span><div className="game-progress" role="progressbar" aria-label="Puzzle progress" aria-valuemin={0} aria-valuemax={total} aria-valuenow={current}><i style={{ width: `${progress}%` }} /></div></div>
       <strong>{current}/{total}</strong>
+      <dialog ref={dialog} className="exit-dialog" aria-labelledby="exit-title" aria-describedby="exit-description" onCancel={() => setConfirming(false)}>
+        <span className="dialog-icon"><BookOpen size={28} /></span>
+        <h2 id="exit-title">Leave this puzzle?</h2><p id="exit-description">This round will start over next time. Your completed puzzles and earned XP are saved.</p>
+        <button autoFocus className="button button--primary" onClick={() => setConfirming(false)}>Keep practicing</button>
+        <button className="button button--ghost" onClick={onExit}>Leave puzzle</button>
+      </dialog>
     </header>
   )
 }
@@ -74,7 +113,7 @@ function FeedbackCard({ feedback, success, retry }: { feedback: Feedback; succes
   if (!feedback) return null
   return (
     <div className={`feedback feedback--${feedback}`} role="status" aria-live="polite">
-      {profile ? <Companion character={profile.companion} pose={feedback === 'correct' ? 'celebrate' : 'point'} item={feedback === 'correct' ? 'star' : 'none'} size={76} /> : <span>{feedback === 'correct' ? <Check /> : <RotateCcw />}</span>}
+      {profile ? <Companion character={profile.companion} pose={feedback === 'correct' ? 'celebrate' : 'encourage'} item={feedback === 'correct' ? 'star' : 'none'} size={76} /> : <span>{feedback === 'correct' ? <Check /> : <RotateCcw />}</span>}
       <div><strong>{feedback === 'correct' ? success : 'Not quite — have another go.'}</strong>{retry && <p>{retry}</p>}</div>
     </div>
   )
@@ -82,10 +121,12 @@ function FeedbackCard({ feedback, success, retry }: { feedback: Feedback; succes
 
 function UnscrambleGame({ words, daily, onFinish, onExit }: Omit<GameProps, 'mode'> & { daily: boolean }) {
   const total = daily ? 3 : 5
-  const rounds = useMemo(() => shuffle(words.filter((entry) => Array.from(entry.word).length <= 10)).slice(0, total), [words, total])
+  const [day] = useState(dateKey)
+  const rounds = useMemo(() => shuffle(words.filter((entry) => Array.from(normalizeWord(entry.word)).length <= 10).sort((a, b) => a.id.localeCompare(b.id)), daily ? seededRandom(`${day}-${words[0]?.language}`) : Math.random).slice(0, total), [words, total, daily, day])
   const [round, setRound] = useState(0)
   const [selected, setSelected] = useState<number[]>([])
   const [score, setScore] = useState(0)
+  const [hadMistake, setHadMistake] = useState(false)
   const [mastered, setMastered] = useState<string[]>([])
   const [feedback, setFeedback] = useState<Feedback>(null)
   const entry = rounds[round]
@@ -101,11 +142,12 @@ function UnscrambleGame({ words, daily, onFinish, onExit }: Omit<GameProps, 'mod
   }
 
   const submit = () => {
+    if (feedback === 'correct') return
     if (normalizeWord(answer) === normalizeWord(entry.word)) {
-      setScore((current) => current + 1)
+      setScore((current) => current + (hadMistake ? 0 : 1))
       setMastered((current) => [...current, entry.id])
       setFeedback('correct')
-    } else setFeedback('wrong')
+    } else { setHadMistake(true); setFeedback('wrong') }
   }
 
   const next = () => {
@@ -113,6 +155,7 @@ function UnscrambleGame({ words, daily, onFinish, onExit }: Omit<GameProps, 'mod
       onFinish({ score, total: rounds.length, wordIds: mastered, perfect: score === rounds.length })
       return
     }
+    setHadMistake(false)
     setRound((current) => current + 1)
     setSelected([])
     setFeedback(null)
@@ -124,18 +167,20 @@ function UnscrambleGame({ words, daily, onFinish, onExit }: Omit<GameProps, 'mod
       <main className="game-stage">
         <span className="eyebrow">PUT THE LETTERS IN ORDER</span>
         <h1>{entry.translation}</h1>
-        <button className="listen-prompt" onClick={() => speakWord(entry)}><Volume2 size={18} /> Hear the word</button>
+        <Pronunciation entry={entry} />
         <div className={`answer-slots ${feedback ? `answer-slots--${feedback}` : ''}`} aria-label={`Your answer: ${answer || 'empty'}`}>
-          {Array.from(entry.word).map((_, index) => <span key={index}>{answer[index] ?? ''}</span>)}
+          {letters.map((_, index) => <button key={index} disabled={selected[index] === undefined || feedback === 'correct'} aria-label={selected[index] === undefined ? `Empty letter ${index + 1}` : `Remove ${letters[selected[index]]} at position ${index + 1}`} onClick={() => { setSelected((current) => current.filter((_, position) => position !== index)); setFeedback(null) }}>{selected[index] === undefined ? '' : letters[selected[index]]}</button>)}
         </div>
+        <p className="answer-help">Tap a filled space to put that letter back.</p>
         <div className="letter-bank">
-          {letters.map((letter, index) => <button className={selected.includes(index) ? 'used' : ''} onClick={() => chooseLetter(index)} key={`${letter}-${index}`}>{letter}</button>)}
+          {letters.map((letter, index) => <button disabled={selected.includes(index) || feedback === 'correct'} className={selected.includes(index) ? 'used' : ''} onClick={() => chooseLetter(index)} key={`${letter}-${index}`}>{letter}</button>)}
         </div>
         <button className="clear-answer" onClick={() => { setSelected([]); setFeedback(null) }} disabled={!selected.length || feedback === 'correct'}><Delete size={17} /> Clear answer</button>
         <FeedbackCard feedback={feedback} success="Beautiful — that’s it!" retry={feedback === 'correct' ? entry.example : `Hint: it begins with “${Array.from(entry.word)[0]}”.`} />
+        <LessonGuide />
       </main>
       <footer className="game-footer">
-        {feedback === 'correct' ? <button className="button button--primary" onClick={next}>{round === rounds.length - 1 ? 'See results' : 'Next word'} <ArrowRight size={18} /></button> : <button className="button button--dark" onClick={submit} disabled={answer.length !== Array.from(entry.word).length}>Check word</button>}
+        {feedback === 'correct' ? <button className="button button--primary" onClick={next}>{round === rounds.length - 1 ? 'See results' : 'Next word'} <ArrowRight size={18} /></button> : <button className="button button--dark" onClick={submit} disabled={selected.length !== letters.length}>Check word</button>}
       </footer>
     </div>
   )
@@ -171,13 +216,13 @@ function MatchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
   }
 
   const chooseLeft = (id: string) => {
-    if (matched.includes(id)) return
+    if (wrong || matched.includes(id)) return
     setLeft(id)
     setWrong(false)
     if (right) compare(id, right)
   }
   const chooseRight = (id: string) => {
-    if (matched.includes(id)) return
+    if (wrong || matched.includes(id)) return
     setRight(id)
     setWrong(false)
     if (left) compare(left, id)
@@ -192,12 +237,13 @@ function MatchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
         <h1>Which words belong together?</h1>
         <p>Tap a word, then tap its English meaning.</p>
         <div className={`match-board ${wrong ? 'is-wrong' : ''}`}>
-          <div>{pairs.map((entry) => <button className={`${left === entry.id ? 'selected' : ''} ${matched.includes(entry.id) ? 'matched' : ''}`} disabled={matched.includes(entry.id)} onClick={() => chooseLeft(entry.id)} key={entry.id}>{entry.word}</button>)}</div>
+          <div>{pairs.map((entry) => <button className={`${left === entry.id ? 'selected' : ''} ${matched.includes(entry.id) ? 'matched' : ''}`} disabled={wrong || matched.includes(entry.id)} onClick={() => chooseLeft(entry.id)} key={entry.id}>{entry.word}</button>)}</div>
           <span className="match-line" />
-          <div>{translations.map((entry) => <button className={`${right === entry.id ? 'selected' : ''} ${matched.includes(entry.id) ? 'matched' : ''}`} disabled={matched.includes(entry.id)} onClick={() => chooseRight(entry.id)} key={entry.id}>{entry.translation}</button>)}</div>
+          <div>{translations.map((entry) => <button className={`${right === entry.id ? 'selected' : ''} ${matched.includes(entry.id) ? 'matched' : ''}`} disabled={wrong || matched.includes(entry.id)} onClick={() => chooseRight(entry.id)} key={entry.id}>{entry.translation}</button>)}</div>
         </div>
         <div className="match-count"><Check size={17} /> {matched.length} of {pairs.length} pairs found</div>
         <FeedbackCard feedback={wrong ? 'wrong' : matched.length ? 'correct' : null} success="That pair belongs together!" retry={wrong ? 'Try the meaning on the other side.' : 'Keep matching with your companion.'} />
+        <LessonGuide />
       </main>
     </div>
   )
@@ -252,6 +298,7 @@ function SearchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
         </div>
         <button className="clear-answer" disabled={!path.length} onClick={() => setPath([])}><RotateCcw size={16} /> Clear selection</button>
         <FeedbackCard feedback={found.length ? 'correct' : null} success="You found a hidden word!" retry="Follow the next path with your companion." />
+        <LessonGuide />
       </main>
     </div>
   )
@@ -277,6 +324,7 @@ function ChoiceRound({ words, kind, onFinish, onExit }: Omit<GameProps, 'mode'> 
   const [selected, setSelected] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [score, setScore] = useState(0)
+  const [hadMistake, setHadMistake] = useState(false)
   const [mastered, setMastered] = useState<string[]>([])
   const entry = rounds[round]
   const options = useMemo(() => entry ? shuffle([entry, ...shuffle(words.filter((item) => item.id !== entry.id)).slice(0, 3)]) : [], [entry, words])
@@ -287,15 +335,16 @@ function ChoiceRound({ words, kind, onFinish, onExit }: Omit<GameProps, 'mode'> 
     setSelected(option.id)
     if (option.id === entry.id) {
       setFeedback('correct')
-      setScore((current) => current + 1)
+      setScore((current) => current + (hadMistake ? 0 : 1))
       setMastered((current) => [...current, entry.id])
-    } else setFeedback('wrong')
+    } else { setHadMistake(true); setFeedback('wrong') }
   }
   const next = () => {
     if (round === rounds.length - 1) {
       onFinish({ score, total: rounds.length, wordIds: mastered, perfect: score === rounds.length })
       return
     }
+    setHadMistake(false)
     setRound((current) => current + 1)
     setSelected(null)
     setFeedback(null)
@@ -311,10 +360,11 @@ function ChoiceRound({ words, kind, onFinish, onExit }: Omit<GameProps, 'mode'> 
         {kind === 'picture' ? (
           <div className="picture-prompt" role="img" aria-label={picture.scene}><span>{picture.emoji}</span><small>{picture.scene}</small></div>
         ) : (
-          <button className="sound-prompt" onClick={() => speakWord(entry)} aria-label="Play pronunciation"><span><Volume2 size={38} /></span><strong>Tap to hear</strong><small>{entry.phonetic}</small></button>
+          <div className="listening-prompt"><span><Volume2 size={38} /></span><Pronunciation entry={entry} /><small>{entry.phonetic}</small></div>
         )}
         <div className="choice-grid">{options.map((option) => <button className={`${selected === option.id ? 'selected' : ''} ${feedback === 'correct' && option.id === entry.id ? 'correct' : ''}`} key={option.id} onClick={() => choose(option)}>{kind === 'picture' ? option.word : option.translation}</button>)}</div>
         <FeedbackCard feedback={feedback} success={`${entry.word} means ${entry.translation}.`} retry={feedback === 'wrong' ? 'Listen or look once more, then choose again.' : entry.example} />
+        <LessonGuide />
       </main>
       {feedback === 'correct' && <footer className="game-footer"><button className="button button--primary" onClick={next}>{round === rounds.length - 1 ? 'See results' : 'Next challenge'} <ArrowRight size={18} /></button></footer>}
     </div>
@@ -328,6 +378,7 @@ function ProverbGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
   const [selected, setSelected] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [score, setScore] = useState(0)
+  const [hadMistake, setHadMistake] = useState(false)
   const entry = rounds[round]
   const decoys = ['Move quickly before another person takes the opportunity.', 'Keep knowledge secret so that it remains powerful.', 'Strength matters more than patience or good judgment.', ...PROVERBS.map((item) => item.meaning)]
   const options = useMemo(() => entry ? shuffle([entry.meaning, ...shuffle(decoys.filter((item) => item !== entry.meaning)).slice(0, 2)]) : [], [entry])
@@ -336,10 +387,11 @@ function ProverbGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
   const choose = (meaning: string) => {
     if (feedback === 'correct') return
     setSelected(meaning)
-    if (meaning === entry.meaning) { setFeedback('correct'); setScore((current) => current + 1) } else setFeedback('wrong')
+    if (meaning === entry.meaning) { setFeedback('correct'); setScore((current) => current + (hadMistake ? 0 : 1)) } else { setHadMistake(true); setFeedback('wrong') }
   }
   const next = () => {
     if (round === rounds.length - 1) { onFinish({ score, total: rounds.length, wordIds: [], perfect: score === rounds.length }); return }
+    setHadMistake(false)
     setRound((current) => current + 1); setSelected(null); setFeedback(null)
   }
   return (
@@ -349,6 +401,7 @@ function ProverbGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
         <span className="eyebrow">WISDOM IN A FEW WORDS</span><div className="proverb-mark">“</div><h1>{entry.text}</h1><p>{entry.literal}</p><h2>What does this proverb teach?</h2>
         <div className="meaning-list">{options.map((option) => <button className={`${selected === option ? 'selected' : ''} ${feedback === 'correct' && option === entry.meaning ? 'correct' : ''}`} onClick={() => choose(option)} key={option}>{option}</button>)}</div>
         <FeedbackCard feedback={feedback} success="You found the wisdom inside it." retry={feedback === 'wrong' ? 'Think about the lesson behind the image.' : entry.meaning} />
+        <LessonGuide />
       </main>
       {feedback === 'correct' && <footer className="game-footer"><button className="button button--primary" onClick={next}>{round === rounds.length - 1 ? 'See results' : 'Next proverb'} <ArrowRight size={18} /></button></footer>}
     </div>
@@ -364,16 +417,19 @@ function PhraseGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
   const [selected, setSelected] = useState<number[]>([])
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [score, setScore] = useState(0)
+  const [hadMistake, setHadMistake] = useState(false)
   const entry = rounds[round]
   const tokens = useMemo(() => entry ? shuffle(entry.phrase.split(/\s+/)) : [], [entry])
   const answer = selected.map((index) => tokens[index]).join(' ')
 
   if (!entry) return <EmptyGame onExit={onExit} />
   const submit = () => {
-    if (cleanPhrase(answer) === cleanPhrase(entry.phrase)) { setFeedback('correct'); setScore((current) => current + 1) } else setFeedback('wrong')
+    if (feedback === 'correct') return
+    if (cleanPhrase(answer) === cleanPhrase(entry.phrase)) { setFeedback('correct'); setScore((current) => current + (hadMistake ? 0 : 1)) } else { setHadMistake(true); setFeedback('wrong') }
   }
   const next = () => {
     if (round === rounds.length - 1) { onFinish({ score, total: rounds.length, wordIds: [], perfect: score === rounds.length }); return }
+    setHadMistake(false)
     setRound((current) => current + 1); setSelected([]); setFeedback(null)
   }
   return (
@@ -381,10 +437,11 @@ function PhraseGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
       <GameHeader label="Phrase builder" current={round + 1} total={rounds.length} onExit={onExit} />
       <main className="game-stage phrase-stage">
         <span className="eyebrow">BUILD A USEFUL PHRASE</span><h1>{entry.translation}</h1><p>Tap each word in the order you would say it.</p>
-        <div className={`phrase-answer ${feedback ? `answer-slots--${feedback}` : ''}`}>{answer || <span>Build your phrase here…</span>}</div>
-        <div className="phrase-bank">{tokens.map((token, index) => <button className={selected.includes(index) ? 'used' : ''} key={`${token}-${index}`} onClick={() => { if (!selected.includes(index) && feedback !== 'correct') { setSelected((current) => [...current, index]); setFeedback(null) } }}>{token}</button>)}</div>
+        <div className={`phrase-answer ${feedback ? `answer-slots--${feedback}` : ''}`}>{selected.length ? selected.map((tokenIndex, position) => <button key={tokenIndex} disabled={feedback === 'correct'} aria-label={`Remove ${tokens[tokenIndex]}`} onClick={() => { setSelected((current) => current.filter((_, index) => index !== position)); setFeedback(null) }}>{tokens[tokenIndex]}</button>) : <span>Build your phrase here…</span>}</div>
+        <div className="phrase-bank">{tokens.map((token, index) => <button disabled={selected.includes(index) || feedback === 'correct'} className={selected.includes(index) ? 'used' : ''} key={`${token}-${index}`} onClick={() => { if (!selected.includes(index) && feedback !== 'correct') { setSelected((current) => [...current, index]); setFeedback(null) } }}>{token}</button>)}</div>
         <button className="clear-answer" disabled={!selected.length || feedback === 'correct'} onClick={() => { setSelected([]); setFeedback(null) }}><Delete size={17} /> Start again</button>
         <FeedbackCard feedback={feedback} success="That phrase flows beautifully." retry={feedback === 'correct' ? entry.phrase : 'Try a different word order.'} />
+        <LessonGuide />
       </main>
       <footer className="game-footer">{feedback === 'correct' ? <button className="button button--primary" onClick={next}>{round === rounds.length - 1 ? 'See results' : 'Next phrase'} <ArrowRight size={18} /></button> : <button className="button button--dark" disabled={selected.length !== tokens.length} onClick={submit}>Check phrase</button>}</footer>
     </div>
@@ -397,6 +454,12 @@ function CrosswordGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
   const [selected, setSelected] = useState<string | null>(() => puzzle.cells.keys().next().value ?? null)
   const [wrongCells, setWrongCells] = useState<Set<string>>(new Set())
   const [feedback, setFeedback] = useState<Feedback>(null)
+  const [hadMistake, setHadMistake] = useState(false)
+  useEffect(() => {
+    if (feedback !== 'correct') return
+    const timer = window.setTimeout(() => onFinish({ score: puzzle.placements.length, total: puzzle.placements.length, wordIds: puzzle.placements.map((item) => item.word.id), perfect: !hadMistake }), 550)
+    return () => window.clearTimeout(timer)
+  }, [feedback, hadMistake, onFinish, puzzle])
   const entries = [...puzzle.cells.entries()]
   const rows = entries.map(([key]) => Number(key.split('-')[0]))
   const cols = entries.map(([key]) => Number(key.split('-')[1]))
@@ -406,7 +469,7 @@ function CrosswordGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
 
   if (!puzzle.placements.length) return <EmptyGame onExit={onExit} />
   const enterLetter = (letter: string) => {
-    if (!selected) return
+    if (!selected || feedback === 'correct') return
     setAnswers((current) => ({ ...current, [selected]: letter }))
     setWrongCells((current) => { const next = new Set(current); next.delete(selected); return next })
     setFeedback(null)
@@ -415,11 +478,11 @@ function CrosswordGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
     if (placement && index >= 0 && index < placement.cells.length - 1) setSelected(cellKey(placement.cells[index + 1]))
   }
   const check = () => {
+    if (feedback === 'correct') return
     const wrong = new Set(entries.filter(([key, letter]) => answers[key] !== letter).map(([key]) => key))
     setWrongCells(wrong)
-    if (wrong.size) { setFeedback('wrong'); return }
+    if (wrong.size) { setHadMistake(true); setFeedback('wrong'); return }
     setFeedback('correct')
-    window.setTimeout(() => onFinish({ score: puzzle.placements.length, total: puzzle.placements.length, wordIds: puzzle.placements.map((item) => item.word.id), perfect: true }), 550)
   }
 
   return (
@@ -432,14 +495,15 @@ function CrosswordGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
             {Array.from({ length: (maxRow - minRow + 1) * (maxCol - minCol + 1) }, (_, index) => {
               const width = maxCol - minCol + 1, row = minRow + Math.floor(index / width), col = minCol + (index % width), key = `${row}-${col}`, letter = puzzle.cells.get(key)
               if (!letter) return <span className="crossword-block" key={key} />
-              return <button className={`${selected === key ? 'selected' : ''} ${wrongCells.has(key) ? 'wrong' : ''}`} key={key} onClick={() => setSelected(key)}>{startNumbers.has(key) && <small>{startNumbers.get(key)}</small>}{answers[key] ?? ''}</button>
+              return <button className={`${selected === key ? 'selected' : ''} ${wrongCells.has(key) ? 'wrong' : ''}`} aria-label={`Row ${row - minRow + 1}, column ${col - minCol + 1}${answers[key] ? `, ${answers[key]}` : ' empty'}`} key={key} onClick={() => setSelected(key)}>{startNumbers.has(key) && <small>{startNumbers.get(key)}</small>}{answers[key] ?? ''}</button>
             })}
           </div>
           <div className="crossword-keyboard">{alphabet.map((letter) => <button key={letter} onClick={() => enterLetter(letter)}>{letter}</button>)}<button aria-label="Erase selected letter" onClick={() => selected && setAnswers((current) => { const next = { ...current }; delete next[selected]; return next })}><Delete size={18} /></button></div>
         </div><div className="crossword-clues"><h2>Clues</h2>{puzzle.placements.map((item) => <button key={`${item.word.id}-${item.direction}`} onClick={() => setSelected(cellKey(item.cells[0]))}><span>{item.number}</span><div><strong>{item.word.translation}</strong><small>{item.direction} · {item.cells.length} letters</small></div></button>)}</div></div>
         <FeedbackCard feedback={feedback} success="Every crossing is complete!" retry={feedback === 'wrong' ? `${wrongCells.size} squares still need another look.` : undefined} />
+        <LessonGuide />
       </main>
-      <footer className="game-footer"><button className="button button--dark" onClick={check}>Check crossword <Check size={18} /></button></footer>
+      <footer className="game-footer"><button disabled={feedback === 'correct'} className="button button--dark" onClick={check}>Check crossword <Check size={18} /></button></footer>
     </div>
   )
 }
@@ -455,7 +519,7 @@ export function GamePlay({ mode, profile, environment, words, onFinish, onExit }
   else if (mode === 'phrase') game = <PhraseGame words={words} profile={profile} environment={environment} onFinish={onFinish} onExit={onExit} />
   else game = <UnscrambleGame words={words} profile={profile} environment={environment} daily={mode === 'daily'} onFinish={onFinish} onExit={onExit} />
 
-  return <CompanionContext.Provider value={profile}><div className={`game-session game-session--world-${environment}`}>{game}<LessonGuide mode={mode} /></div></CompanionContext.Provider>
+  return <CompanionContext.Provider value={profile}><GuideModeContext.Provider value={mode}><div className={`game-session game-session--world-${environment}`}>{game}</div></GuideModeContext.Provider></CompanionContext.Provider>
 }
 
 export function ResultScreen({ result, mode, profile, progress, onDone, onReplay }: { result: GameResult; mode: GameMode; profile: Profile; progress: Progress; onDone: () => void; onReplay: () => void }) {
@@ -466,12 +530,13 @@ export function ResultScreen({ result, mode, profile, progress, onDone, onReplay
   return (
     <div className="results-screen page-enter">
       <div className="result-burst" aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /></div>
-      <div className="result-companion"><Companion character={profile.companion} pose="celebrate" item="star" size={180} /><span className="result-icon">{result.perfect ? <Trophy size={34} /> : <Sparkles size={34} />}</span></div><span className="eyebrow">PUZZLE COMPLETE</span>
+      <div className="result-companion"><Companion character={profile.companion} pose="celebrate" item="star" size={180} interactive /><span className="result-icon">{result.perfect ? <Trophy size={34} /> : <Sparkles size={34} />}</span></div><span className="eyebrow">PUZZLE COMPLETE</span>
       <h1>{result.perfect ? `${profile.companion.name} is cheering for you!` : percent >= 60 ? 'You’re finding your rhythm.' : 'Every try teaches something.'}</h1>
       <p>{mode === 'daily' ? 'Today’s challenge is complete and your streak is safe.' : 'That practice is now part of your learning journey.'}</p>
-      <div className="result-score"><span><strong>{result.score}/{result.total}</strong><small>correct</small></span><span><strong>+{earnedXp}</strong><small>XP earned</small></span><span><strong>+{stars} <Star size={16} /></strong><small>stars earned</small></span></div>
+      <div className="result-score"><span><strong>{result.score}/{result.total}</strong><small>{mode === 'crossword' || mode === 'search' ? 'solved' : mode === 'match' ? 'score' : 'first try'}</small></span><span><strong>+{earnedXp}</strong><small>XP earned</small></span><span><strong>+{stars} <Star size={16} /></strong><small>stars earned</small></span></div>
       {unlockMessage && <div className="unlock-toast"><Sparkles size={18} /><strong>{unlockMessage}</strong></div>}
-      <div className="result-actions"><button className="button button--primary" onClick={onDone}>Back home <ArrowRight size={18} /></button><button className="button button--ghost" onClick={onReplay}><RotateCcw size={18} /> Play again</button></div>
+      <DailyActivity profile={profile} progress={progress} />
+      <div className="result-actions"><button className="button button--primary" onClick={onDone}>Continue <ArrowRight size={18} /></button><button className="button button--ghost" onClick={onReplay}><RotateCcw size={18} /> Play again</button></div>
       <button className="result-exit" onClick={onDone}><ArrowLeft size={16} /> Leave results</button><div className="result-tip"><Lightbulb size={16} /> Short, frequent practice builds stronger recall.</div>
     </div>
   )

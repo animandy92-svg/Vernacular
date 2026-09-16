@@ -16,9 +16,25 @@ export const EMPTY_PROGRESS: Progress = {
   masteredWords: [],
   dailyCompleted: null,
   perfectRounds: 0,
+  activity: {},
 }
 
-export const dateKey = (date = new Date()) => date.toISOString().slice(0, 10)
+export const dateKey = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+
+export function currentStreak(progress: Progress, now = new Date()) {
+  const yesterday = new Date(now)
+  yesterday.setDate(yesterday.getDate() - 1)
+  return progress.lastPlayed === dateKey(now) || progress.lastPlayed === dateKey(yesterday) ? progress.streak : 0
+}
+
+export function weeklyActivity(progress: Progress, now = new Date()) {
+  return Array.from({ length: 7 }, (_, index) => {
+    const date = new Date(now)
+    date.setDate(date.getDate() - 6 + index)
+    const key = dateKey(date)
+    return { key, label: date.toLocaleDateString(undefined, { weekday: 'short' }), count: progress.activity?.[key] ?? 0 }
+  })
+}
 
 export function loadState(): StoredState {
   try {
@@ -33,7 +49,7 @@ export function loadState(): StoredState {
     } as Profile : null
     return {
       profile,
-      progress: { ...EMPTY_PROGRESS, ...(value.progress ?? {}) },
+      progress: { ...EMPTY_PROGRESS, ...(value.progress ?? {}), bestStreak: Math.max(value.progress?.bestStreak ?? 0, value.progress?.streak ?? 0) },
       environment: ENVIRONMENTS.some((item) => item.id === value.environment) ? value.environment as EnvironmentId : 'courtyard',
     }
   } catch {
@@ -42,7 +58,12 @@ export function loadState(): StoredState {
 }
 
 export function saveState(state: StoredState) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
+    return true
+  } catch {
+    return false
+  }
 }
 
 export function completeSession(progress: Progress, result: GameResult, daily = false, now = new Date()): Progress {
@@ -58,16 +79,22 @@ export function completeSession(progress: Progress, result: GameResult, daily = 
   const earnedXp = result.score * 12 + (result.perfect ? 25 : 10)
   const ratio = result.score / Math.max(result.total, 1)
   const earnedStars = result.perfect ? 3 : ratio >= 0.6 ? 2 : 1
+  const cutoff = new Date(now)
+  cutoff.setDate(cutoff.getDate() - 27)
+  const activity = Object.fromEntries(Object.entries(progress.activity ?? {}).filter(([day]) => day >= dateKey(cutoff)))
+  activity[today] = (activity[today] ?? 0) + 1
   return {
     ...progress,
     xp: progress.xp + earnedXp,
     stars: progress.stars + earnedStars,
     streak,
+    bestStreak: Math.max(progress.bestStreak ?? progress.streak, streak),
     lastPlayed: today,
     sessions: progress.sessions + 1,
     masteredWords: [...new Set([...progress.masteredWords, ...result.wordIds])],
     dailyCompleted: daily ? today : progress.dailyCompleted,
     perfectRounds: progress.perfectRounds + (result.perfect ? 1 : 0),
+    activity,
   }
 }
 

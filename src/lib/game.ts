@@ -1,4 +1,4 @@
-import type { WordEntry } from '../types'
+import type { Difficulty, WordEntry } from '../types'
 
 export const normalizeWord = (value: string) => value.trim().normalize('NFC').toLocaleUpperCase()
 
@@ -175,4 +175,23 @@ export function generateCrossword(words: WordEntry[], size = 11): Crossword {
   const placements = placed.map((item) => ({ ...item, number: numbering.get(crosswordKey(item.cells[0].row, item.cells[0].col)) ?? 1 }))
 
   return { size, placements, cells }
+}
+
+/** Reproducible daily challenges, using the learner's local calendar day. */
+export function seededRandom(seed: string) {
+  let value = 2166136261
+  for (const char of seed) value = Math.imul(value ^ char.charCodeAt(0), 16777619)
+  return () => {
+    value += 0x6D2B79F5
+    let mixed = Math.imul(value ^ value >>> 15, value | 1)
+    mixed ^= mixed + Math.imul(mixed ^ mixed >>> 7, mixed | 61)
+    return ((mixed ^ mixed >>> 14) >>> 0) / 4294967296
+  }
+}
+
+export function wordsForLevel(words: WordEntry[], level: Difficulty) {
+  const rank = { beginner: 0, intermediate: 1, advanced: 2 }
+  const eligible = words.filter((word) => rank[word.difficulty] <= rank[level])
+  // A small remote pack should still leave every puzzle playable.
+  return eligible.length >= 5 ? eligible : words
 }

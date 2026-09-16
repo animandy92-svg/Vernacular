@@ -1,0 +1,98 @@
+/* Articulated joints use the shared 240 × 280 drawing space. */
+.companion.toon { position: relative; display: block; flex: 0 0 auto; max-width: 100%; padding: 0; border: 0; background: transparent; line-height: 0; animation: none; -webkit-tap-highlight-color: transparent; }
+button.toon { cursor: grab; touch-action: pan-y; user-select: none; border-radius: 30%; }
+button.toon:focus-visible { outline: 3px solid #f4c34f; outline-offset: 3px; }
+.toon-position { display: block; transform: translateX(var(--toon-offset, 0)); transition: transform .5s cubic-bezier(.22,1.5,.4,1); pointer-events: none; }
+.toon--dragging { cursor: grabbing; }
+.toon--dragging .toon-position { transition: none; }
+.companion .toon-art { display: block; width: 100%; height: auto; overflow: visible; }
+.toon-shadow { fill: #22284326; transform-origin: 120px 262px; animation: toon-shadow 3.6s ease-in-out infinite; }
+.toon-body { transform-origin: 120px 250px; animation: toon-breathe 3.6s ease-in-out infinite; }
+.toon-limb, .toon-finger { fill: none; stroke: var(--toon-skin); stroke-width: 17; stroke-linecap: round; }
+.toon-finger { stroke-width: 7; }
+.toon-sole { fill: none; stroke: #fef3d8; stroke-width: 5; stroke-linecap: round; }
+.toon-sleeve { fill: none; stroke: var(--toon-outfit); stroke-width: 24; stroke-linecap: round; }
+.toon-pattern { fill: none; stroke: var(--toon-trim); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.toon-head { transform-origin: 120px 138px; animation: toon-curious 7s ease-in-out infinite; }
+.toon-arm--left { transform-origin: 88px 152px; animation: toon-arm-rest 3.6s ease-in-out infinite alternate; }
+.toon-arm--right { transform-origin: 152px 152px; animation: toon-arm-rest 3.6s ease-in-out -1.8s infinite alternate; }
+.toon-leg--left { transform-origin: 103px 205px; }
+.toon-leg--right { transform-origin: 137px 205px; }
+.toon-eyes { transform-origin: 120px 91px; animation: toon-blink 5.3s linear infinite; }
+.toon-pupils { animation: toon-look 7s ease-in-out infinite; }
+.toon-happy-eyes { opacity: 0; }
+.toon-mouth { transform-origin: 120px 120px; }
+.toon-brows { transform-origin: 120px 71px; }
+.toon-sparkles { opacity: 0; transform-origin: 120px 120px; }
+.toon--wave .toon-arm--left { animation: toon-wave .55s ease-in-out infinite alternate; }
+.toon--wave .toon-head { transform: rotate(-5deg); animation: none; }
+.toon--walk .toon-body { animation: toon-stride .58s ease-in-out infinite; }
+.toon--walk .toon-leg--left { animation: toon-step .58s ease-in-out infinite alternate; }
+.toon--walk .toon-leg--right { animation: toon-step .58s ease-in-out -.58s infinite alternate; }
+.toon--walk .toon-arm--left { animation: toon-swing .58s ease-in-out -.58s infinite alternate; }
+.toon--walk .toon-arm--right { animation: toon-swing .58s ease-in-out infinite alternate; }
+.toon--carry .toon-arm--right { transform: rotate(-24deg); animation: none; }
+.toon--carry .toon-head { animation: toon-curious 6s ease-in-out infinite; }
+.toon--point .toon-arm--right { transform: rotate(-80deg); animation: toon-point 1.7s ease-in-out infinite; }
+.toon--point .toon-pupils { transform: translateX(3px); animation: none; }
+.toon--talk .toon-mouth { animation: toon-speak .32s ease-in-out infinite alternate; }
+.toon--talk .toon-head { animation: toon-nod .9s ease-in-out infinite alternate; }
+.toon--talk .toon-arm--left { animation: toon-explain 1.3s ease-in-out infinite alternate; }
+.toon--celebrate .toon-body { animation: toon-jump .95s ease-in-out infinite; }
+.toon--celebrate .toon-shadow { animation: toon-jump-shadow .95s ease-in-out infinite; }
+.toon--celebrate .toon-arm--left { transform: rotate(110deg); animation: none; }
+.toon--celebrate .toon-arm--right { transform: rotate(-110deg); animation: none; }
+.toon--celebrate .toon-eyes, .toon--dance .toon-eyes { opacity: 0; }
+.toon--celebrate .toon-happy-eyes, .toon--dance .toon-happy-eyes { opacity: 1; }
+.toon--celebrate .toon-sparkles, .toon--dance .toon-sparkles { opacity: 1; animation: toon-sparkle .95s ease-in-out infinite; }
+.toon--encourage .toon-head { animation: toon-nod 1.2s ease-in-out infinite alternate; }
+.toon--encourage .toon-arm--left { transform: rotate(65deg); animation: none; }
+.toon--encourage .toon-mouth { transform: scale(.85, .5); }
+.toon--encourage .toon-brows { transform: translateY(-3px) rotate(-3deg); }
+.toon--dance .toon-body { animation: toon-dance .65s ease-in-out infinite alternate; }
+.toon--dance .toon-arm--left { animation: toon-wave .4s ease-in-out infinite alternate; }
+.toon--dance .toon-arm--right { animation: toon-dance-arm .4s ease-in-out infinite alternate; }
+.toon--dance .toon-leg--right { animation: toon-step .65s ease-in-out infinite alternate; }
+.toon--dance .toon-head { animation: toon-nod .65s ease-in-out infinite alternate; }
+
+@keyframes toon-breathe { 50% { transform: translateY(-2px) scale(1.015, .99); } }
+@keyframes toon-shadow { 50% { transform: scaleX(.92); opacity: .75; } }
+@keyframes toon-curious { 0%, 35%, 75%, 100% { transform: rotate(0); } 45%, 65% { transform: rotate(-5deg); } }
+@keyframes toon-arm-rest { to { transform: rotate(5deg); } }
+@keyframes toon-blink { 0%, 42%, 46%, 49%, 53%, 100% { transform: scaleY(1); } 44%, 51% { transform: scaleY(.07); } }
+@keyframes toon-look { 0%, 35%, 75%, 100% { transform: translateX(0); } 45%, 65% { transform: translateX(-3px); } }
+@keyframes toon-wave { from { transform: rotate(88deg); } to { transform: rotate(118deg); } }
+@keyframes toon-stride { 25% { transform: translateY(-5px) rotate(-2deg); } 75% { transform: translateY(-5px) rotate(2deg); } }
+@keyframes toon-step { from { transform: rotate(-19deg); } to { transform: rotate(19deg); } }
+@keyframes toon-swing { from { transform: rotate(-22deg); } to { transform: rotate(22deg); } }
+@keyframes toon-point { 50% { transform: rotate(-88deg); } }
+@keyframes toon-speak { from { transform: scale(.85, .3); } to { transform: scale(1.05, 1.08); } }
+@keyframes toon-nod { from { transform: rotate(-4deg) translateY(0); } to { transform: rotate(4deg) translateY(2px); } }
+@keyframes toon-explain { from { transform: rotate(30deg); } to { transform: rotate(65deg); } }
+@keyframes toon-jump { 0%, 100% { transform: scale(1.06, .94); } 40%, 55% { transform: translateY(-18px) scale(.96, 1.04) rotate(-3deg); } 80% { transform: scale(1.08, .92); } }
+@keyframes toon-jump-shadow { 40%, 55% { transform: scaleX(.65); opacity: .5; } }
+@keyframes toon-sparkle { 50% { transform: translateY(-9px) scale(1.08); opacity: .45; } }
+@keyframes toon-dance { from { transform: translateX(-7px) rotate(-8deg); } to { transform: translateX(7px) translateY(-6px) rotate(8deg); } }
+@keyframes toon-dance-arm { from { transform: rotate(-85deg); } to { transform: rotate(-120deg); } }
+
+/* Pause hidden characters, and retain expressive static poses with reduced motion. */
+.toon--paused *, .toon--paused *::before, .toon--paused *::after { animation-play-state: paused !important; }
+.avatar-choice-grid .companion { width: 58px !important; margin: 0; }
+.avatar-choice-grid button .toon-position { display: block; }
+.avatar-choice-grid button .toon-art { position: static; width: 100%; height: auto; }
+.companion-preview > .companion-play-hint { margin-top: 0; margin-bottom: 10px; line-height: 1.4; }
+.hero-play-hint { color: #fff1b5; font-size: .65rem; line-height: 1.4; text-align: center; margin: 2px 0 6px; }
+.hero-level-pill { margin-top: 0; }
+@media (max-width: 680px) {
+  .hero-companion > .companion.toon { width: 114px !important; }
+  .hero-companion { top: 42px; right: 2px; z-index: 3; }
+  .hero-play-hint { max-width: 95px; font-size: .58rem; }
+  .companion-preview .companion.toon { width: 120px !important; }
+  .avatar-choice-grid .companion.toon { width: 48px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toon *, .toon *::before, .toon *::after { animation: none !important; transition: none !important; }
+  .toon--wave .toon-arm--left, .toon--dance .toon-arm--left { transform: rotate(105deg); }
+  .toon--talk .toon-arm--left { transform: rotate(45deg); }
+  .toon--dance .toon-arm--right { transform: rotate(-110deg); }
+}

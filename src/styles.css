@@ -652,67 +652,7 @@ body {
 .level-grid--compact .level-choice { min-height: 88px; padding: 12px; }
 .level-grid--compact .level-choice small { font-size: .68rem; }
 
-/* Code-native animated companion */
-.companion { flex: 0 0 auto; max-width: 100%; line-height: 0; transform-origin: center bottom; }
-.companion { position: relative; }
-.companion > img { width: 100%; height: auto; display: block; user-select: none; filter: drop-shadow(0 13px 14px rgba(34,38,78,.2)); }
-.companion-prop { position: absolute; right: -8%; top: 48%; z-index: 2; font-size: clamp(1.4rem, 18%, 3.2rem); line-height: 1; filter: drop-shadow(0 5px 6px rgba(30,33,67,.25)); animation: prop-float 1.8s ease-in-out infinite; }
-.companion-prop--star { right: -2%; top: 25%; }
-.companion-prop--map { right: -3%; top: 50%; }
-.companion-celebration { position: absolute; inset: 5% -5% auto; display: flex; justify-content: space-between; color: var(--gold); opacity: 0; font-size: 1.3rem; line-height: 1; pointer-events: none; }
-.companion-celebration i:nth-child(2) { color: var(--coral); transform: translateY(-12px); }
-.companion-celebration i:nth-child(3) { color: var(--sky); transform: translateY(20px); }
-.companion--talk > img { animation: image-talk .65s ease-in-out infinite alternate; }
-.companion--wave > img { animation: image-wave 1.15s ease-in-out infinite alternate; }
-.companion--point > img { animation: image-point 1.4s ease-in-out infinite alternate; }
-.companion--celebrate .companion-celebration { opacity: 1; animation: confetti-pop .8s ease-in-out infinite alternate; }
-.companion svg { width: 100%; height: auto; overflow: visible; }
-.companion-shadow { fill: rgba(31,36,70,.16); }
-.companion-legs path:not(.companion-shoe), .companion-arm { fill: none; stroke: var(--companion-skin); stroke-width: 18; stroke-linecap: round; }
-.companion-shoe { fill: #29325b; }
-.companion-hand, .companion-face, .companion-ear { fill: var(--companion-skin); }
-.companion-shirt { fill: var(--companion-outfit); stroke: rgba(255,255,255,.22); stroke-width: 3; }
-.companion-pattern { fill: none; stroke: #ffc94f; stroke-width: 5; stroke-dasharray: 9 7; opacity: .92; }
-.companion-strap { fill: none; stroke: #5b382f; stroke-width: 6; }
-.companion-bag { fill: #9b6237; stroke: #53372f; stroke-width: 3; }
-.companion-hair { fill: #281d2b; }
-.companion-eye { fill: #211b2c; }
-.companion-brow { fill: none; stroke: #211b2c; stroke-width: 3; stroke-linecap: round; }
-.companion-mouth { fill: none; stroke: #792f43; stroke-width: 4; stroke-linecap: round; }
-.companion-headwear { fill: #ffc44f; stroke: #e05c47; stroke-width: 4; }
-.companion-cap { fill: #37a6c8; stroke: #24345f; stroke-width: 3; }
-.companion-item text { font-size: 42px; filter: drop-shadow(0 5px 4px rgba(0,0,0,.18)); }
-.companion-sparkles { opacity: 0; fill: none; stroke: #ffc44f; stroke-width: 5; stroke-linecap: round; }
-.companion--idle { animation: companion-bob 3s ease-in-out infinite; }
-.companion--walk { animation: companion-walk 1.1s ease-in-out infinite; }
-.companion--walk .companion-legs path:first-child { animation: leg-left .55s ease-in-out infinite alternate; transform-origin: 79px 191px; }
-.companion--walk .companion-legs path:nth-child(2) { animation: leg-right .55s ease-in-out infinite alternate; transform-origin: 132px 191px; }
-.companion--talk .companion-head { animation: head-talk .55s ease-in-out infinite alternate; transform-origin: 105px 110px; }
-.companion--talk .companion-mouth { animation: mouth-talk .45s ease-in-out infinite alternate; transform-origin: 105px 99px; }
-.companion--wave .companion-arm--right { transform: rotate(-118deg); transform-origin: 143px 133px; animation: arm-wave .65s ease-in-out infinite alternate; }
-.companion--wave .companion-hand--right { transform: translate(-22px,-55px); }
-.companion--point .companion-arm--right { transform: rotate(-72deg); transform-origin: 143px 133px; }
-.companion--point .companion-hand--right { transform: translate(31px,-26px); }
-.companion--carry .companion-arm--right { transform: rotate(-38deg); transform-origin: 143px 133px; }
-.companion--celebrate { animation: companion-jump .8s ease-in-out infinite; }
-.companion--celebrate .companion-arm--left { transform: rotate(105deg); transform-origin: 67px 132px; }
-.companion--celebrate .companion-arm--right { transform: rotate(-105deg); transform-origin: 143px 133px; }
-.companion--celebrate .companion-sparkles { opacity: 1; animation: sparkle-pop .8s ease-in-out infinite alternate; }
-
-@keyframes companion-bob { 50% { transform: translateY(-5px); } }
-@keyframes companion-walk { 25% { transform: translate(-6px,-4px) rotate(-1deg); } 75% { transform: translate(6px,-4px) rotate(1deg); } }
-@keyframes leg-left { to { transform: rotate(10deg); } }
-@keyframes leg-right { to { transform: rotate(-10deg); } }
-@keyframes head-talk { to { transform: rotate(3deg); } }
-@keyframes mouth-talk { to { transform: scaleY(.35); } }
-@keyframes arm-wave { to { transform: rotate(-95deg); } }
-@keyframes companion-jump { 50% { transform: translateY(-12px) rotate(2deg); } }
-@keyframes sparkle-pop { to { transform: scale(1.2); } }
-@keyframes image-talk { to { transform: translateY(-3px) rotate(1deg) scale(1.015); } }
-@keyframes image-wave { to { transform: rotate(1.5deg) translateY(-4px); } }
-@keyframes image-point { to { transform: translateX(3px) rotate(1deg); } }
-@keyframes prop-float { 50% { transform: translateY(-7px) rotate(5deg); } }
-@keyframes confetti-pop { to { transform: translateY(-10px) scale(1.12); } }
+/* Character art and motion are defined in companion.css. */
 
 .hero-card {
   min-height: 330px;
@@ -827,7 +767,7 @@ body {
 .avatar-choice-grid button span { display: grid; gap: 4px; }
 .avatar-choice-grid button small { color: var(--muted); font-size: .68rem; }
 .avatar-choice-grid button svg { position: absolute; right: 8px; top: 8px; color: var(--sky); }
-.companion--avatar-esi.companion--point > img { animation-duration: 1s; }
+
 
 @media (max-width: 680px) {
   .companion-builder { grid-template-columns: 130px 1fr; }

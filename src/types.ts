@@ -66,6 +66,8 @@ export interface Progress {
   masteredWords: string[]
   dailyCompleted: string | null
   perfectRounds: number
+  activity?: Record<string, number>
+  bestStreak?: number
 }
 
 export interface StoredState {

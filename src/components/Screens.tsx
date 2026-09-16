@@ -1,9 +1,11 @@
-import { ArrowRight, Award, BookOpen, Check, Flame, Globe2, Grid3X3, Headphones, Image, LockKeyhole, MessageSquareText, Quote, Search, Settings2, ShieldCheck, Shuffle, Sparkles, Star, Trophy, Volume2, Zap } from 'lucide-react'
+import { ArrowRight, Award, BookOpen, Check, Flame, Globe2, Grid3X3, Headphones, Image, LockKeyhole, MessageSquareText, Quote, Search, Settings2, ShieldCheck, Shuffle, Sparkles, Star, Trophy, Zap } from 'lucide-react'
 import { LANGUAGES, getLanguage } from '../data/content'
 import type { LeaderboardEntry } from '../lib/firebase'
 import { ACTIVITY_UNLOCKS, ENVIRONMENTS, isModeUnlocked, levelFromXp } from '../lib/progress'
 import type { GameMode, LanguageCode, Profile, Progress, WordEntry } from '../types'
-import { MODES, speakWord } from './Dashboard'
+import { DailyActivity } from './DailyActivity'
+import { Vocabulary } from './Vocabulary'
+import { MODES } from './Dashboard'
 import { Companion } from './Companion'
 import { PageIntro } from './Shell'
 
@@ -30,7 +32,7 @@ export function PlayScreen({ profile, progress, words, onGame }: { profile: Prof
       <section className="section-block path-section">
         <div className="section-heading"><div><span className="eyebrow">YOUR PACK</span><h2>Everyday essentials</h2></div><span>{words.length} words</span></div>
         <div className="category-chips">{categories.map((category) => <span key={category}>{category}</span>)}</div>
-        <div className="path-progress"><span style={{ width: `${words.length ? 100 : 0}%` }} /></div>
+        <div className="path-progress"><span style={{ width: `${words.length ? words.filter((entry) => progress.masteredWords.includes(entry.id)).length / words.length * 100 : 0}%` }} /></div>
         <p>{words.length} offline-ready words across {categories.length} themes. Complete puzzles to make them yours.</p>
       </section>
     </div>
@@ -39,17 +41,17 @@ export function PlayScreen({ profile, progress, words, onGame }: { profile: Prof
 
 export function ProgressScreen({ profile, progress, words, onEdit }: { profile: Profile; progress: Progress; words: WordEntry[]; onEdit: () => void }) {
   const level = levelFromXp(progress.xp)
-  const learned = words.filter((entry) => progress.masteredWords.includes(entry.id))
   const badges = [
     { label: 'First step', detail: 'Complete a puzzle', icon: Sparkles, unlocked: progress.sessions >= 1 },
     { label: 'Perfect round', detail: 'No mistakes', icon: Award, unlocked: progress.perfectRounds >= 1 },
     { label: 'Word collector', detail: 'Learn 10 words', icon: BookOpen, unlocked: progress.masteredWords.length >= 10 },
-    { label: 'Seven suns', detail: 'Reach a 7-day streak', icon: Flame, unlocked: progress.streak >= 7 },
+    { label: 'Seven suns', detail: 'Reach a 7-day streak', icon: Flame, unlocked: (progress.bestStreak ?? progress.streak) >= 7 },
   ]
 
   return (
     <div className="page-enter">
       <PageIntro eyebrow="YOUR JOURNEY" title={`${profile.name}’s progress`} description="Every puzzle leaves a mark. Here is how your learning is growing." />
+      <DailyActivity profile={profile} progress={progress} />
       <section className="progress-hero">
         <div className="progress-level"><small>LEVEL</small><strong>{level.level}</strong></div>
         <div><span className="eyebrow">{getLanguage(profile.language).name.toUpperCase()} EXPLORER</span><h2>{level.currentXp} XP toward level {level.level + 1}</h2><div className="path-progress"><span style={{ width: `${(level.currentXp / level.targetXp) * 100}%` }} /></div><p>{level.targetXp - level.currentXp} XP to your next level</p></div>
@@ -62,7 +64,7 @@ export function ProgressScreen({ profile, progress, words, onEdit }: { profile: 
       </div>
 
       <section className="companion-profile-card">
-        <Companion character={profile.companion} pose="carry" item="book" size={145} />
+        <Companion character={profile.companion} pose="carry" item="book" size={145} interactive />
         <div><span className="eyebrow">YOUR LEARNING COMPANION</span><h2>{profile.companion.name}</h2><p>“We’ve learned {progress.masteredWords.length} words and unlocked {ENVIRONMENTS.filter((environment) => progress.xp >= environment.xp).length} places together, {profile.localName || profile.name}.”</p></div>
       </section>
 
@@ -76,12 +78,7 @@ export function ProgressScreen({ profile, progress, words, onEdit }: { profile: 
         </div>
       </section>
 
-      <section className="section-block">
-        <div className="section-heading"><div><span className="eyebrow">VOCABULARY</span><h2>Words you’ve met</h2></div><span>{learned.length}/{words.length}</span></div>
-        {learned.length ? (
-          <div className="learned-list">{learned.slice(-8).reverse().map((entry) => <div key={entry.id}><span><strong>{entry.word}</strong><small>{entry.translation}</small></span><button onClick={() => speakWord(entry)} aria-label={`Hear ${entry.word}`}><Volume2 size={19} /></button></div>)}</div>
-        ) : <div className="empty-state"><BookOpen size={28} /><strong>Your first word is waiting.</strong><p>Finish any puzzle and it will appear here.</p></div>}
-      </section>
+      <Vocabulary words={words} learnedIds={progress.masteredWords} />
 
       <button className="text-action" onClick={onEdit}><Settings2 size={18} /> Edit learning setup</button>
     </div>
@@ -121,7 +118,7 @@ export function LeaderboardScreen({ profile, progress, entries }: { profile: Pro
     <div className="page-enter">
       <PageIntro eyebrow="COMMUNITY" title="Learn together. Rise together." description="A friendly snapshot of this week’s most active learners." />
       <section className="leaderboard-card">
-        <div className="leaderboard-title"><span><Trophy size={23} /></span><div><strong>Weekly explorers</strong><small>Demo community standings</small></div></div>
+        <div className="leaderboard-title"><span><Trophy size={23} /></span><div><strong>Weekly explorers</strong><small>{entries.length ? 'Community standings' : 'Sample standings · live board unavailable'}</small></div></div>
         <div className="leader-list">
           {board.map((entry) => <div className={entry.rank! <= 3 ? 'leader-row top' : 'leader-row'} key={entry.id}><span className="rank">{entry.rank! <= 3 ? ['①', '②', '③'][entry.rank! - 1] : entry.rank}</span><span className="leader-avatar">{entry.name.slice(0, 1)}</span><span className="leader-name"><strong>{entry.name}</strong><small>{entry.language}</small></span><strong>{entry.xp.toLocaleString()} XP</strong></div>)}
         </div>

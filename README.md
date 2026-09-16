@@ -6,19 +6,44 @@ Live app: <https://vernacular-bace0.web.app>
 
 ## Mobile app
 
-The Android package is `com.vernacular.app`. The installable, debug-signed APK is committed at:
+The Android package is `com.vernacular.app`. The latest installable, debug-signed APK is available at:
 
 ```text
-artifacts/Vernacular-1.1.0-debug.apk
+artifacts/Vernacular-1.3.0-debug.apk
 ```
 
 This APK is suitable for direct device testing on Android 7.0 (API 24) or newer. A Play Store release should use a private production signing key and a release build.
+
+## Version 1.3.0
+
+- Four original articulated cartoon companions with independent facial expressions, hands and feet
+- Blinking, glancing, breathing, walking, waving, talking, dancing and jumping celebrations
+- Tap your companion on Home, in customization, on your profile or at results to wave, dance and celebrate; drag sideways to move, then release to spring home
+- Keyboard interaction: Enter or Space to play, arrow keys to walk
+- Encouraging reactions after mistakes, happy expressions for correct answers, and speaking animation that follows lesson-tip audio
+- Reduced-motion support, animation pausing outside the viewport and in background tabs, and fully bundled offline artwork
+
+Existing companion names, chosen looks and learning progress are preserved.
+
+## Version 1.2.0
+
+- Compact phone home screen, two-column quick play, improved touch targets, and safe-area spacing
+- Daily puzzle goals, a seven-day activity view, local-calendar streaks, and preserved streak badges
+- Searchable vocabulary with all/learned filters, pronunciation guides, and expandable examples
+- Difficulty-aware word selection and repeatable daily challenges
+- Tap-to-remove letters and phrase tokens, first-try scoring, and protected puzzle exits
+- Android Back navigates setup and app screens, asks before leaving a puzzle, and backgrounds the app from Home
+- Cancelable profile edits, stable lesson content during cloud updates, and duplicate reward protection
+- Lazy-loaded game screens and a versioned offline web cache including game code and artwork
+- Device-voice availability feedback and visible storage-save failures
+
+Existing saved progress is preserved. Daily activity history begins with puzzles completed in this version; past daily counts cannot be reconstructed from lifetime totals. Web offline use requires one successful initial cache installation. Android includes the app assets in the APK.
 
 ## What is included
 
 - Guided onboarding for preferred and local names, language, companion customization, level, and daily goal
 - An interactive learning companion with animated lesson prompts, reactions, carried objects and celebrations
-- Four original dimensional companion looks, with transparent pose art and local-only name customization
+- Four original cartoon companion looks with articulated vector artwork and local-only name customization
 - Twi, Fante and Kasem packs with 81 structured vocabulary entries
 - Word Search, Crossword, Unscramble, Picture Quiz, Listening Challenge, Word Match, Proverb Challenge and Phrase Builder
 - Daily challenge, XP, stars, levels, streaks, badges, learned-word tracking and activity unlocks

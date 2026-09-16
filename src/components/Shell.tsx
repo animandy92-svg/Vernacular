@@ -43,7 +43,7 @@ export function AppNav({ active, onNavigate }: NavProps) {
       {ITEMS.map((item) => {
         const Icon = item.icon
         return (
-          <button className={active === item.id ? 'active' : ''} key={item.id} onClick={() => onNavigate(item.id)}>
+          <button className={active === item.id ? 'active' : ''} aria-current={active === item.id ? 'page' : undefined} key={item.id} onClick={() => onNavigate(item.id)}>
             <Icon size={21} strokeWidth={active === item.id ? 2.5 : 2} />
             <span>{item.label}</span>
           </button>
