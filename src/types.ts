@@ -31,6 +31,8 @@ export interface WordEntry {
   example: string
   reviewStatus: 'needs-review' | 'reviewed'
   visibility: 'public'
+  source?: string
+  sourceRow?: number
 }
 
 export interface CulturalProverb {

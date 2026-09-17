@@ -1,4 +1,5 @@
 import type { CulturalProverb, Language, LanguageCode, PhraseEntry, WordEntry } from '../types'
+import twiWorkbook from './twi-everyday.json' with { type: 'json' }
 
 export const LANGUAGES: Language[] = [
   {
@@ -52,7 +53,7 @@ const word = (
   visibility: 'public',
 })
 
-export const FALLBACK_WORDS: WordEntry[] = [
+const CORE_WORDS: WordEntry[] = [
   word('twi', 'akwaaba', 'akwaaba', 'welcome', 'Greetings', 'ah-KWAH-bah', 'Akwaaba — you are welcome here.'),
   word('twi', 'maakye', 'maakye', 'good morning', 'Greetings', 'mah-CHAY', 'Say maakye when the day begins.'),
   word('twi', 'maaha', 'maaha', 'good afternoon', 'Greetings', 'mah-HAH', 'Use maaha in the afternoon.'),
@@ -140,6 +141,23 @@ export const FALLBACK_WORDS: WordEntry[] = [
   word('kasem', 'yaga', 'yaga', 'market', 'Places', 'yah-gah', 'People meet at the yaga.'),
   word('kasem', 'cwenge', 'cwəŋə', 'road or way', 'Places', 'chwung-uh', 'A cwəŋə leads to another place.'),
 ]
+
+const vocabularyKey = (spelling: string, translation: string) =>
+  `${spelling.trim().normalize('NFC').toLocaleLowerCase()}\u0000${translation.trim().normalize('NFC').toLocaleLowerCase()}`
+const existingTwi = new Set(CORE_WORDS.filter((entry) => entry.language === 'twi').map((entry) => vocabularyKey(entry.word, entry.translation)))
+
+// Keep all source rows in the JSON, retaining old IDs for the 14 overlapping pairs.
+const importedTwi: WordEntry[] = (twiWorkbook.rows as [number, string, string, string][])
+  .filter(([, english, twi]) => !existingTwi.has(vocabularyKey(twi, english)))
+  .map(([number, english, twi, category]) => ({
+    id: `twi-everyday-${String(number).padStart(4, '0')}`,
+    language: 'twi', word: twi, translation: english, category,
+    difficulty: 'beginner', phonetic: '', example: '',
+    reviewStatus: 'needs-review', visibility: 'public',
+    source: 'twi-everyday-workbook', sourceRow: number + 1,
+  }))
+
+export const FALLBACK_WORDS: WordEntry[] = [...CORE_WORDS, ...importedTwi]
 
 export const PROVERBS: CulturalProverb[] = [
   {

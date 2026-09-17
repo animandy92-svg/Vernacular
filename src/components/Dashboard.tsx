@@ -95,11 +95,11 @@ export function Dashboard({ profile, progress, today, environment, words, onNavi
         <section className="word-card">
           <div className="word-card-label"><Headphones size={18} /><span>WORD OF THE DAY</span></div>
           <div className="word-main">
-            <div><h2>{wordOfDay.word}</h2><p>{wordOfDay.phonetic}</p></div>
+            <div><h2>{wordOfDay.word}</h2>{wordOfDay.phonetic && <p>{wordOfDay.phonetic}</p>}</div>
             <Pronunciation entry={wordOfDay} compact />
           </div>
           <strong>{wordOfDay.translation}</strong>
-          <blockquote>“{wordOfDay.example}”</blockquote>
+          {wordOfDay.example && <blockquote>“{wordOfDay.example}”</blockquote>}
         </section>
       )}
 

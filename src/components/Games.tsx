@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, BookOpen, Check, Delete, Lightbulb, RotateCcw, Sparkles, Star, Trophy, Volume2, X } from 'lucide-react'
 import { getPhrases, getProverbs, PROVERBS } from '../data/content'
-import { areAdjacent, generateCrossword, generateWordGrid, normalizeWord, samePath, scramble, seededRandom, shuffle, type GridPosition } from '../lib/game'
+import { areAdjacent, distinctQuizWords, generateCrossword, generateWordGrid, letterPuzzleWords, normalizeWord, samePath, scramble, seededRandom, shuffle, type GridPosition } from '../lib/game'
 import { dateKey, earnedStars } from '../lib/progress'
 import type { EnvironmentId, GameMode, GameResult, Profile, Progress, WordEntry } from '../types'
 import { Companion } from './Companion'
@@ -122,7 +122,7 @@ function FeedbackCard({ feedback, success, retry }: { feedback: Feedback; succes
 function UnscrambleGame({ words, daily, onFinish, onExit }: Omit<GameProps, 'mode'> & { daily: boolean }) {
   const total = daily ? 3 : 5
   const [day] = useState(dateKey)
-  const rounds = useMemo(() => shuffle(words.filter((entry) => Array.from(normalizeWord(entry.word)).length <= 10).sort((a, b) => a.id.localeCompare(b.id)), daily ? seededRandom(`${day}-${words[0]?.language}`) : Math.random).slice(0, total), [words, total, daily, day])
+  const rounds = useMemo(() => shuffle(letterPuzzleWords(words, 10).sort((a, b) => a.id.localeCompare(b.id)), daily ? seededRandom(`${day}-${words[0]?.language}`) : Math.random).slice(0, total), [words, total, daily, day])
   const [round, setRound] = useState(0)
   const [selected, setSelected] = useState<number[]>([])
   const [score, setScore] = useState(0)
@@ -187,7 +187,7 @@ function UnscrambleGame({ words, daily, onFinish, onExit }: Omit<GameProps, 'mod
 }
 
 function MatchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
-  const pairs = useMemo(() => shuffle(words).slice(0, 5), [words])
+  const pairs = useMemo(() => distinctQuizWords(shuffle(words)).slice(0, 5), [words])
   const translations = useMemo(() => shuffle(pairs), [pairs])
   const [left, setLeft] = useState<string | null>(null)
   const [right, setRight] = useState<string | null>(null)
@@ -252,7 +252,7 @@ function MatchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
 const cellKey = (cell: GridPosition) => `${cell.row}-${cell.col}`
 
 function SearchGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
-  const candidates = useMemo(() => shuffle(words.filter((entry) => Array.from(entry.word).length <= 8)).slice(0, 4), [words])
+  const candidates = useMemo(() => shuffle(letterPuzzleWords(words, 8)).slice(0, 4), [words])
   const puzzle = useMemo(() => generateWordGrid(candidates), [candidates])
   const [path, setPath] = useState<GridPosition[]>([])
   const [found, setFound] = useState<string[]>([])
@@ -319,7 +319,7 @@ const PICTURES: Record<string, { emoji: string; scene: string }> = {
 
 function ChoiceRound({ words, kind, onFinish, onExit }: Omit<GameProps, 'mode'> & { kind: 'picture' | 'listening' }) {
   const eligible = useMemo(() => kind === 'picture' ? words.filter((entry) => PICTURES[entry.translation]) : words, [kind, words])
-  const rounds = useMemo(() => shuffle(eligible).slice(0, 5), [eligible])
+  const rounds = useMemo(() => distinctQuizWords(shuffle(eligible)).slice(0, 5), [eligible])
   const [round, setRound] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<Feedback>(null)
@@ -327,7 +327,7 @@ function ChoiceRound({ words, kind, onFinish, onExit }: Omit<GameProps, 'mode'> 
   const [hadMistake, setHadMistake] = useState(false)
   const [mastered, setMastered] = useState<string[]>([])
   const entry = rounds[round]
-  const options = useMemo(() => entry ? shuffle([entry, ...shuffle(words.filter((item) => item.id !== entry.id)).slice(0, 3)]) : [], [entry, words])
+  const options = useMemo(() => entry ? shuffle(distinctQuizWords([entry, ...shuffle(words)]).slice(0, 4)) : [], [entry, words])
 
   if (!entry || options.length < 2) return <EmptyGame onExit={onExit} />
   const choose = (option: WordEntry) => {
@@ -449,7 +449,7 @@ function PhraseGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
 }
 
 function CrosswordGame({ words, onFinish, onExit }: Omit<GameProps, 'mode'>) {
-  const puzzle = useMemo(() => generateCrossword(shuffle(words)), [words])
+  const puzzle = useMemo(() => generateCrossword(shuffle(letterPuzzleWords(words, 9))), [words])
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [selected, setSelected] = useState<string | null>(() => puzzle.cells.keys().next().value ?? null)
   const [wrongCells, setWrongCells] = useState<Set<string>>(new Set())

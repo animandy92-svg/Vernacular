@@ -2,6 +2,27 @@ import type { Difficulty, WordEntry } from '../types'
 
 export const normalizeWord = (value: string) => value.trim().normalize('NFC').toLocaleUpperCase()
 
+// A round must not show indistinguishable spellings or meanings as different answers.
+export function distinctQuizWords(words: WordEntry[]) {
+  const spellings = new Set<string>()
+  const meanings = new Set<string>()
+  return words.filter((entry) => {
+    const spelling = normalizeWord(entry.word)
+    const meaning = normalizeWord(entry.translation)
+    if (spellings.has(spelling) || meanings.has(meaning)) return false
+    spellings.add(spelling)
+    meanings.add(meaning)
+    return true
+  })
+}
+
+export function letterPuzzleWords(words: WordEntry[], maxLength: number) {
+  return distinctQuizWords(words.filter((entry) => {
+    const spelling = normalizeWord(entry.word)
+    return /^\p{L}+$/u.test(spelling) && Array.from(spelling).length >= 2 && Array.from(spelling).length <= maxLength
+  }))
+}
+
 export function shuffle<T>(items: T[], random: () => number = Math.random): T[] {
   const result = [...items]
   for (let index = result.length - 1; index > 0; index -= 1) {

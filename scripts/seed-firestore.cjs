@@ -1,35 +1,6 @@
-const fs = require('node:fs')
 const path = require('node:path')
 
 const projectId = 'vernacular-bace0'
-const source = fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'content.ts'), 'utf8')
-const wordPattern = /word\('([^']+)', '([^']+)', '([^']+)', '([^']+)', '([^']+)', '([^']+)', '([^']+)'(?:, '([^']+)')?\)/g
-const words = []
-let match
-
-while ((match = wordPattern.exec(source))) {
-  const [, language, shortId, word, translation, category, phonetic, example, difficulty = 'beginner'] = match
-  words.push({
-    id: `${language}-${shortId}`,
-    language,
-    word,
-    translation,
-    category,
-    phonetic,
-    example,
-    difficulty,
-    reviewStatus: 'needs-review',
-    visibility: 'public',
-  })
-}
-
-if (words.length < 80) throw new Error(`Expected at least 80 word records, found ${words.length}`)
-
-const languages = [
-  { id: 'twi', name: 'Twi', nativeName: 'Asante Twi', region: 'Ashanti & central Ghana', status: 'draft', visibility: 'public', wordCount: words.filter((item) => item.language === 'twi').length },
-  { id: 'fante', name: 'Fante', nativeName: 'Mfantse', region: 'Central & coastal Ghana', status: 'draft', visibility: 'public', wordCount: words.filter((item) => item.language === 'fante').length },
-  { id: 'kasem', name: 'Kasem', nativeName: 'Kasɩm', region: 'Upper East Ghana & southern Burkina Faso', status: 'draft', visibility: 'public', wordCount: words.filter((item) => item.language === 'kasem').length },
-]
 
 const leaders = [
   { id: 'ama', name: 'Ama K.', xp: 2480, language: 'Twi' },
@@ -53,6 +24,26 @@ function fields(object) {
 }
 
 async function main() {
+  // Read the same data as the app, including spreadsheet imports and stable IDs.
+  const { FALLBACK_WORDS, LANGUAGES } = await import('../src/data/content.ts')
+  const language = process.argv.find((argument) => argument.startsWith('--language='))?.split('=')[1]
+  if (language && !LANGUAGES.some((item) => item.code === language)) throw new Error('Unknown language')
+  const allWords = FALLBACK_WORDS.filter((item) => !language || item.language === language)
+  const words = process.argv.includes('--import-only') ? allWords.filter((item) => item.source === 'twi-everyday-workbook') : allWords
+  const languages = LANGUAGES.filter((item) => !language || item.code === language).map((item) => ({
+    id: item.code, name: item.name, nativeName: item.nativeName, region: item.region,
+    status: 'draft', visibility: 'public', wordCount: allWords.filter((word) => word.language === item.code).length,
+  }))
+  const selectedLeaders = process.argv.includes('--content-only') || language ? [] : leaders
+  const records = [
+    ...languages.map((item) => ({ collection: 'languages', ...item })),
+    ...words.map((item) => ({ collection: 'words', ...item })),
+    ...selectedLeaders.map((item) => ({ collection: 'leaderboard', ...item })),
+  ]
+  if (process.argv.includes('--dry-run')) {
+    console.log(JSON.stringify({ words: words.length, languages, leaderboard: selectedLeaders.length }))
+    return
+  }
   const globalRoot = process.env.APPDATA
     ? path.join(process.env.APPDATA, 'npm', 'node_modules')
     : '/usr/local/lib/node_modules'
@@ -64,19 +55,19 @@ async function main() {
   const { Client } = require(path.join(firebaseRoot, 'apiv2.js'))
   const client = new Client({ urlPrefix: 'https://firestore.googleapis.com', apiVersion: 'v1' })
   const baseName = `projects/${projectId}/databases/(default)/documents`
-  const records = [
-    ...languages.map((item) => ({ collection: 'languages', ...item })),
-    ...words.map((item) => ({ collection: 'words', ...item })),
-    ...leaders.map((item) => ({ collection: 'leaderboard', ...item })),
-  ]
   const writes = records.map(({ collection, id, ...data }) => ({
     update: { name: `${baseName}/${collection}/${id}`, fields: fields(data) },
   }))
-  await client.post(`/projects/${projectId}/databases/(default)/documents:batchWrite`, { writes }, {
-    headers: { 'x-goog-user-project': projectId },
-    skipLog: { resBody: true },
-  })
-  console.log(`Seeded ${words.length} words, ${languages.length} languages and ${leaders.length} leaderboard entries.`)
+  for (let offset = 0; offset < writes.length; offset += 250) {
+    const batch = writes.slice(offset, offset + 250)
+    const result = await client.post(`/projects/${projectId}/databases/(default)/documents:batchWrite`, { writes: batch }, {
+      headers: { 'x-goog-user-project': projectId }, skipLog: { resBody: true },
+    })
+    const failures = (result.body.status ?? []).filter((status) => status.code)
+    if (failures.length || result.body.writeResults?.length !== batch.length) throw new Error(`Content batch failed: ${JSON.stringify(failures)}`)
+    console.log(`Saved ${Math.min(offset + batch.length, writes.length)}/${writes.length} content records.`)
+  }
+  console.log(`Seeded ${words.length} words, ${languages.length} languages and ${selectedLeaders.length} leaderboard entries.`)
 }
 
 main().catch((error) => {

@@ -221,4 +221,6 @@ h1, h2, strong, p { overflow-wrap: anywhere; }
 
 .meet-companion { grid-template-columns: minmax(75px, 120px) minmax(0, 1fr); }
 .vocabulary-section .empty-state { padding: 24px 16px; }
+.vocabulary-more { width: 100%; margin-top: 16px; }
+.vocabulary-word strong, .word-main h2, .match-board button { overflow-wrap: anywhere; }
 .loading-screen { min-height: 100svh; display: grid; place-items: center; padding: 24px; font-weight: 750; }

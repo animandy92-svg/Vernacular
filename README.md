@@ -9,10 +9,33 @@ Live app: <https://vernacular-bace0.web.app>
 The Android package is `com.vernacular.app`. The latest installable, debug-signed APK is available at:
 
 ```text
-artifacts/Vernacular-1.3.0-debug.apk
+artifacts/Vernacular-1.3.1-debug.apk
 ```
 
 This APK is suitable for direct device testing on Android 7.0 (API 24) or newer. A Play Store release should use a private production signing key and a release build.
+
+## Version 1.3.1
+
+- Imported all 3,000 pairs from `English_Twi_3000_Everyday_Vocabulary.xlsx`, adding 2,986 entries after matching 14 existing pairs
+- Twi now has 3,010 words and expressions, with original spelling, categories and distinct meanings preserved
+- Workbook records are bundled for offline use and remain `needs-review`; pronunciation guides and examples are left blank when the source does not supply them
+- Vocabulary search covers the full pack while displaying 50 results at a time
+- Quizzes avoid duplicate spellings/meanings within a round; letter puzzles use suitable single words
+
+Source rows, notes and the workbook SHA-256 are retained in `src/data/twi-everyday.json`. Imported IDs use the source number; `sourceRow` refers to the worksheet row including the header. Existing word IDs stay unchanged. Imported entries use the existing beginner default because the workbook describes basic everyday vocabulary without proficiency levels.
+
+Recreate the import with Python and `openpyxl`:
+
+```text
+python scripts/import-twi-workbook.py /path/to/English_Twi_3000_Everyday_Vocabulary.xlsx
+```
+
+Preview or publish only the additional Twi entries and updated language count:
+
+```bash
+npm run seed -- --language=twi --import-only --content-only --dry-run
+npm run seed -- --language=twi --import-only --content-only
+```
 
 ## Version 1.3.0
 
@@ -44,7 +67,7 @@ Existing saved progress is preserved. Daily activity history begins with puzzles
 - Guided onboarding for preferred and local names, language, companion customization, level, and daily goal
 - An interactive learning companion with animated lesson prompts, reactions, carried objects and celebrations
 - Four original cartoon companion looks with articulated vector artwork and local-only name customization
-- Twi, Fante and Kasem packs with 81 structured vocabulary entries
+- Twi, Fante and Kasem packs with 3,067 structured vocabulary entries
 - Word Search, Crossword, Unscramble, Picture Quiz, Listening Challenge, Word Match, Proverb Challenge and Phrase Builder
 - Daily challenge, XP, stars, levels, streaks, badges, learned-word tracking and activity unlocks
 - Four illustrated adventure environments: Welcome Courtyard, Market Day, Story Grove and Moonlit Library
@@ -75,7 +98,7 @@ Kasem vocabulary and orthography were checked against the [Kasɩm–French–Eng
 
 Requirements:
 
-- Node.js 22 or newer
+- Node.js 22.18 or newer
 - Android Studio / Android SDK 36
 - JDK 21
 - Firebase CLI for deployment and content seeding
