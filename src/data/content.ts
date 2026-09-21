@@ -1,5 +1,6 @@
 import type { CulturalProverb, Language, LanguageCode, PhraseEntry, WordEntry } from '../types'
 import twiWorkbook from './twi-everyday.json' with { type: 'json' }
+import kasemDictionary from './kasem-dictionary.json' with { type: 'json' }
 
 export const LANGUAGES: Language[] = [
   {
@@ -157,7 +158,23 @@ const importedTwi: WordEntry[] = (twiWorkbook.rows as [number, string, string, s
     source: 'twi-everyday-workbook', sourceRow: number + 1,
   }))
 
-export const FALLBACK_WORDS: WordEntry[] = [...CORE_WORDS, ...importedTwi]
+// Source IDs preserve progress across workbook sorting. Dialect variants and
+// distinct senses remain separate, including overlaps with the original pack.
+const importedKasem: WordEntry[] = kasemDictionary.rows.map(({ sourceRow, values }) => {
+  const text = (index: number) => typeof values[index] === 'string' ? values[index] as string : ''
+  return {
+    id: `kasem-indigen-${text(16)}`, language: 'kasem',
+    word: text(1), translation: text(2), category: text(5) || 'General vocabulary',
+    difficulty: 'beginner', phonetic: text(6) === 'Audio not available yet' ? '' : text(6),
+    example: text(8), exampleTranslation: text(9),
+    reviewStatus: 'needs-review', visibility: 'public',
+    source: 'kasem-indigen-workbook', sourceRow, sourceEntryId: text(16),
+    sourceAttribution: text(13), partOfSpeech: text(3), dialect: text(4),
+    alternateTerms: text(7), usageNote: text(10), culturalNote: text(11),
+  }
+})
+
+export const FALLBACK_WORDS: WordEntry[] = [...CORE_WORDS, ...importedTwi, ...importedKasem]
 
 export const PROVERBS: CulturalProverb[] = [
   {

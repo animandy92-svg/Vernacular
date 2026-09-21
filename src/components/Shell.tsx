@@ -31,7 +31,7 @@ interface NavProps {
 
 const ITEMS: { id: Screen; label: string; icon: typeof Home }[] = [
   { id: 'home', label: 'Home', icon: Home },
-  { id: 'play', label: 'Play', icon: BookOpen },
+  { id: 'course', label: 'Learn', icon: BookOpen },
   { id: 'progress', label: 'Progress', icon: BarChart3 },
   { id: 'library', label: 'Languages', icon: Languages },
   { id: 'leaderboard', label: 'Leaders', icon: Trophy },
@@ -42,9 +42,10 @@ export function AppNav({ active, onNavigate }: NavProps) {
     <nav className="app-nav" aria-label="Main navigation">
       {ITEMS.map((item) => {
         const Icon = item.icon
+        const selected = active === item.id || (active === 'play' && item.id === 'course')
         return (
-          <button className={active === item.id ? 'active' : ''} aria-current={active === item.id ? 'page' : undefined} key={item.id} onClick={() => onNavigate(item.id)}>
-            <Icon size={21} strokeWidth={active === item.id ? 2.5 : 2} />
+          <button className={selected ? 'active' : ''} aria-current={selected ? 'page' : undefined} key={item.id} onClick={() => onNavigate(item.id)}>
+            <Icon size={21} strokeWidth={selected ? 2.5 : 2} />
             <span>{item.label}</span>
           </button>
         )

@@ -13,9 +13,9 @@ export function DailyActivity({ profile, progress }: { profile: Profile; progres
         <div><span className="eyebrow">TODAY’S LITTLE STEPS</span><h2>{done ? 'Daily goal complete!' : 'Make a little room for learning.'}</h2></div>
         <strong>{count}<span> / {goal}</span></strong>
       </div>
-      <div className="goal-progress" role="progressbar" aria-label="Puzzles completed today" aria-valuemin={0} aria-valuemax={goal} aria-valuenow={Math.min(count, goal)}><span style={{ width: `${Math.min(100, count / goal * 100)}%` }} /></div>
-      <div className="activity-week">{weeklyActivity(progress).map((day) => <div className={`${day.count ? 'complete' : ''} ${day.key === dateKey() ? 'today' : ''}`} key={day.key} aria-label={`${day.label}, ${day.count} puzzles`}><span>{day.count ? <Check size={16} /> : day.key === dateKey() ? <Flame size={16} /> : <i />}</span><small>{day.label}</small></div>)}</div>
-      <p>{done ? 'You showed up for your language. Everything else is a bonus.' : `${goal - count} more puzzle${goal - count === 1 ? '' : 's'} to reach today’s goal. You’ve got this.`}</p>
+      <div className="goal-progress" role="progressbar" aria-label="Practice sessions completed today" aria-valuemin={0} aria-valuemax={goal} aria-valuenow={Math.min(count, goal)}><span style={{ width: `${Math.min(100, count / goal * 100)}%` }} /></div>
+      <div className="activity-week">{weeklyActivity(progress).map((day) => <div className={`${day.count ? 'complete' : ''} ${day.key === dateKey() ? 'today' : ''}`} key={day.key} aria-label={`${day.label}, ${day.count} practice sessions`}><span>{day.count ? <Check size={16} /> : day.key === dateKey() ? <Flame size={16} /> : <i />}</span><small>{day.label}</small></div>)}</div>
+      <p>{done ? 'You showed up for your language. Everything else is a bonus.' : `${goal - count} more practice session${goal - count === 1 ? '' : 's'} to reach today’s goal. Lessons, reviews and puzzles all count.`}</p>
     </section>
   )
 }

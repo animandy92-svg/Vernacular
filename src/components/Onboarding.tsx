@@ -30,8 +30,9 @@ export function Onboarding({ onComplete, initialProfile, onCancel }: Props) {
   const [localName, setLocalName] = useState(initialProfile?.localName ?? '')
   const [language, setLanguage] = useState<LanguageCode>(initialProfile?.language ?? 'twi')
   const [level, setLevel] = useState<Difficulty>(initialProfile?.level ?? 'beginner')
-  const [dailyGoal, setDailyGoal] = useState(initialProfile?.dailyGoal ?? 5)
+  const [dailyGoal, setDailyGoal] = useState(initialProfile?.dailyGoal ?? 3)
   const [companion, setCompanion] = useState(initialProfile?.companion ?? DEFAULT_COMPANION)
+  const lastStep = initialProfile ? 3 : 1
 
   useEffect(() => {
     const back = (event: Event) => {
@@ -54,7 +55,7 @@ export function Onboarding({ onComplete, initialProfile, onCancel }: Props) {
   const next = () => {
     if (!canContinue) return
     window.scrollTo({ top: 0, behavior: 'instant' })
-    if (step < 3) setStep((current) => current + 1)
+    if (step < lastStep) setStep((current) => current + 1)
     else onComplete({ name: name.trim(), localName: localName.trim(), language, level, dailyGoal, companion: { ...companion, name: companion.name.trim() } })
   }
 
@@ -63,7 +64,7 @@ export function Onboarding({ onComplete, initialProfile, onCancel }: Props) {
       <section className="onboarding-art" aria-label="Vernacular introduction">
         <div className="brand-lockup brand-lockup--light"><span className="brand-mark">V</span><span>VERNACULAR</span></div>
         <div className="onboarding-character-stage">
-          <div className="art-copy"><span className="eyebrow eyebrow--gold">LEARN WITH A FRIEND</span><h1>Your language is a world worth exploring.</h1><p>Build a companion who walks, talks, points and celebrates through every lesson with you.</p></div>
+          <div className="art-copy"><span className="eyebrow eyebrow--gold">A LITTLE CLOSER TO HOME</span><h1>Your first conversation starts here.</h1><p>Learn a few expressions, practise with your companion, and remember a little more each day.</p></div>
           <Companion character={companion} pose={step === 2 ? 'talk' : step === 3 ? 'celebrate' : 'walk'} item={step === 3 ? 'star' : 'none'} size={230} />
         </div>
         <div className="art-footnote"><Sparkles size={17} /> Your guide grows as you learn</div>
@@ -72,7 +73,7 @@ export function Onboarding({ onComplete, initialProfile, onCancel }: Props) {
       <section className="onboarding-panel">
         <div className="onboarding-mobile-brand"><span className="brand-mark">V</span><span>VERNACULAR</span></div>
         {onCancel && <button className="text-action setup-cancel" onClick={onCancel}><ArrowLeft size={18} /> Cancel editing</button>}
-        <div className="step-dots" aria-label={`Step ${step + 1} of 4`}>{[0, 1, 2, 3].map((item) => <span className={item <= step ? 'active' : ''} key={item} />)}</div>
+        <div className="step-dots" aria-label={`Step ${step + 1} of ${lastStep + 1}`}>{Array.from({ length: lastStep + 1 }, (_, item) => <span className={item <= step ? 'active' : ''} key={item} />)}</div>
 
         {step === 0 && (
           <div className="onboarding-step">
@@ -91,6 +92,7 @@ export function Onboarding({ onComplete, initialProfile, onCancel }: Props) {
             <div className="language-pill-row">
               {LANGUAGES.map((item) => <button aria-pressed={language === item.code} className={language === item.code ? 'selected' : ''} key={item.code} onClick={() => setLanguage(item.code)}><span style={{ backgroundColor: item.color }}>{item.name.slice(0, 2)}</span><strong>{item.name}</strong>{language === item.code && <Check size={16} />}</button>)}
             </div>
+            {!initialProfile && <p className="setup-first-lesson">Start with a short greeting lesson. You can customise your companion and daily goal from your profile afterward.</p>}
           </div>
         )}
 
@@ -115,13 +117,13 @@ export function Onboarding({ onComplete, initialProfile, onCancel }: Props) {
             <div className="meet-companion"><Companion character={companion} pose="wave" item="star" size={190} /><div className="companion-speech"><strong>{greeting}, {learnerName}!</strong><p>I’m {companion.name}. I’ll explore, practice and celebrate every new word with you.</p></div></div>
             <span className="field-label">Choose your pace</span>
             <div className="level-grid level-grid--compact">{LEVELS.map((item) => <button aria-pressed={level === item.id} className={`level-choice ${level === item.id ? 'selected' : ''}`} key={item.id} onClick={() => setLevel(item.id)}><strong>{item.label}</strong><small>{item.description}</small></button>)}</div>
-            <div className="goal-picker"><div><span className="goal-icon"><Flame size={20} /></span><span><strong>Daily goal</strong><small>puzzles per day</small></span></div><div className="segmented-control">{[3, 5, 10].map((goal) => <button aria-pressed={dailyGoal === goal} className={dailyGoal === goal ? 'selected' : ''} key={goal} onClick={() => setDailyGoal(goal)}>{goal}</button>)}</div></div>
+            <div className="goal-picker"><div><span className="goal-icon"><Flame size={20} /></span><span><strong>Daily goal</strong><small>practice sessions per day</small></span></div><div className="segmented-control">{[3, 5, 10].map((goal) => <button aria-pressed={dailyGoal === goal} className={dailyGoal === goal ? 'selected' : ''} key={goal} onClick={() => setDailyGoal(goal)}>{goal}</button>)}</div></div>
           </div>
         )}
 
         <div className="onboarding-actions">
           {step > 0 && <button className="button button--ghost" onClick={() => { setStep((current) => current - 1); window.scrollTo({ top: 0, behavior: 'instant' }) }}><ArrowLeft size={18} /> Back</button>}
-          <button className="button button--primary" disabled={!canContinue} onClick={next}>{step === 3 ? <>{initialProfile ? 'Save changes' : 'Start exploring'} <Sparkles size={18} /></> : <>Continue <ArrowRight size={18} /></>}</button>
+          <button className="button button--primary" disabled={!canContinue} onClick={next}>{step === lastStep ? <>{initialProfile ? 'Save changes' : 'Start my first lesson'} <Sparkles size={18} /></> : <>Continue <ArrowRight size={18} /></>}</button>
         </div>
       </section>
     </main>

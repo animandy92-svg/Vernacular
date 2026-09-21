@@ -1,6 +1,6 @@
 # Vernacular
 
-Vernacular is an Android-first language-learning adventure for practicing Ghanaian languages through short word puzzles. Learners create an animated companion who walks, talks, points, carries clues and celebrates throughout lessons. It includes Twi, Fante and Kasem learning packs, eight playable modes, daily challenges, offline progress, XP, stars, streaks, achievements, unlockable cultural environments, language switching, and a read-only community leaderboard.
+Vernacular is an Android-first language-learning adventure for Twi, Fante and Kasem. Each language has a 20-lesson beginner course, teaching cards, contextual practice, scheduled memory reviews and optional record-and-replay speaking practice. Animated companions, eight puzzle modes, daily goals, offline progress, XP, streaks and cultural settings support regular practice.
 
 Live app: <https://vernacular-bace0.web.app>
 
@@ -9,10 +9,39 @@ Live app: <https://vernacular-bace0.web.app>
 The Android package is `com.vernacular.app`. The latest installable, debug-signed APK is available at:
 
 ```text
-artifacts/Vernacular-1.3.1-debug.apk
+artifacts/Vernacular-1.5.0-debug.apk
 ```
 
 This APK is suitable for direct device testing on Android 7.0 (API 24) or newer. A Play Store release should use a private production signing key and a release build.
+
+## Version 1.5.0 — dictionary and listening lessons
+
+- Imported all 339 entries from the supplied Indigen World Kasem Dictionary, expanding the Kasem vocabulary pack to 372 entries
+- Preserved dialects, spelling, source IDs, examples, English example translations, usage notes and attribution
+- Added three LearnAkan Twi recordings covering phrases 1–300, with their original on-screen Twi spellings and English meanings
+- Added slower playback, ten-second replay, separate saved listening positions, and source credits
+- Bundled all three recordings in the Android APK; web learners can save each lesson offline
+- Added offline video seeking without making large video downloads a prerequisite for app installation
+
+See [imported materials](docs/imported-language-materials.md) for source tracking, reimport commands and offline behavior. Existing course and learner progress IDs remain unchanged. The recordings are full listening lessons; individual word pronunciation buttons still use the separate reviewed-recording manifest.
+
+## Version 1.4.0 — course preview
+
+- 60 guided lessons across Twi, Fante and Kasem, with four chapters and four checkpoints per language
+- Two-step onboarding leads directly into a greeting lesson; companion customisation remains in profile settings
+- Teaching cards come before questions, with a contextual check at the end of each lesson
+- Separate course completion and review queues per language; shared lifetime XP and streaks are preserved
+- Introduced, practising and remembered states replace claims that one completed puzzle proves learning
+- New expressions return tomorrow; successful scheduled typed reviews use 3-, 7-, 14- and 30-day intervals
+- Three successful scheduled reviews on separate days are needed for the remembered state; misses reset the sequence and return tomorrow
+- Same-day replays and early practice cannot inflate recall or postpone a due review
+- Optional 15-second recordings stay in memory, stop when the app is backgrounded, and are discarded when the learner leaves the card; no upload or pronunciation grading
+- Approved native-audio manifest supports normal and slow recordings, transcript matching and offline bundling
+- Existing vocabulary history, XP, stars, activity, companions and profiles migrate without resetting; old learned-word records become introduced words awaiting a recall check
+
+The courses currently use 52 distinct Twi, 28 Fante and 37 Kasem words and phrases from the existing packs. Fante and Kasem deliberately revisit more material because their packs are smaller. All guided course content remains a draft awaiting qualified speaker review. The supplied LearnAkan recordings are available as separate Twi listening lessons; individual guided cards still await matched recordings. The interface labels this preview status and never substitutes an unrelated device voice for native course audio.
+
+Regenerate the speaker review packet with `npm run content:review`. See [the content-review packet](docs/course-content-review.md) for the complete lesson sequence, source entries and recording manifest instructions, and [the pilot plan](docs/pilot-plan.md) for a four-week learning evaluation. Production publication and participant recruitment are separate steps. Microphone capture still needs validation on physical target Android devices.
 
 ## Version 1.3.1
 
@@ -67,7 +96,7 @@ Existing saved progress is preserved. Daily activity history begins with puzzles
 - Guided onboarding for preferred and local names, language, companion customization, level, and daily goal
 - An interactive learning companion with animated lesson prompts, reactions, carried objects and celebrations
 - Four original cartoon companion looks with articulated vector artwork and local-only name customization
-- Twi, Fante and Kasem packs with 3,067 structured vocabulary entries
+- Twi, Fante and Kasem packs with 3,406 structured vocabulary entries
 - Word Search, Crossword, Unscramble, Picture Quiz, Listening Challenge, Word Match, Proverb Challenge and Phrase Builder
 - Daily challenge, XP, stars, levels, streaks, badges, learned-word tracking and activity unlocks
 - Four illustrated adventure environments: Welcome Courtyard, Market Day, Story Grove and Moonlit Library

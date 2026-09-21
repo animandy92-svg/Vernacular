@@ -1,7 +1,7 @@
 export type LanguageCode = 'twi' | 'fante' | 'kasem'
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
 export type GameMode = 'unscramble' | 'match' | 'search' | 'crossword' | 'picture' | 'listening' | 'proverb' | 'phrase' | 'daily'
-export type Screen = 'home' | 'play' | 'progress' | 'library' | 'leaderboard'
+export type Screen = 'home' | 'course' | 'play' | 'progress' | 'library' | 'leaderboard'
 export type EnvironmentId = 'courtyard' | 'market' | 'grove' | 'library'
 export type CompanionAvatar = 'ama' | 'kofi' | 'esi' | 'kojo'
 
@@ -33,6 +33,14 @@ export interface WordEntry {
   visibility: 'public'
   source?: string
   sourceRow?: number
+  sourceEntryId?: string
+  sourceAttribution?: string
+  partOfSpeech?: string
+  dialect?: string
+  alternateTerms?: string
+  exampleTranslation?: string
+  usageNote?: string
+  culturalNote?: string
 }
 
 export interface CulturalProverb {
@@ -70,6 +78,29 @@ export interface Progress {
   perfectRounds: number
   activity?: Record<string, number>
   bestStreak?: number
+  memory?: Record<string, WordMemory>
+  lessons?: Record<string, LessonCompletion>
+}
+
+export interface WordMemory {
+  introducedOn: string
+  dueOn: string
+  lastPracticedOn: string | null
+  lastReviewedOn: string | null
+  successfulReviews: number
+  reviewCount: number
+  practiceCount: number
+}
+
+export interface LessonCompletion {
+  completedOn: string
+  score: number
+  total: number
+}
+
+export interface RecallAttempt {
+  wordId: string
+  correct: boolean
 }
 
 export interface StoredState {
@@ -83,4 +114,7 @@ export interface GameResult {
   total: number
   wordIds: string[]
   perfect: boolean
+  recall?: RecallAttempt[]
+  lessonId?: string
+  review?: boolean
 }

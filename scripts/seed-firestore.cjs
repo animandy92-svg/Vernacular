@@ -29,7 +29,7 @@ async function main() {
   const language = process.argv.find((argument) => argument.startsWith('--language='))?.split('=')[1]
   if (language && !LANGUAGES.some((item) => item.code === language)) throw new Error('Unknown language')
   const allWords = FALLBACK_WORDS.filter((item) => !language || item.language === language)
-  const words = process.argv.includes('--import-only') ? allWords.filter((item) => item.source === 'twi-everyday-workbook') : allWords
+  const words = process.argv.includes('--import-only') ? allWords.filter((item) => ['twi-everyday-workbook', 'kasem-indigen-workbook'].includes(item.source)) : allWords
   const languages = LANGUAGES.filter((item) => !language || item.code === language).map((item) => ({
     id: item.code, name: item.name, nativeName: item.nativeName, region: item.region,
     status: 'draft', visibility: 'public', wordCount: allWords.filter((word) => word.language === item.code).length,

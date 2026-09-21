@@ -5,9 +5,13 @@ import { ACTIVITY_UNLOCKS, ENVIRONMENTS, isModeUnlocked, levelFromXp } from '../
 import type { GameMode, LanguageCode, Profile, Progress, WordEntry } from '../types'
 import { DailyActivity } from './DailyActivity'
 import { Vocabulary } from './Vocabulary'
+import { ListeningLibrary } from './ListeningLibrary'
 import { MODES } from './Dashboard'
 import { Companion } from './Companion'
 import { PageIntro } from './Shell'
+import { LearningSummary } from './Course'
+import { lessonsFor } from '../data/course'
+import { learningCounts } from '../lib/learning'
 
 export function PlayScreen({ profile, progress, words, onGame }: { profile: Profile; progress: Progress; words: WordEntry[]; onGame: (mode: GameMode) => void }) {
   const categories = [...new Set(words.map((entry) => entry.category))]
@@ -22,7 +26,7 @@ export function PlayScreen({ profile, progress, words, onGame }: { profile: Prof
             <button className={`mode-row mode-row--${mode.tone} ${unlocked ? '' : 'mode-row--locked'}`} disabled={!unlocked} key={mode.id} onClick={() => onGame(mode.id)}>
               <span className="mode-index">0{index + 1}</span>
               <span className="mode-icon">{unlocked ? <Icon size={28} /> : <LockKeyhole size={25} />}</span>
-              <span className="mode-row-copy"><strong>{mode.title}</strong><small>{unlocked ? mode.description : `Finish ${ACTIVITY_UNLOCKS[mode.id]} puzzle${ACTIVITY_UNLOCKS[mode.id] === 1 ? '' : 's'} to unlock with ${profile.companion.name}.`}</small></span>
+              <span className="mode-row-copy"><strong>{mode.title}</strong><small>{unlocked ? mode.description : `Finish ${ACTIVITY_UNLOCKS[mode.id]} session${ACTIVITY_UNLOCKS[mode.id] === 1 ? '' : 's'} to unlock with ${profile.companion.name}.`}</small></span>
               <span className="mode-meta">{unlocked ? mode.time : 'Locked'}</span>
               <span className="round-arrow">{unlocked ? <ArrowRight size={18} /> : <LockKeyhole size={16} />}</span>
             </button>
@@ -33,7 +37,7 @@ export function PlayScreen({ profile, progress, words, onGame }: { profile: Prof
         <div className="section-heading"><div><span className="eyebrow">YOUR PACK</span><h2>Everyday essentials</h2></div><span>{words.length} words</span></div>
         <div className="category-chips">{categories.map((category) => <span key={category}>{category}</span>)}</div>
         <div className="path-progress"><span style={{ width: `${words.length ? words.filter((entry) => progress.masteredWords.includes(entry.id)).length / words.length * 100 : 0}%` }} /></div>
-        <p>{words.length} offline-ready words across {categories.length} themes. Complete puzzles to make them yours.</p>
+        <p>{words.length} offline-ready words across {categories.length} themes. Puzzles introduce words; memory reviews check recall later.</p>
       </section>
     </div>
   )
@@ -41,16 +45,19 @@ export function PlayScreen({ profile, progress, words, onGame }: { profile: Prof
 
 export function ProgressScreen({ profile, progress, words, onEdit }: { profile: Profile; progress: Progress; words: WordEntry[]; onEdit: () => void }) {
   const level = levelFromXp(progress.xp)
+  const counts = learningCounts(words, progress)
+  const practised = counts.introduced + counts.practising + counts.remembered
+  const completedLessons = lessonsFor(profile.language).filter((lesson) => !!progress.lessons?.[lesson.id])
   const badges = [
-    { label: 'First step', detail: 'Complete a puzzle', icon: Sparkles, unlocked: progress.sessions >= 1 },
+    { label: 'First step', detail: 'Complete a practice session', icon: Sparkles, unlocked: progress.sessions >= 1 },
     { label: 'Perfect round', detail: 'No mistakes', icon: Award, unlocked: progress.perfectRounds >= 1 },
-    { label: 'Word collector', detail: 'Learn 10 words', icon: BookOpen, unlocked: progress.masteredWords.length >= 10 },
+    { label: 'Word collector', detail: 'Practise 10 expressions', icon: BookOpen, unlocked: practised >= 10 },
     { label: 'Seven suns', detail: 'Reach a 7-day streak', icon: Flame, unlocked: (progress.bestStreak ?? progress.streak) >= 7 },
   ]
 
   return (
     <div className="page-enter">
-      <PageIntro eyebrow="YOUR JOURNEY" title={`${profile.name}’s progress`} description="Every puzzle leaves a mark. Here is how your learning is growing." />
+      <PageIntro eyebrow="YOUR JOURNEY" title={`${profile.name}’s progress`} description="Every practice session leaves a mark. Here is how your learning is growing." />
       <DailyActivity profile={profile} progress={progress} />
       <section className="progress-hero">
         <div className="progress-level"><small>LEVEL</small><strong>{level.level}</strong></div>
@@ -60,13 +67,15 @@ export function ProgressScreen({ profile, progress, words, onEdit }: { profile: 
         <div><Flame /><strong>{progress.streak}</strong><span>Day streak</span></div>
         <div><Zap /><strong>{progress.xp}</strong><span>Total XP</span></div>
         <div><Star /><strong>{progress.stars}</strong><span>Stars earned</span></div>
-        <div><Trophy /><strong>{progress.sessions}</strong><span>Puzzles finished</span></div>
+        <div><Trophy /><strong>{progress.sessions}</strong><span>Practice sessions</span></div>
       </div>
 
       <section className="companion-profile-card">
         <Companion character={profile.companion} pose="carry" item="book" size={145} interactive />
-        <div><span className="eyebrow">YOUR LEARNING COMPANION</span><h2>{profile.companion.name}</h2><p>“We’ve learned {progress.masteredWords.length} words and unlocked {ENVIRONMENTS.filter((environment) => progress.xp >= environment.xp).length} places together, {profile.localName || profile.name}.”</p></div>
+        <div><span className="eyebrow">YOUR LEARNING COMPANION</span><h2>{profile.companion.name}</h2><p>“We’ve practised {practised} {getLanguage(profile.language).name} words and phrases, and unlocked {ENVIRONMENTS.filter((environment) => progress.xp >= environment.xp).length} places together, {profile.localName || profile.name}.”</p></div>
       </section>
+      <LearningSummary progress={progress} words={words} />
+      {completedLessons.length > 0 && <section className="section-block"><div className="section-heading"><div><span className="eyebrow">REAL TOPICS, SMALL STEPS</span><h2>Lessons you’ve practised</h2></div><span>{completedLessons.length}/20</span></div><ul className="practised-lessons">{completedLessons.map((lesson) => <li key={lesson.id}><Check size={17} /><span><strong>{lesson.title}</strong><small>{lesson.goal}</small></span></li>)}</ul></section>}
 
       <section className="section-block">
         <div className="section-heading"><div><span className="eyebrow">MILESTONES</span><h2>Your badges</h2></div></div>
@@ -78,7 +87,7 @@ export function ProgressScreen({ profile, progress, words, onEdit }: { profile: 
         </div>
       </section>
 
-      <Vocabulary words={words} learnedIds={progress.masteredWords} />
+      <Vocabulary words={words} progress={progress} />
 
       <button className="text-action" onClick={onEdit}><Settings2 size={18} /> Edit learning setup</button>
     </div>
@@ -89,6 +98,7 @@ export function LibraryScreen({ active, onSwitch }: { active: LanguageCode; onSw
   return (
     <div className="page-enter">
       <PageIntro eyebrow="LANGUAGE LIBRARY" title="A home for every voice." description="Switch between installed language packs. More paths can be added as reviewed content becomes available." />
+      {active === 'twi' && <ListeningLibrary />}
       <div className="library-grid">
         {LANGUAGES.map((language) => (
           <article className={`library-card ${active === language.code ? 'active' : ''}`} key={language.code}>

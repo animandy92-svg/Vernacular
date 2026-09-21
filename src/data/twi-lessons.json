@@ -1,0 +1,53 @@
+[
+  {
+    "id": "twi-learnakan-1-100",
+    "language": "twi",
+    "title": "General Twi phrases",
+    "phraseRange": "1-100",
+    "phraseCount": 100,
+    "durationSeconds": 1647.92,
+    "video": "/media/twi/phrases-1-100-8fe722acc0-aac64.mp4",
+    "poster": "/media/twi/phrases-1-100-8fe722acc0-aac64.jpg",
+    "bytes": 22962847,
+    "sha256": "e4b0c0001502a5d1bcbb7422d2347be854e759007b52055e638c5c736737f78b",
+    "source": "Essential Twi Phrases 1-100_ General Twi Phrases _ LEARNAKAN.COM(360P).mp4",
+    "sourceSha256": "8fe722acc0ba103c79a3dd8ca57a0321465730bad9f822c850ed8facdbf8c63e",
+    "creator": "LearnAkan",
+    "creatorUrl": "https://learnakan.com",
+    "translations": "English meanings and Twi spellings appear in the original video."
+  },
+  {
+    "id": "twi-learnakan-101-200",
+    "language": "twi",
+    "title": "More everyday expressions",
+    "phraseRange": "101-200",
+    "phraseCount": 100,
+    "durationSeconds": 1477.42,
+    "video": "/media/twi/phrases-101-200-2ae2b124df-aac64.mp4",
+    "poster": "/media/twi/phrases-101-200-2ae2b124df-aac64.jpg",
+    "bytes": 30191471,
+    "sha256": "48b1f19d1c0afd0a03237a15aea9dabdf2187cc7d91525254698f301abe03ef7",
+    "source": "Essential Twi Phrases 101-200_ General Twi Phrases _ LEARNAKAN.COM(360P).mp4",
+    "sourceSha256": "2ae2b124df5a6f5f4960632f2a14fd5ad2b6062a3dfed9451dcd37febff0bfae",
+    "creator": "LearnAkan",
+    "creatorUrl": "https://learnakan.com",
+    "translations": "English meanings and Twi spellings appear in the original video."
+  },
+  {
+    "id": "twi-learnakan-201-300",
+    "language": "twi",
+    "title": "Daily routines",
+    "phraseRange": "201-300",
+    "phraseCount": 100,
+    "durationSeconds": 1466.8,
+    "video": "/media/twi/phrases-201-300-1a6d5ba037-aac64.mp4",
+    "poster": "/media/twi/phrases-201-300-1a6d5ba037-aac64.jpg",
+    "bytes": 18126813,
+    "sha256": "91f7d8bb8e3a131bf15de5c7724c13b5421b9405db39e12db007a33d76fa512c",
+    "source": "Essential Twi Phrases 201-300_ Daily Routine Phrases in Twi _ LEARNAKAN.COM(360P).mp4",
+    "sourceSha256": "1a6d5ba03721ad30075ad798acdbd4b50347f740ad0088a2fecd0224eb3d77e2",
+    "creator": "LearnAkan",
+    "creatorUrl": "https://learnakan.com",
+    "translations": "English meanings and Twi spellings appear in the original video."
+  }
+]

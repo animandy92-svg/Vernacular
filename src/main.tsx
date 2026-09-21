@@ -5,6 +5,8 @@ import App from './App'
 import './styles.css'
 import './mobile.css'
 import './companion.css'
+import './learning.css'
+import './listening.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -1,4 +1,7 @@
 import type { CompanionStyle, EnvironmentId, GameMode, GameResult, Profile, Progress, StoredState } from '../types'
+import { dateKey } from './calendar'
+import { memoryFor, recordLearning } from './learning'
+export { dateKey } from './calendar'
 
 const STORAGE_KEY = 'vernacular-state-v1'
 
@@ -17,9 +20,9 @@ export const EMPTY_PROGRESS: Progress = {
   dailyCompleted: null,
   perfectRounds: 0,
   activity: {},
+  memory: {},
+  lessons: {},
 }
-
-export const dateKey = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
 
 export function currentStreak(progress: Progress, now = new Date()) {
   const yesterday = new Date(now)
@@ -47,9 +50,10 @@ export function loadState(): StoredState {
       localName: storedProfile.localName ?? '',
       companion: { ...DEFAULT_COMPANION, ...(storedProfile.companion ?? {}) },
     } as Profile : null
+    const progress = { ...EMPTY_PROGRESS, ...(value.progress ?? {}), bestStreak: Math.max(value.progress?.bestStreak ?? 0, value.progress?.streak ?? 0) }
     return {
       profile,
-      progress: { ...EMPTY_PROGRESS, ...(value.progress ?? {}), bestStreak: Math.max(value.progress?.bestStreak ?? 0, value.progress?.streak ?? 0) },
+      progress: { ...progress, memory: memoryFor(progress) },
       environment: ENVIRONMENTS.some((item) => item.id === value.environment) ? value.environment as EnvironmentId : 'courtyard',
     }
   } catch {
@@ -92,6 +96,11 @@ export function completeSession(progress: Progress, result: GameResult, daily = 
     lastPlayed: today,
     sessions: progress.sessions + 1,
     masteredWords: [...new Set([...progress.masteredWords, ...result.wordIds])],
+    memory: recordLearning(progress, result, now),
+    lessons: result.lessonId ? {
+      ...progress.lessons,
+      [result.lessonId]: progress.lessons?.[result.lessonId] ?? { completedOn: today, score: result.score, total: result.total },
+    } : progress.lessons,
     dailyCompleted: daily ? today : progress.dailyCompleted,
     perfectRounds: progress.perfectRounds + (result.perfect ? 1 : 0),
     activity,

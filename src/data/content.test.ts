@@ -16,7 +16,7 @@ describe('Twi workbook import', () => {
     for (const [, english, spelling] of workbook.rows) expect(pairs.has(pair(String(spelling), String(english)))).toBe(true)
     expect(twi.find((entry) => entry.word === 'akwaaba' && entry.translation === 'welcome')?.id).toBe('twi-akwaaba')
     expect(getWords('fante')).toHaveLength(24)
-    expect(getWords('kasem')).toHaveLength(33)
+    expect(getWords('kasem').filter((entry) => !entry.source)).toHaveLength(33)
     expect(new Set(FALLBACK_WORDS.map((entry) => entry.id)).size).toBe(FALLBACK_WORDS.length)
   })
 

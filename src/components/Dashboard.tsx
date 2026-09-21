@@ -6,6 +6,9 @@ import { Companion } from './Companion'
 import { Pronunciation } from './Pronunciation'
 import { DailyActivity } from './DailyActivity'
 import { LanguageBadge } from './Shell'
+import { nextLesson, type CourseLesson } from '../data/course'
+import { learningCounts } from '../lib/learning'
+import { ReviewCard } from './Course'
 
 interface Props {
   profile: Profile
@@ -16,6 +19,8 @@ interface Props {
   onNavigate: (screen: Screen) => void
   onGame: (mode: GameMode) => void
   onEnvironment: (environment: EnvironmentId) => void
+  onLesson: (lesson: CourseLesson) => void
+  onReview: () => void
 }
 
 const MODES = [
@@ -29,7 +34,7 @@ const MODES = [
   { id: 'proverb' as const, title: 'Proverb Challenge', description: 'Discover the lesson inside each saying', icon: Quote, tone: 'green', time: '4 min' },
 ]
 
-export function Dashboard({ profile, progress, today, environment, words, onNavigate, onGame, onEnvironment }: Props) {
+export function Dashboard({ profile, progress, today, environment, words, onNavigate, onGame, onEnvironment, onLesson, onReview }: Props) {
   const language = getLanguage(profile.language)
   const level = levelFromXp(progress.xp)
   const dayNumber = Math.floor(Date.now() / 86_400_000)
@@ -38,6 +43,8 @@ export function Dashboard({ profile, progress, today, environment, words, onNavi
   const learnerName = profile.localName || profile.name
   const nextEnvironment = ENVIRONMENTS.find((environment) => progress.xp < environment.xp)
   const activeEnvironment = ENVIRONMENTS.find((item) => item.id === environment) ?? ENVIRONMENTS[0]
+  const next = nextLesson(progress, profile.language)
+  const counts = learningCounts(words, progress)
 
   return (
     <div className="dashboard page-enter">
@@ -54,12 +61,12 @@ export function Dashboard({ profile, progress, today, environment, words, onNavi
         <div className="hero-pattern" aria-hidden="true"><i /><i /><i /><i /></div>
         <div className="hero-copy">
           <span className="eyebrow eyebrow--gold">YOUR NEXT ADVENTURE</span>
-          <h2>{activeEnvironment.name}</h2>
-          <p>{activeEnvironment.detail}. A few words, a little closer to home.</p>
-          <button className="button button--cream" onClick={() => onGame(dailyDone ? 'unscramble' : 'daily')}>{dailyDone ? 'Keep learning' : 'Start today’s challenge'} <ArrowRight size={18} /></button>
+          <h2>{next?.title ?? 'Keep your words close.'}</h2>
+          <p>{next?.goal ?? 'Revisit your course and make time for a little memory practice.'}</p>
+          <button className="button button--cream" onClick={() => next ? onLesson(next) : onNavigate('course')}>{next ? 'Continue my lesson path' : 'Open my learning journey'} <ArrowRight size={18} /></button>
         </div>
         <div className="hero-companion">
-          <div className="hero-companion-speech"><strong>{profile.companion.name}</strong><span>Our next stop: {activeEnvironment.name}. Let’s find a new word!</span></div>
+          <div className="hero-companion-speech"><strong>{profile.companion.name}</strong><span>We’ll learn it together, then give your memory a turn.</span></div>
           <Companion character={profile.companion} pose="carry" item="map" size={190} interactive />
           <span className="hero-play-hint">Tap or drag to play</span>
           <span className="hero-level-pill">Level {level.level} · {level.currentXp}/{level.targetXp} XP</span>
@@ -67,11 +74,8 @@ export function Dashboard({ profile, progress, today, environment, words, onNavi
       </section>
 
       <DailyActivity profile={profile} progress={progress} />
-
-
-
-
-
+      <ReviewCard progress={progress} words={words} today={today} onReview={onReview} />
+      <button className="daily-course-link" onClick={() => onGame(dailyDone ? 'unscramble' : 'daily')}><Sparkles size={18} />{dailyDone ? 'Daily puzzle complete · play another' : 'Try today’s bonus puzzle'}<ArrowRight size={17} /></button>
       <section className="section-block">
         <div className="section-heading"><div><span className="eyebrow">QUICK PLAY</span><h2>Choose a puzzle</h2></div><button onClick={() => onNavigate('play')}>See all <ArrowRight size={16} /></button></div>
         <div className="mode-grid">
@@ -81,7 +85,7 @@ export function Dashboard({ profile, progress, today, environment, words, onNavi
             return (
               <button className={`mode-card mode-card--${mode.tone} ${unlocked ? '' : 'mode-card--locked'}`} disabled={!unlocked} key={mode.id} onClick={() => onGame(mode.id)}>
                 <span className="mode-icon">{unlocked ? <Icon size={25} /> : <LockKeyhole size={23} />}</span>
-                <span className="mode-time">{unlocked ? mode.time : `${ACTIVITY_UNLOCKS[mode.id]} puzzle${ACTIVITY_UNLOCKS[mode.id] === 1 ? '' : 's'}`}</span>
+                <span className="mode-time">{unlocked ? mode.time : `${ACTIVITY_UNLOCKS[mode.id]} session${ACTIVITY_UNLOCKS[mode.id] === 1 ? '' : 's'}`}</span>
                 <strong>{mode.title}</strong>
                 <small>{mode.description}</small>
                 <span className="round-arrow"><ArrowRight size={17} /></span>
@@ -107,11 +111,11 @@ export function Dashboard({ profile, progress, today, environment, words, onNavi
         <div><span className="stat-icon stat-icon--coral"><Flame size={20} /></span><span><strong>{progress.streak}</strong><small>day streak</small></span></div>
         <div><span className="stat-icon stat-icon--gold"><Sparkles size={20} /></span><span><strong>{progress.xp}</strong><small>total XP</small></span></div>
         <div><span className="stat-icon stat-icon--gold"><Star size={20} /></span><span><strong>{progress.stars}</strong><small>stars earned</small></span></div>
-        <div><span className="stat-icon stat-icon--green"><BookOpen size={20} /></span><span><strong>{progress.masteredWords.length}</strong><small>words learned</small></span></div>
+        <div><span className="stat-icon stat-icon--green"><BookOpen size={20} /></span><span><strong>{counts.remembered}</strong><small>remembered</small></span></div>
       </section>
 
       <section className="section-block journey-section">
-        <div className="section-heading"><div><span className="eyebrow">YOUR WORLD</span><h2>Adventure map</h2></div><span>{nextEnvironment ? `${nextEnvironment.xp - progress.xp} XP to ${nextEnvironment.name}` : 'All places unlocked'}</span></div>
+        <div className="section-heading"><div><span className="eyebrow">YOUR WORLD</span><h2>Choose a puzzle setting</h2></div><span>{nextEnvironment ? `${nextEnvironment.xp - progress.xp} XP to ${nextEnvironment.name}` : 'All places unlocked'}</span></div>
         <div className="environment-path">
           {ENVIRONMENTS.map((place, index) => {
             const unlocked = progress.xp >= place.xp

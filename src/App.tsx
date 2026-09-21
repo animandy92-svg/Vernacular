@@ -4,6 +4,10 @@ import { Dashboard } from './components/Dashboard'
 import { Onboarding } from './components/Onboarding'
 import { LeaderboardScreen, LibraryScreen, PlayScreen, ProgressScreen } from './components/Screens'
 import { AppHeader, AppNav } from './components/Shell'
+import { CourseScreen } from './components/Course'
+import type { LearningSessionData } from './components/LearningSession'
+import { COURSE_WORDS, lessonsFor, lessonUnlocked, lessonWords, type CourseLesson } from './data/course'
+import { dueWords } from './lib/learning'
 import { FALLBACK_WORDS, getWords } from './data/content'
 import { wordsForLevel } from './lib/game'
 import type { LeaderboardEntry } from './lib/firebase'
@@ -12,6 +16,7 @@ import type { EnvironmentId, GameMode, GameResult, LanguageCode, Profile, Screen
 
 const GamePlay = lazy(() => import('./components/Games').then((module) => ({ default: module.GamePlay })))
 const ResultScreen = lazy(() => import('./components/Games').then((module) => ({ default: module.ResultScreen })))
+const LearningSession = lazy(() => import('./components/LearningSession').then((module) => ({ default: module.LearningSession })))
 
 export default function App() {
   const [state, setState] = useState<StoredState>(() => loadState())
@@ -19,6 +24,8 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>('home')
   const [gameMode, setGameMode] = useState<GameMode | null>(null)
   const [gameResult, setGameResult] = useState<GameResult | null>(null)
+  const [learningSession, setLearningSession] = useState<LearningSessionData | null>(null)
+  const sessionKey = useRef(0)
   const [words, setWords] = useState<WordEntry[]>(() => getWords(state.profile?.language ?? 'twi'))
   const [leaders, setLeaders] = useState<LeaderboardEntry[]>([])
   const [gameWords, setGameWords] = useState<WordEntry[]>([])
@@ -48,7 +55,7 @@ export default function App() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
     window.speechSynthesis?.cancel()
-  }, [screen, gameMode, gameResult, editingProfile])
+  }, [screen, gameMode, gameResult, editingProfile, learningSession])
 
   useEffect(() => {
     const language = state.profile?.language ?? 'twi'
@@ -73,18 +80,24 @@ export default function App() {
 
   useEffect(() => {
     const back = (event: Event) => {
-      if (!state.profile || editingProfile || (gameMode && !gameResult)) return
+      if (!state.profile || editingProfile || learningSession || (gameMode && !gameResult)) return
       if (gameResult) { event.preventDefault(); setGameMode(null); setGameResult(null) }
       else if (screen !== 'home') { event.preventDefault(); setScreen('home') }
     }
     window.addEventListener('vernacular-back', back)
     return () => window.removeEventListener('vernacular-back', back)
-  }, [state.profile, editingProfile, gameMode, gameResult, screen])
+  }, [state.profile, editingProfile, gameMode, gameResult, screen, learningSession])
 
   const saveProfile = (profile: Profile) => {
+    const isNewLearner = !state.profile
     setState((current) => ({ ...current, profile }))
     setEditingProfile(null)
     setScreen('home')
+    if (isNewLearner) {
+      const lesson = lessonsFor(profile.language)[0]
+      finished.current = false
+      setLearningSession({ key: ++sessionKey.current, kind: 'lesson', entries: lessonWords(lesson), lesson })
+    }
   }
 
   const editProfile = () => {
@@ -120,9 +133,31 @@ export default function App() {
     setGameMode(mode)
   }
 
+  const language = state.profile?.language ?? 'twi'
+  const learningWords = [...new Map([...words.filter((entry) => entry.language === language), ...COURSE_WORDS.filter((entry) => entry.language === language)].map((entry) => [entry.id, entry])).values()]
+  const startLesson = (lesson: CourseLesson) => {
+    if (!lessonUnlocked(lesson, state.progress, language)) return
+    finished.current = false
+    setLearningSession({ key: ++sessionKey.current, kind: 'lesson', entries: lessonWords(lesson), lesson })
+  }
+  const startReview = () => {
+    const entries = dueWords(learningWords, state.progress).slice(0, 10)
+    if (!entries.length) return
+    finished.current = false
+    setLearningSession({ key: ++sessionKey.current, kind: 'review', entries })
+  }
+  const finishLearning = (result: GameResult) => {
+    if (finished.current) return
+    finished.current = true
+    setState((current) => ({ ...current, progress: completeSession(current.progress, result) }))
+  }
+  const leaveLearning = () => { setLearningSession(null); setScreen('course') }
+
   const progress = { ...state.progress, streak: currentStreak(state.progress) }
 
   if (!state.profile || editingProfile) return <Onboarding initialProfile={editingProfile} onComplete={saveProfile} onCancel={editingProfile ? () => setEditingProfile(null) : undefined} />
+
+  if (learningSession) return <Suspense fallback={<div className="loading-screen" role="status">Preparing your practice…</div>}><LearningSession key={learningSession.key} session={learningSession} profile={state.profile} saved={saved} onFinish={finishLearning} onExit={leaveLearning} /></Suspense>
 
   if (gameMode && gameResult) {
     return <Suspense fallback={<div className="loading-screen" role="status">Getting your results…</div>}><ResultScreen result={gameResult} mode={gameMode} profile={state.profile} progress={progress} onDone={leaveGame} onReplay={() => { finished.current = false; setGameResult(null) }} /></Suspense>
@@ -133,11 +168,12 @@ export default function App() {
   }
 
   const content = (() => {
+    if (screen === 'course') return <CourseScreen profile={state.profile} progress={progress} words={learningWords} today={today} onLesson={startLesson} onReview={startReview} onPuzzles={() => setScreen('play')} />
     if (screen === 'play') return <PlayScreen profile={state.profile} progress={progress} words={words} onGame={startGame} />
-    if (screen === 'progress') return <ProgressScreen profile={state.profile} progress={progress} words={words} onEdit={editProfile} />
+    if (screen === 'progress') return <ProgressScreen profile={state.profile} progress={progress} words={learningWords} onEdit={editProfile} />
     if (screen === 'library') return <LibraryScreen active={state.profile.language} onSwitch={switchLanguage} />
     if (screen === 'leaderboard') return <LeaderboardScreen profile={state.profile} progress={progress} entries={leaders} />
-    return <Dashboard profile={state.profile} progress={progress} today={today} environment={state.environment} words={words} onNavigate={setScreen} onGame={startGame} onEnvironment={switchEnvironment} />
+    return <Dashboard profile={state.profile} progress={progress} today={today} environment={state.environment} words={learningWords} onNavigate={setScreen} onGame={startGame} onEnvironment={switchEnvironment} onLesson={startLesson} onReview={startReview} />
   })()
 
   return (
