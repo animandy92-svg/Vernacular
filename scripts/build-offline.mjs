@@ -9,13 +9,19 @@ const audio = [...new Set(Object.values(recordings).flatMap((recording) => [reco
 for (const path of audio) {
   if (!/^\/audio\/[a-zA-Z0-9_/-]+\.(mp3|ogg|wav|m4a)$/.test(path)) throw new Error(`Invalid native recording path: ${path}`)
 }
+const videoPhrases = JSON.parse(await readFile(new URL('../src/data/twi-video-phrases.json', import.meta.url), 'utf8'))
+for (const phrase of videoPhrases) {
+  if (!/^\/audio\/twi\/learnakan-\d{3}\.m4a$/.test(phrase.audio)) throw new Error(`Invalid video phrase audio path: ${phrase.audio}`)
+  const bytes = await readFile(new URL(phrase.audio.slice(1), directory))
+  if (bytes.length !== phrase.bytes || createHash('sha256').update(bytes).digest('hex') !== phrase.sha256) throw new Error(`Video phrase audio mismatch: ${phrase.number}`)
+}
 const lessons = JSON.parse(await readFile(new URL('../src/data/twi-lessons.json', import.meta.url), 'utf8'))
 for (const lesson of lessons) {
   if (!/^\/media\/twi\/[a-zA-Z0-9_-]+\.mp4$/.test(lesson.video)) throw new Error('Invalid lesson video path')
   const bytes = await readFile(new URL(lesson.video.slice(1), directory))
   if (bytes.length !== lesson.bytes || createHash('sha256').update(bytes).digest('hex') !== lesson.sha256) throw new Error(`Lesson media mismatch: ${lesson.id}`)
 }
-const core = ['/', '/manifest.webmanifest', '/icon.svg', ...assets, ...artwork, ...audio, ...lessons.map((lesson) => lesson.poster)].sort()
+const core = ['/', '/manifest.webmanifest', '/icon.svg', ...assets, ...artwork, ...audio, ...videoPhrases.map((phrase) => phrase.audio), ...lessons.map((lesson) => lesson.poster)].sort()
 const hash = createHash('sha256')
 for (const path of core) hash.update(await readFile(new URL(path === '/' ? 'index.html' : path.slice(1), directory)))
 const source = await readFile(new URL('../public/service-worker.js', import.meta.url), 'utf8')

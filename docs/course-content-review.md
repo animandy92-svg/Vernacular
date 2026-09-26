@@ -4,7 +4,7 @@ Generated from the application content. These are draft learning materials, not 
 
 For each language, ask a qualified speaker to check spelling, dialect, translation, context, cultural fit and the written pronunciation guides. Edit incorrect entries at their source. Recheck lesson questions after edits. Never approve an entire pack because one entry has been reviewed.
 
-Record normal and slow versions only after the text is approved. Keep written permission to distribute the recordings. Individual word clips are not supplied in this build. The separate Twi listening library includes the three user-supplied LearnAkan recordings with on-screen translations.
+Record normal and slow versions only after the text is approved. Keep written permission to distribute the recordings. The separate Twi listening library includes the three user-supplied LearnAkan recordings with on-screen translations. Twi's Listening Challenge also uses first-form excerpts cut from those videos; these retain LearnAkan attribution and are not presented as separately reviewed native recordings.
 
 ## Twi
 

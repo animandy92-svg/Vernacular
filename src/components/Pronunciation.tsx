@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { Volume2 } from 'lucide-react'
 import type { WordEntry } from '../types'
 import { nativeRecording } from '../lib/audio'
+import { twiVideoRecording } from '../lib/twi-video'
 
 export function Pronunciation({ entry, compact = false, nativeOnly = false }: { entry: WordEntry; compact?: boolean; nativeOnly?: boolean }) {
   const [message, setMessage] = useState('')
   const audio = useRef<HTMLAudioElement | null>(null)
   const recording = nativeRecording(entry.id, entry.word)
+  const videoRecording = twiVideoRecording(entry.id, entry.word)
   const guide = entry.phonetic ? ' Follow the written guide.' : ''
   useEffect(() => {
     setMessage('')
@@ -14,15 +16,17 @@ export function Pronunciation({ entry, compact = false, nativeOnly = false }: { 
   }, [entry.id])
   const play = async (slow = false) => {
     audio.current?.pause()
-    if (recording) {
+    if (recording || videoRecording) {
       try {
         window.speechSynthesis?.cancel()
-        const player = new Audio(slow ? recording.slow ?? recording.normal : recording.normal)
+        const player = new Audio(recording ? slow ? recording.slow ?? recording.normal : recording.normal : videoRecording!.audio)
         audio.current = player
-        if (slow && !recording.slow) player.playbackRate = 0.75
+        if (slow && !recording?.slow) player.playbackRate = 0.75
         player.onerror = () => setMessage('This recording could not be played. You can continue with text.')
         await player.play()
-        setMessage(`${recording.dialect} · ${recording.speaker}${slow ? ' · Slow playback' : ''}`)
+        setMessage(recording
+          ? `${recording.dialect} · ${recording.speaker}${slow ? ' · Slow playback' : ''}`
+          : `LearnAkan video excerpt${slow ? ' · Slow playback' : ''}`)
       } catch { setMessage('This recording could not be played. You can continue with text.') }
       return
     }
@@ -43,9 +47,9 @@ export function Pronunciation({ entry, compact = false, nativeOnly = false }: { 
     } catch { setMessage(`Audio is unavailable on this device.${guide}`) }
   }
   return <div className={`pronunciation ${compact ? 'pronunciation--compact' : ''}`}>
-    <button disabled={nativeOnly && !recording} className={compact ? 'audio-button' : 'listen-prompt'} onClick={() => void play()} aria-label={`${recording ? 'Hear' : 'Device audio for'} ${entry.word}`}><Volume2 size={20} />{!compact && (recording ? 'Listen' : nativeOnly ? 'Native audio coming soon' : 'Try device audio')}</button>
-    {recording && !compact && <button className="listen-prompt" onClick={() => void play(true)}>Listen slowly</button>}
-    {nativeOnly && !recording && <small className="audio-status">You can continue with text while recordings are prepared.</small>}
+    <button disabled={nativeOnly && !recording && !videoRecording} className={compact ? 'audio-button' : 'listen-prompt'} onClick={() => void play()} aria-label={`${recording || videoRecording ? 'Hear' : 'Device audio for'} ${entry.word}`}><Volume2 size={20} />{!compact && (recording || videoRecording ? 'Listen' : nativeOnly ? 'Native audio coming soon' : 'Try device audio')}</button>
+    {(recording || videoRecording) && !compact && <button className="listen-prompt" onClick={() => void play(true)}>Listen slowly</button>}
+    {nativeOnly && !recording && !videoRecording && <small className="audio-status">You can continue with text while recordings are prepared.</small>}
     {message && <small className="audio-status" role="status">{message}</small>}
   </div>
 }

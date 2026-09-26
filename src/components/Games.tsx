@@ -360,7 +360,7 @@ function ChoiceRound({ words, kind, onFinish, onExit }: Omit<GameProps, 'mode'> 
         {kind === 'picture' ? (
           <div className="picture-prompt" role="img" aria-label={picture.scene}><span>{picture.emoji}</span><small>{picture.scene}</small></div>
         ) : (
-          <div className="listening-prompt"><span><Volume2 size={38} /></span><Pronunciation entry={entry} /><small>{entry.phonetic}</small></div>
+          <div className="listening-prompt"><span><Volume2 size={38} /></span><Pronunciation entry={entry} />{entry.source === 'learnakan-video' ? <small>Audio: LearnAkan · phrase {entry.id.slice(-3)}</small> : entry.phonetic ? <small>{entry.phonetic}</small> : null}</div>
         )}
         <div className="choice-grid">{options.map((option) => <button className={`${selected === option.id ? 'selected' : ''} ${feedback === 'correct' && option.id === entry.id ? 'correct' : ''}`} key={option.id} onClick={() => choose(option)}>{kind === 'picture' ? option.word : option.translation}</button>)}</div>
         <FeedbackCard feedback={feedback} success={`${entry.word} means ${entry.translation}.`} retry={feedback === 'wrong' ? 'Listen or look once more, then choose again.' : entry.example} />

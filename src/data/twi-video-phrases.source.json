@@ -1,0 +1,2402 @@
+[
+  {
+    "number": 1,
+    "word": "akwaaba",
+    "translation": "welcome",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 9,
+    "endSeconds": 17.4
+  },
+  {
+    "number": 2,
+    "word": "maakye",
+    "translation": "good morning",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 36,
+    "endSeconds": 45.4
+  },
+  {
+    "number": 3,
+    "word": "maaha",
+    "translation": "good afternoon",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 62,
+    "endSeconds": 70.4
+  },
+  {
+    "number": 4,
+    "word": "maadwo",
+    "translation": "good evening",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 86,
+    "endSeconds": 94.4
+  },
+  {
+    "number": 5,
+    "word": "da yie",
+    "translation": "good night",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 109,
+    "endSeconds": 115.4
+  },
+  {
+    "number": 6,
+    "word": "mepaakyɛw",
+    "translation": "please",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 121,
+    "endSeconds": 130.4
+  },
+  {
+    "number": 7,
+    "word": "kafra",
+    "translation": "sorry",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 144,
+    "endSeconds": 150.4
+  },
+  {
+    "number": 8,
+    "word": "fa kyɛ me",
+    "translation": "forgive me",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 162,
+    "endSeconds": 169.4
+  },
+  {
+    "number": 9,
+    "word": "medaase",
+    "translation": "thanks; thank you",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 175,
+    "endSeconds": 184.4
+  },
+  {
+    "number": 10,
+    "word": "medaase pa ara",
+    "translation": "thank you very much",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 198,
+    "endSeconds": 206.4
+  },
+  {
+    "number": 11,
+    "word": "medaase pii",
+    "translation": "thanks a lot",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 211,
+    "endSeconds": 218.4
+  },
+  {
+    "number": 12,
+    "word": "ɛnyɛ hwee",
+    "translation": "no problem; that's okay",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 225,
+    "endSeconds": 233.4
+  },
+  {
+    "number": 13,
+    "word": "akyire yi",
+    "translation": "later",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 237,
+    "endSeconds": 244.4
+  },
+  {
+    "number": 14,
+    "word": "yɛbɛhyia",
+    "translation": "we shall meet",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 248,
+    "endSeconds": 255.4
+  },
+  {
+    "number": 15,
+    "word": "yɛbɛhyia akyire yi",
+    "translation": "we shall meet later",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 260,
+    "endSeconds": 270.4
+  },
+  {
+    "number": 16,
+    "word": "yɛbɛhyia (ɔ)kyena",
+    "translation": "we shall meet tomorrow",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 275,
+    "endSeconds": 284.4
+  },
+  {
+    "number": 17,
+    "word": "yɛbɛhyia Kwasiada",
+    "translation": "we shall meet on Sunday",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 288,
+    "endSeconds": 298.4
+  },
+  {
+    "number": 18,
+    "word": "ɛkwan so dwoodwoo!",
+    "translation": "safe trip!",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 302,
+    "endSeconds": 313.4
+  },
+  {
+    "number": 19,
+    "word": "aane",
+    "translation": "yes",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 317,
+    "endSeconds": 323.4
+  },
+  {
+    "number": 20,
+    "word": "dabi",
+    "translation": "no",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 326,
+    "endSeconds": 332.4
+  },
+  {
+    "number": 21,
+    "word": "ka no bio",
+    "translation": "say it again",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 336,
+    "endSeconds": 343.4
+  },
+  {
+    "number": 22,
+    "word": "mepaakyew ka no bio",
+    "translation": "please say it again",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 348,
+    "endSeconds": 360.4
+  },
+  {
+    "number": 23,
+    "word": "wose?",
+    "translation": "what did you say?; pardon",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 367,
+    "endSeconds": 373.4
+  },
+  {
+    "number": 24,
+    "word": "yɛnko",
+    "translation": "let's go",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 377,
+    "endSeconds": 383.4
+  },
+  {
+    "number": 25,
+    "word": "yɛnko kurom",
+    "translation": "let's go to town",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 387,
+    "endSeconds": 395.4
+  },
+  {
+    "number": 26,
+    "word": "yɛnko ayaresabea",
+    "translation": "let's go to the hospital",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 400,
+    "endSeconds": 413.4
+  },
+  {
+    "number": 27,
+    "word": "Wo ho te sɛn?",
+    "translation": "how are you?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 417,
+    "endSeconds": 425.4
+  },
+  {
+    "number": 28,
+    "word": "Ɛte sɛn?",
+    "translation": "how is it?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 430,
+    "endSeconds": 438.4
+  },
+  {
+    "number": 29,
+    "word": "me ho yɛ",
+    "translation": "I'm well",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 442,
+    "endSeconds": 450.4
+  },
+  {
+    "number": 30,
+    "word": "na wo ɛ?",
+    "translation": "and you?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 456,
+    "endSeconds": 464.4
+  },
+  {
+    "number": 31,
+    "word": "na wo nso ɛ?",
+    "translation": "and you?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 466,
+    "endSeconds": 474.4
+  },
+  {
+    "number": 32,
+    "word": "na wo nso wo ho te sɛn?",
+    "translation": "and how are you also?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 479,
+    "endSeconds": 489.4
+  },
+  {
+    "number": 33,
+    "word": "ɛyɛ",
+    "translation": "it is well",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 493,
+    "endSeconds": 499.4
+  },
+  {
+    "number": 34,
+    "word": "me nso me ho yɛ",
+    "translation": "I'm also well",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 503,
+    "endSeconds": 512.4
+  },
+  {
+    "number": 35,
+    "word": "(ɛ)deɛn na ɛrekɔ?",
+    "translation": "what's up?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 516,
+    "endSeconds": 525.4
+  },
+  {
+    "number": 36,
+    "word": "(ɛ)deɛn na ɛrekɔ so?",
+    "translation": "what's going on?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 529,
+    "endSeconds": 540.4
+  },
+  {
+    "number": 37,
+    "word": "(ɛ)nneɛma mu te sɛn?",
+    "translation": "how are things?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 545,
+    "endSeconds": 556.4
+  },
+  {
+    "number": 38,
+    "word": "biribiara bɔkɔɔ",
+    "translation": "everything's cool",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 560,
+    "endSeconds": 569.4
+  },
+  {
+    "number": 39,
+    "word": "wo din de sɛn?",
+    "translation": "what is your name?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 573,
+    "endSeconds": 582.4
+  },
+  {
+    "number": 40,
+    "word": "me din de Kofi",
+    "translation": "my name is Kofi",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 616,
+    "endSeconds": 629.75
+  },
+  {
+    "number": 41,
+    "word": "ɛyɛ me anigye sɛ yɛahyia",
+    "translation": "pleased to meet you",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 664,
+    "endSeconds": 677.75
+  },
+  {
+    "number": 42,
+    "word": "wofiri he?",
+    "translation": "where are you from?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 685,
+    "endSeconds": 694.4
+  },
+  {
+    "number": 43,
+    "word": "mefiri Gaana",
+    "translation": "I'm from Ghana",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 710,
+    "endSeconds": 718.4
+  },
+  {
+    "number": 44,
+    "word": "woyɛ deɛn ni?",
+    "translation": "what is your nationality/tribe?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 736,
+    "endSeconds": 746.4
+  },
+  {
+    "number": 45,
+    "word": "meyɛ Togoni",
+    "translation": "I'm Togolese",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 750,
+    "endSeconds": 759.4
+  },
+  {
+    "number": 46,
+    "word": "meyɛ Nkranni",
+    "translation": "I'm a Ga",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 763,
+    "endSeconds": 773.4
+  },
+  {
+    "number": 47,
+    "word": "meyɛ Amerekani",
+    "translation": "I'm American",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 777,
+    "endSeconds": 787.4
+  },
+  {
+    "number": 48,
+    "word": "wote he?",
+    "translation": "where do you live?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 791,
+    "endSeconds": 799.4
+  },
+  {
+    "number": 49,
+    "word": "mete Kumase",
+    "translation": "I live in Kumasi",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 815,
+    "endSeconds": 823.4
+  },
+  {
+    "number": 50,
+    "word": "mete Nkran",
+    "translation": "I live in Accra",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 827,
+    "endSeconds": 835.4
+  },
+  {
+    "number": 51,
+    "word": "mete London",
+    "translation": "I live in London",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 840,
+    "endSeconds": 848.4
+  },
+  {
+    "number": 52,
+    "word": "woadi mfeɛ sɛn?",
+    "translation": "how old are you?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 853,
+    "endSeconds": 862.4
+  },
+  {
+    "number": 53,
+    "word": "wowɔ mfeɛ sɛn?",
+    "translation": "how old are you?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 864,
+    "endSeconds": 873.4
+  },
+  {
+    "number": 54,
+    "word": "madi mfeɛ aduonu",
+    "translation": "I'm 20 years old",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 878,
+    "endSeconds": 889.4
+  },
+  {
+    "number": 55,
+    "word": "madi mfeɛ aduasa",
+    "translation": "I'm ɔ0 years old",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 894,
+    "endSeconds": 904.4
+  },
+  {
+    "number": 56,
+    "word": "wote Twi?",
+    "translation": "do you understand Twi?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 910,
+    "endSeconds": 918.4
+  },
+  {
+    "number": 57,
+    "word": "woka Twi?",
+    "translation": "do you speak Twi?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 923,
+    "endSeconds": 931.4
+  },
+  {
+    "number": 58,
+    "word": "wote Borofo?",
+    "translation": "do you understand English?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 936,
+    "endSeconds": 945.4
+  },
+  {
+    "number": 59,
+    "word": "woka Borofo?",
+    "translation": "do you speak English?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 950,
+    "endSeconds": 958.4
+  },
+  {
+    "number": 60,
+    "word": "aane, mete Twi",
+    "translation": "yes, I understand Twi",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 964,
+    "endSeconds": 975.4
+  },
+  {
+    "number": 61,
+    "word": "dabi, mente Twi",
+    "translation": "no, I don't understand Twi",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 981,
+    "endSeconds": 993.4
+  },
+  {
+    "number": 62,
+    "word": "aane, meka Borofo",
+    "translation": "yes, I speak English",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 998,
+    "endSeconds": 1010.4
+  },
+  {
+    "number": 63,
+    "word": "dabi, menka Borofo",
+    "translation": "no, I don't speak English",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1016,
+    "endSeconds": 1028.4
+  },
+  {
+    "number": 64,
+    "word": "aane, mete Borofo",
+    "translation": "yes, I understand English",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1034,
+    "endSeconds": 1045.4
+  },
+  {
+    "number": 65,
+    "word": "dabi, mente Borofo",
+    "translation": "no, I don't understand English",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1052,
+    "endSeconds": 1065.4
+  },
+  {
+    "number": 66,
+    "word": "kakra",
+    "translation": "a little",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1069,
+    "endSeconds": 1076.4
+  },
+  {
+    "number": 67,
+    "word": "mete kakra",
+    "translation": "I understand a little",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1081,
+    "endSeconds": 1090.4
+  },
+  {
+    "number": 68,
+    "word": "meka Twi kakra",
+    "translation": "I speak a little Twi",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1096,
+    "endSeconds": 1106.4
+  },
+  {
+    "number": 69,
+    "word": "wote aseɛ?",
+    "translation": "do you understand?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1110,
+    "endSeconds": 1120.4
+  },
+  {
+    "number": 70,
+    "word": "woate aseɛ?",
+    "translation": "have you understood?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1125,
+    "endSeconds": 1134.4
+  },
+  {
+    "number": 71,
+    "word": "aane, mete aseɛ",
+    "translation": "yes, I understand",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1139,
+    "endSeconds": 1151.4
+  },
+  {
+    "number": 72,
+    "word": "dabi, mente aseɛ",
+    "translation": "no, I don't understand",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1158,
+    "endSeconds": 1170.4
+  },
+  {
+    "number": 73,
+    "word": "aane, mate aseɛ",
+    "translation": "yes, I have understood",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1176,
+    "endSeconds": 1189.4
+  },
+  {
+    "number": 74,
+    "word": "dabi, mentee aseɛ",
+    "translation": "no, I have not understood",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1195,
+    "endSeconds": 1208.75
+  },
+  {
+    "number": 75,
+    "word": "boa me",
+    "translation": "help me",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1213,
+    "endSeconds": 1220.4
+  },
+  {
+    "number": 76,
+    "word": "wobɛtumi aboa me?",
+    "translation": "can you help me?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1224,
+    "endSeconds": 1236.4
+  },
+  {
+    "number": 77,
+    "word": "mehia mmoa",
+    "translation": "I need help",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1240,
+    "endSeconds": 1248.4
+  },
+  {
+    "number": 78,
+    "word": "mehia wo mmoa",
+    "translation": "I need your help",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1252,
+    "endSeconds": 1263.4
+  },
+  {
+    "number": 79,
+    "word": "menim",
+    "translation": "I know",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1267,
+    "endSeconds": 1273.4
+  },
+  {
+    "number": 80,
+    "word": "mennim",
+    "translation": "I don't know",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1277,
+    "endSeconds": 1284.4
+  },
+  {
+    "number": 81,
+    "word": "wonim me?",
+    "translation": "do you know me?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1288,
+    "endSeconds": 1297.4
+  },
+  {
+    "number": 82,
+    "word": "aane, menim wo",
+    "translation": "yes, I know you",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1302,
+    "endSeconds": 1313.4
+  },
+  {
+    "number": 83,
+    "word": "dabi, mennim wo",
+    "translation": "no, I don't know you",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1319,
+    "endSeconds": 1331.4
+  },
+  {
+    "number": 84,
+    "word": "wonnim me?",
+    "translation": "you don't know me?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1335,
+    "endSeconds": 1344.4
+  },
+  {
+    "number": 85,
+    "word": "aane, mennim wo",
+    "translation": "yes, I don't know you",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1346,
+    "endSeconds": 1359.75
+  },
+  {
+    "number": 86,
+    "word": "m'adwene ayɛ me naa",
+    "translation": "I'm confused",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1364,
+    "endSeconds": 1376.4
+  },
+  {
+    "number": 87,
+    "word": "ɛkyerɛ m'adwene",
+    "translation": "it confuses me",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1381,
+    "endSeconds": 1391.4
+  },
+  {
+    "number": 88,
+    "word": "woyɛ adwuma bɛn?",
+    "translation": "what work do you do?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1396,
+    "endSeconds": 1409.4
+  },
+  {
+    "number": 89,
+    "word": "meyɛ (ɔ)kyerɛkyerɛni",
+    "translation": "I'm a teacher",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1429,
+    "endSeconds": 1442.75
+  },
+  {
+    "number": 90,
+    "word": "meyɛ (ɔ)kuani",
+    "translation": "I'm a farmer",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1447,
+    "endSeconds": 1459.4
+  },
+  {
+    "number": 91,
+    "word": "meyɛ (ɔ)yaresafoɔ",
+    "translation": "I'm a doctor",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1463,
+    "endSeconds": 1476.4
+  },
+  {
+    "number": 92,
+    "word": "woyɛ adwuma wɔ he?",
+    "translation": "where do you work?",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1480,
+    "endSeconds": 1493.75
+  },
+  {
+    "number": 93,
+    "word": "meyɛ adwuma wɔ Nkran",
+    "translation": "I work in Accra",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1514,
+    "endSeconds": 1527.75
+  },
+  {
+    "number": 94,
+    "word": "meyɛ adwuma wɔ ayaresabea",
+    "translation": "I work in a hospital",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1533,
+    "endSeconds": 1546.75
+  },
+  {
+    "number": 95,
+    "word": "meyɛ me ara m'adwuma",
+    "translation": "I'm self-employed",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1556,
+    "endSeconds": 1569.4
+  },
+  {
+    "number": 96,
+    "word": "menyɛ adwuma",
+    "translation": "I don't work",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1573,
+    "endSeconds": 1582.4
+  },
+  {
+    "number": 97,
+    "word": "menni adwuma",
+    "translation": "I don't have a job",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1586,
+    "endSeconds": 1597.4
+  },
+  {
+    "number": 98,
+    "word": "magyae m'adwuma",
+    "translation": "I have left my job",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1602,
+    "endSeconds": 1612.4
+  },
+  {
+    "number": 99,
+    "word": "mewɔ ahomegyeɛ mu",
+    "translation": "I'm on retirement",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1616,
+    "endSeconds": 1629.75
+  },
+  {
+    "number": 100,
+    "word": "meyɛ (ɔ)sukuuni",
+    "translation": "I'm a student",
+    "sourceVideo": "phrases-1-100-8fe722acc0-aac64.mp4",
+    "startSeconds": 1634,
+    "endSeconds": 1646.4
+  },
+  {
+    "number": 101,
+    "word": "yoo",
+    "translation": "okay",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 6,
+    "endSeconds": 13.4
+  },
+  {
+    "number": 102,
+    "word": "gye",
+    "translation": "take (it)",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 17,
+    "endSeconds": 23.4
+  },
+  {
+    "number": 103,
+    "word": "sikakorabea no wɔ he?",
+    "translation": "where is the bank?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 28,
+    "endSeconds": 40.4
+  },
+  {
+    "number": 104,
+    "word": "agyananbea no wɔ he?",
+    "translation": "where is the toilet?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 62,
+    "endSeconds": 75.75
+  },
+  {
+    "number": 105,
+    "word": "ahemfie no wɔ he?",
+    "translation": "where is the palace?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 99,
+    "endSeconds": 109.4
+  },
+  {
+    "number": 106,
+    "word": "ahyɛn gyinabea no wɔ he?",
+    "translation": "where is the lorry station?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 129,
+    "endSeconds": 141.4
+  },
+  {
+    "number": 107,
+    "word": "wiemhyɛn gyinabea no wɔ he?",
+    "translation": "where is the airport?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 161,
+    "endSeconds": 174.75
+  },
+  {
+    "number": 108,
+    "word": "hwan?",
+    "translation": "who?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 197,
+    "endSeconds": 203.4
+  },
+  {
+    "number": 109,
+    "word": "hwan ni(e)?",
+    "translation": "who is this?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 207,
+    "endSeconds": 214.4
+  },
+  {
+    "number": 110,
+    "word": "aden?",
+    "translation": "why?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 218,
+    "endSeconds": 225.4
+  },
+  {
+    "number": 111,
+    "word": "aden na woresu?",
+    "translation": "why are you crying?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 230,
+    "endSeconds": 241.4
+  },
+  {
+    "number": 112,
+    "word": "(ɛ)he?",
+    "translation": "where?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 245,
+    "endSeconds": 251.4
+  },
+  {
+    "number": 113,
+    "word": "akonnwa no wɔ he?",
+    "translation": "where is the chair?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 256,
+    "endSeconds": 266.4
+  },
+  {
+    "number": 114,
+    "word": "sɛn na yɛka ... wɔ Twi mu?",
+    "translation": "how do we say ... in Twi?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 287,
+    "endSeconds": 300.75
+  },
+  {
+    "number": 115,
+    "word": "sɛn na yɛka “go” wɔ Twi mu?",
+    "translation": "how do we say \"go\" in Twi?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 311,
+    "endSeconds": 324.75
+  },
+  {
+    "number": 116,
+    "word": "sɛn na yɛka “shirt” wɔ Twi mu?",
+    "translation": "how do we say \"shirt\" in Twi?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 334,
+    "endSeconds": 347.75
+  },
+  {
+    "number": 117,
+    "word": "(ɛ)deɛn ni(e)?",
+    "translation": "what is this?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 354,
+    "endSeconds": 360.4
+  },
+  {
+    "number": 118,
+    "word": "Ɛyɛ ...",
+    "translation": "it is ...",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 365,
+    "endSeconds": 371.4
+  },
+  {
+    "number": 119,
+    "word": "ɛyɛ afe",
+    "translation": "it is a comb",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 375,
+    "endSeconds": 384.4
+  },
+  {
+    "number": 120,
+    "word": "ɛyɛ akonnwa",
+    "translation": "it is a chair",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 388,
+    "endSeconds": 397.4
+  },
+  {
+    "number": 121,
+    "word": "ɛyɛ nwoma",
+    "translation": "it is a book",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 401,
+    "endSeconds": 410.4
+  },
+  {
+    "number": 122,
+    "word": "ɛyɛ krataa",
+    "translation": "it is a piece of paper",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 415,
+    "endSeconds": 424.4
+  },
+  {
+    "number": 123,
+    "word": "ɛyɛ tweredua",
+    "translation": "it is a pen",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 428,
+    "endSeconds": 437.4
+  },
+  {
+    "number": 124,
+    "word": "(ɛ)deɛn ne no?",
+    "translation": "what is that?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 442,
+    "endSeconds": 449.4
+  },
+  {
+    "number": 125,
+    "word": "ɛyɛ mpaboa",
+    "translation": "it is a pair of shoes",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 454,
+    "endSeconds": 465.4
+  },
+  {
+    "number": 126,
+    "word": "wo ne me yɛ adwene?",
+    "translation": "do you agree with me?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 469,
+    "endSeconds": 480.4
+  },
+  {
+    "number": 127,
+    "word": "me ne wo yɛ adwene",
+    "translation": "I agree with you",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 484,
+    "endSeconds": 495.4
+  },
+  {
+    "number": 128,
+    "word": "me ne wo nyɛ adwene",
+    "translation": "I don't agree with you",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 500,
+    "endSeconds": 511.4
+  },
+  {
+    "number": 129,
+    "word": "ɛmfa ho",
+    "translation": "it doesn't matter",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 515,
+    "endSeconds": 522.4
+  },
+  {
+    "number": 130,
+    "word": "ɛmfa me ho",
+    "translation": "I don't care; it doesn't concern me",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 530,
+    "endSeconds": 537.4
+  },
+  {
+    "number": 131,
+    "word": "ɛmfa wo ho",
+    "translation": "it doesn't concern you",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 542,
+    "endSeconds": 550.4
+  },
+  {
+    "number": 132,
+    "word": "meyare",
+    "translation": "I'm sick",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 554,
+    "endSeconds": 561.4
+  },
+  {
+    "number": 133,
+    "word": "me ho mfa me",
+    "translation": "I'm not well",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 565,
+    "endSeconds": 573.4
+  },
+  {
+    "number": 134,
+    "word": "me ti pae me",
+    "translation": "my head aches",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 587,
+    "endSeconds": 594.4
+  },
+  {
+    "number": 135,
+    "word": "me yam yɛ me ya",
+    "translation": "my stomach aches",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 611,
+    "endSeconds": 621.4
+  },
+  {
+    "number": 136,
+    "word": "mabre",
+    "translation": "I'm tired",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 625,
+    "endSeconds": 631.4
+  },
+  {
+    "number": 137,
+    "word": "ɛkom de me",
+    "translation": "I'm hungry",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 636,
+    "endSeconds": 643.4
+  },
+  {
+    "number": 138,
+    "word": "nsukom de me",
+    "translation": "I'm thirsty",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 647,
+    "endSeconds": 655.4
+  },
+  {
+    "number": 139,
+    "word": "dwonsɔ de me",
+    "translation": "I feel like peeing",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 660,
+    "endSeconds": 668.4
+  },
+  {
+    "number": 140,
+    "word": "ɔhyew wɔm",
+    "translation": "it's hot",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 674,
+    "endSeconds": 682.4
+  },
+  {
+    "number": 141,
+    "word": "ohyew de me",
+    "translation": "I feel hot",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 686,
+    "endSeconds": 695.4
+  },
+  {
+    "number": 142,
+    "word": "ɛyɛ hye",
+    "translation": "it's hot",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 701,
+    "endSeconds": 707.4
+  },
+  {
+    "number": 143,
+    "word": "ahuhuro wɔm",
+    "translation": "it's warm",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 713,
+    "endSeconds": 722.4
+  },
+  {
+    "number": 144,
+    "word": "ahuhuro de me",
+    "translation": "I feel warm",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 727,
+    "endSeconds": 737.4
+  },
+  {
+    "number": 145,
+    "word": "awɔ wɔm",
+    "translation": "it's cold",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 743,
+    "endSeconds": 751.4
+  },
+  {
+    "number": 146,
+    "word": "awo de me",
+    "translation": "I feel cold",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 756,
+    "endSeconds": 764.4
+  },
+  {
+    "number": 147,
+    "word": "ɛyɛ nwunu",
+    "translation": "it's cold",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 770,
+    "endSeconds": 776.4
+  },
+  {
+    "number": 148,
+    "word": "m'ani aha",
+    "translation": "I'm bored",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 780,
+    "endSeconds": 789.4
+  },
+  {
+    "number": 149,
+    "word": "me were fie",
+    "translation": "I forgot",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 793,
+    "endSeconds": 802.4
+  },
+  {
+    "number": 150,
+    "word": "me were afi",
+    "translation": "I have forgotten",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 806,
+    "endSeconds": 815.4
+  },
+  {
+    "number": 151,
+    "word": "(ɛ)mma wo were mmfi",
+    "translation": "don't forget",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 820,
+    "endSeconds": 831.4
+  },
+  {
+    "number": 152,
+    "word": "woreyɛ deɛn?",
+    "translation": "what are you doing?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 835,
+    "endSeconds": 843.4
+  },
+  {
+    "number": 153,
+    "word": "merepra",
+    "translation": "I'm sweeping",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 858,
+    "endSeconds": 865.4
+  },
+  {
+    "number": 154,
+    "word": "merenoa aduane",
+    "translation": "I'm cooking",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 869,
+    "endSeconds": 878.4
+  },
+  {
+    "number": 155,
+    "word": "meresi nnooma",
+    "translation": "I'm washing",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 882,
+    "endSeconds": 891.4
+  },
+  {
+    "number": 156,
+    "word": "adeɛ akye",
+    "translation": "it's morning",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 895,
+    "endSeconds": 903.4
+  },
+  {
+    "number": 157,
+    "word": "awia abɔ",
+    "translation": "it's afternoon",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 908,
+    "endSeconds": 916.4
+  },
+  {
+    "number": 158,
+    "word": "adeɛ asa",
+    "translation": "it's evening; it's late",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 923,
+    "endSeconds": 932.4
+  },
+  {
+    "number": 159,
+    "word": "m'ani kum",
+    "translation": "I feel sleepy",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 936,
+    "endSeconds": 944.4
+  },
+  {
+    "number": 160,
+    "word": "m'ani so biri me",
+    "translation": "I feel dizzy",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 948,
+    "endSeconds": 957.4
+  },
+  {
+    "number": 161,
+    "word": "me bo fono me",
+    "translation": "I feel nauseous",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 962,
+    "endSeconds": 971.4
+  },
+  {
+    "number": 162,
+    "word": "mempe saa",
+    "translation": "I don't like that",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 975,
+    "endSeconds": 983.4
+  },
+  {
+    "number": 163,
+    "word": "nya abotere",
+    "translation": "have patience",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 987,
+    "endSeconds": 996.4
+  },
+  {
+    "number": 164,
+    "word": "mayera",
+    "translation": "I'm lost",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1000,
+    "endSeconds": 1007.4
+  },
+  {
+    "number": 165,
+    "word": "gyae!",
+    "translation": "stop!",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1011,
+    "endSeconds": 1017.4
+  },
+  {
+    "number": 166,
+    "word": "gyae saa!",
+    "translation": "stop that!",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1021,
+    "endSeconds": 1028.4
+  },
+  {
+    "number": 167,
+    "word": "gyae deɛ woreye no",
+    "translation": "stop what you're doing",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1033,
+    "endSeconds": 1043.4
+  },
+  {
+    "number": 168,
+    "word": "mepɛ ...",
+    "translation": "I like ...",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1047,
+    "endSeconds": 1054.4
+  },
+  {
+    "number": 169,
+    "word": "mepe akenkan",
+    "translation": "I like reading",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1058,
+    "endSeconds": 1068.4
+  },
+  {
+    "number": 170,
+    "word": "mepɛ asa",
+    "translation": "I like dancing",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1073,
+    "endSeconds": 1081.4
+  },
+  {
+    "number": 171,
+    "word": "mepe nnwom",
+    "translation": "I like music",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1086,
+    "endSeconds": 1095.4
+  },
+  {
+    "number": 172,
+    "word": "mempɛ ...",
+    "translation": "I don't like ...",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1100,
+    "endSeconds": 1107.4
+  },
+  {
+    "number": 173,
+    "word": "mempɛ aduane",
+    "translation": "I don't like food",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1112,
+    "endSeconds": 1121.4
+  },
+  {
+    "number": 174,
+    "word": "wowɔ he?",
+    "translation": "where are you?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1126,
+    "endSeconds": 1133.4
+  },
+  {
+    "number": 175,
+    "word": "mewɔ ha",
+    "translation": "I'm here",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1137,
+    "endSeconds": 1145.4
+  },
+  {
+    "number": 176,
+    "word": "mewɔ fie",
+    "translation": "I'm home",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1149,
+    "endSeconds": 1157.4
+  },
+  {
+    "number": 177,
+    "word": "mewɔ asɔre",
+    "translation": "I'm at church",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1161,
+    "endSeconds": 1170.4
+  },
+  {
+    "number": 178,
+    "word": "worekɔ he?",
+    "translation": "where are you going?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1175,
+    "endSeconds": 1182.4
+  },
+  {
+    "number": 179,
+    "word": "merekɔ sukuu",
+    "translation": "I'm going to school",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1187,
+    "endSeconds": 1196.4
+  },
+  {
+    "number": 180,
+    "word": "merekɔ adwuma",
+    "translation": "I'm going to work",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1200,
+    "endSeconds": 1209.4
+  },
+  {
+    "number": 181,
+    "word": "merekɔ kurom",
+    "translation": "I'm going to town",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1213,
+    "endSeconds": 1221.4
+  },
+  {
+    "number": 182,
+    "word": "merekɔdware",
+    "translation": "I'm going to bathe",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1226,
+    "endSeconds": 1234.4
+  },
+  {
+    "number": 183,
+    "word": "merekɔda",
+    "translation": "I'm going to sleep",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1239,
+    "endSeconds": 1246.4
+  },
+  {
+    "number": 184,
+    "word": "merekɔnoa aduane",
+    "translation": "I'm going to cook",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1251,
+    "endSeconds": 1261.4
+  },
+  {
+    "number": 185,
+    "word": "wopɛ deɛn?",
+    "translation": "what do you want?",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1265,
+    "endSeconds": 1273.4
+  },
+  {
+    "number": 186,
+    "word": "mepɛ ...",
+    "translation": "I want ...",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1278,
+    "endSeconds": 1284.4
+  },
+  {
+    "number": 187,
+    "word": "mepɛ asikyire",
+    "translation": "I want sugar",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1289,
+    "endSeconds": 1299.4
+  },
+  {
+    "number": 188,
+    "word": "mepɛ nkyene",
+    "translation": "I want salt",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1304,
+    "endSeconds": 1312.4
+  },
+  {
+    "number": 189,
+    "word": "mepɛ asomdwoeɛ",
+    "translation": "I want peace",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1317,
+    "endSeconds": 1327.4
+  },
+  {
+    "number": 190,
+    "word": "m'ani agye",
+    "translation": "I'm happy",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1331,
+    "endSeconds": 1339.4
+  },
+  {
+    "number": 191,
+    "word": "me were aho",
+    "translation": "I'm sad",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1343,
+    "endSeconds": 1352.4
+  },
+  {
+    "number": 192,
+    "word": "hwe yie",
+    "translation": "be careful",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1356,
+    "endSeconds": 1364.4
+  },
+  {
+    "number": 193,
+    "word": "maye krado",
+    "translation": "I'm ready",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1368,
+    "endSeconds": 1379.4
+  },
+  {
+    "number": 194,
+    "word": "di m'akyi",
+    "translation": "follow me",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1383,
+    "endSeconds": 1392.4
+  },
+  {
+    "number": 195,
+    "word": "me nso saa ara",
+    "translation": "me too",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1396,
+    "endSeconds": 1406.4
+  },
+  {
+    "number": 196,
+    "word": "mo!",
+    "translation": "good job!; kudos!",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1413,
+    "endSeconds": 1419.4
+  },
+  {
+    "number": 197,
+    "word": "woayɛ adeɛ",
+    "translation": "you've done well",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1424,
+    "endSeconds": 1433.4
+  },
+  {
+    "number": 198,
+    "word": "woayɛ adeɛ pa ara",
+    "translation": "you've done very well",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1437,
+    "endSeconds": 1448.4
+  },
+  {
+    "number": 199,
+    "word": "sore",
+    "translation": "get up",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1452,
+    "endSeconds": 1459.4
+  },
+  {
+    "number": 200,
+    "word": "pue",
+    "translation": "get out",
+    "sourceVideo": "phrases-101-200-2ae2b124df-aac64.mp4",
+    "startSeconds": 1464,
+    "endSeconds": 1475.4
+  },
+  {
+    "number": 201,
+    "word": "meresɔre",
+    "translation": "I am getting up",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 7,
+    "endSeconds": 15.4
+  },
+  {
+    "number": 202,
+    "word": "merehram",
+    "translation": "I am yawning",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 20,
+    "endSeconds": 27.4
+  },
+  {
+    "number": 203,
+    "word": "meretwe me mu",
+    "translation": "I am stretching",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 32,
+    "endSeconds": 41.4
+  },
+  {
+    "number": 204,
+    "word": "mereto me mpa",
+    "translation": "I am making my bed",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 46,
+    "endSeconds": 56.4
+  },
+  {
+    "number": 205,
+    "word": "meredwonsɔ",
+    "translation": "I am peeing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 60,
+    "endSeconds": 70.4
+  },
+  {
+    "number": 206,
+    "word": "meregya me nan",
+    "translation": "I am pooping",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 85,
+    "endSeconds": 93.4
+  },
+  {
+    "number": 207,
+    "word": "merehohoro m'anim",
+    "translation": "I am washing my face",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 99,
+    "endSeconds": 108.4
+  },
+  {
+    "number": 208,
+    "word": "meretwitwi me se",
+    "translation": "I am brushing my teeth",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 113,
+    "endSeconds": 123.4
+  },
+  {
+    "number": 209,
+    "word": "meredware",
+    "translation": "I am bathing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 127,
+    "endSeconds": 134.4
+  },
+  {
+    "number": 210,
+    "word": "merepopa me ho",
+    "translation": "I am drying off",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 139,
+    "endSeconds": 147.4
+  },
+  {
+    "number": 211,
+    "word": "meresra",
+    "translation": "I am applying lotion",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 152,
+    "endSeconds": 159.4
+  },
+  {
+    "number": 212,
+    "word": "merenunu me tirim",
+    "translation": "I am combing my hair",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 164,
+    "endSeconds": 173.4
+  },
+  {
+    "number": 213,
+    "word": "merebo me ti",
+    "translation": "I am braiding my hair",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 178,
+    "endSeconds": 186.4
+  },
+  {
+    "number": 214,
+    "word": "meresiesie me ho",
+    "translation": "I am dressing up",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 190,
+    "endSeconds": 199.4
+  },
+  {
+    "number": 215,
+    "word": "mereyi me ho",
+    "translation": "I am undressing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 204,
+    "endSeconds": 212.4
+  },
+  {
+    "number": 216,
+    "word": "mereyi m'atadeɛ",
+    "translation": "I am taking off my shirt/dress",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 219,
+    "endSeconds": 228.4
+  },
+  {
+    "number": 217,
+    "word": "mereyi me mpaboa",
+    "translation": "I am taking off my shoes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 233,
+    "endSeconds": 241.4
+  },
+  {
+    "number": 218,
+    "word": "merehyɛ atadeɛ",
+    "translation": "I am putting on a dress/shirt",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 249,
+    "endSeconds": 257.4
+  },
+  {
+    "number": 219,
+    "word": "merehyɛ mpaboa",
+    "translation": "I am putting on footwear/shoes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 263,
+    "endSeconds": 271.4
+  },
+  {
+    "number": 220,
+    "word": "merenoa aduane",
+    "translation": "I am cooking",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 276,
+    "endSeconds": 284.4
+  },
+  {
+    "number": 221,
+    "word": "mereka m'aduane hyɛ",
+    "translation": "I am heating up my food",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 290,
+    "endSeconds": 300.4
+  },
+  {
+    "number": 222,
+    "word": "merekyɛ kosua",
+    "translation": "I am frying an egg",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 305,
+    "endSeconds": 314.4
+  },
+  {
+    "number": 223,
+    "word": "merehohoro me nsa",
+    "translation": "I am washing my hands",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 319,
+    "endSeconds": 329.4
+  },
+  {
+    "number": 224,
+    "word": "meredidi",
+    "translation": "I am eating",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 334,
+    "endSeconds": 341.4
+  },
+  {
+    "number": 225,
+    "word": "meredi anopa aduane",
+    "translation": "I am eating breakfast",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 346,
+    "endSeconds": 357.4
+  },
+  {
+    "number": 226,
+    "word": "meredi awia aduane",
+    "translation": "I am eating lunch",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 362,
+    "endSeconds": 373.4
+  },
+  {
+    "number": 227,
+    "word": "meredi anwummere aduane",
+    "translation": "I am eating dinner",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 378,
+    "endSeconds": 388.4
+  },
+  {
+    "number": 228,
+    "word": "meretafere me nsa",
+    "translation": "I am licking my fingers",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 394,
+    "endSeconds": 404.4
+  },
+  {
+    "number": 229,
+    "word": "merekeesu",
+    "translation": "I am belching",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 408,
+    "endSeconds": 416.4
+  },
+  {
+    "number": 230,
+    "word": "merenom nsuo",
+    "translation": "I am drinking water",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 421,
+    "endSeconds": 430.4
+  },
+  {
+    "number": 231,
+    "word": "merenom nsa",
+    "translation": "I am drinking alcohol",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 435,
+    "endSeconds": 443.4
+  },
+  {
+    "number": 232,
+    "word": "merenom bobesa",
+    "translation": "I am drinking wine",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 448,
+    "endSeconds": 457.4
+  },
+  {
+    "number": 233,
+    "word": "meretwitwi adwareɛ",
+    "translation": "I am scrubbing the bathroom",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 462,
+    "endSeconds": 472.4
+  },
+  {
+    "number": 234,
+    "word": "merehohoro nkukuom",
+    "translation": "I am doing the dishes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 477,
+    "endSeconds": 486.4
+  },
+  {
+    "number": 235,
+    "word": "meretwitwi nkukuom",
+    "translation": "I am scrubbing the dishes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 491,
+    "endSeconds": 501.4
+  },
+  {
+    "number": 236,
+    "word": "meresiesie fie",
+    "translation": "I am tidying up the house",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 506,
+    "endSeconds": 516.4
+  },
+  {
+    "number": 237,
+    "word": "merepra",
+    "translation": "I am sweeping",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 520,
+    "endSeconds": 527.4
+  },
+  {
+    "number": 238,
+    "word": "merepopa fam",
+    "translation": "I am mopping the floor",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 532,
+    "endSeconds": 540.4
+  },
+  {
+    "number": 239,
+    "word": "meresi nneɛma",
+    "translation": "I am washing clothes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 545,
+    "endSeconds": 554.4
+  },
+  {
+    "number": 240,
+    "word": "merehata nneɛma",
+    "translation": "I am hanging clothes to dry",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 560,
+    "endSeconds": 570.4
+  },
+  {
+    "number": 241,
+    "word": "merebobo nneɛma",
+    "translation": "I am folding clothes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 575,
+    "endSeconds": 584.4
+  },
+  {
+    "number": 242,
+    "word": "mereto nneɛma",
+    "translation": "I am ironing (clothes)",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 589,
+    "endSeconds": 598.4
+  },
+  {
+    "number": 243,
+    "word": "merehohoro me mpaboa",
+    "translation": "I am washing my shoes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 604,
+    "endSeconds": 612.4
+  },
+  {
+    "number": 244,
+    "word": "merebubu me mmowere",
+    "translation": "I am cutting my nails",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 618,
+    "endSeconds": 627.4
+  },
+  {
+    "number": 245,
+    "word": "merepopa me nsa",
+    "translation": "I am wiping my hands",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 632,
+    "endSeconds": 641.4
+  },
+  {
+    "number": 246,
+    "word": "meretiti me ho",
+    "translation": "I am scratching myself",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 646,
+    "endSeconds": 654.4
+  },
+  {
+    "number": 247,
+    "word": "meretiti me tirim",
+    "translation": "I am scratching my head",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 659,
+    "endSeconds": 669.4
+  },
+  {
+    "number": 248,
+    "word": "mereposa m'ani",
+    "translation": "I am scratching/rubbing my eyes",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 674,
+    "endSeconds": 682.4
+  },
+  {
+    "number": 249,
+    "word": "merehem",
+    "translation": "I am blowing my nose",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 688,
+    "endSeconds": 694.4
+  },
+  {
+    "number": 250,
+    "word": "merete ntasuo",
+    "translation": "I am spitting",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 699,
+    "endSeconds": 708.4
+  },
+  {
+    "number": 251,
+    "word": "merete mfifire",
+    "translation": "I am sweating",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 712,
+    "endSeconds": 721.4
+  },
+  {
+    "number": 252,
+    "word": "meretie",
+    "translation": "I am listening",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 725,
+    "endSeconds": 732.4
+  },
+  {
+    "number": 253,
+    "word": "meretie nnwom",
+    "translation": "I am listening to music",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 737,
+    "endSeconds": 746.4
+  },
+  {
+    "number": 254,
+    "word": "mereto dwom",
+    "translation": "I am singing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 750,
+    "endSeconds": 758.4
+  },
+  {
+    "number": 255,
+    "word": "merehwe sini",
+    "translation": "I am watching a movie",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 763,
+    "endSeconds": 771.4
+  },
+  {
+    "number": 256,
+    "word": "mereye adwuma",
+    "translation": "I am working",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 775,
+    "endSeconds": 784.4
+  },
+  {
+    "number": 257,
+    "word": "meredi agoro",
+    "translation": "I am playing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 788,
+    "endSeconds": 796.4
+  },
+  {
+    "number": 258,
+    "word": "meresere",
+    "translation": "I am laughing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 801,
+    "endSeconds": 808.4
+  },
+  {
+    "number": 259,
+    "word": "meresu",
+    "translation": "I am crying",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 812,
+    "endSeconds": 819.4
+  },
+  {
+    "number": 260,
+    "word": "merebo me ti nko",
+    "translation": "I am nodding",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 823,
+    "endSeconds": 832.4
+  },
+  {
+    "number": 261,
+    "word": "merewoso me ti",
+    "translation": "I am shaking my head",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 837,
+    "endSeconds": 845.4
+  },
+  {
+    "number": 262,
+    "word": "merenante",
+    "translation": "I am walking",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 850,
+    "endSeconds": 857.4
+  },
+  {
+    "number": 263,
+    "word": "meretu mpasa",
+    "translation": "I am strolling",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 862,
+    "endSeconds": 870.4
+  },
+  {
+    "number": 264,
+    "word": "merekyini",
+    "translation": "I am roaming",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 874,
+    "endSeconds": 881.4
+  },
+  {
+    "number": 265,
+    "word": "merehuri",
+    "translation": "I am jumping",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 886,
+    "endSeconds": 893.4
+  },
+  {
+    "number": 266,
+    "word": "meretu ammirika",
+    "translation": "I am running",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 911,
+    "endSeconds": 919.4
+  },
+  {
+    "number": 267,
+    "word": "meretenetene m'apom",
+    "translation": "I am exercising",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 924,
+    "endSeconds": 934.4
+  },
+  {
+    "number": 268,
+    "word": "meresa",
+    "translation": "I am dancing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 938,
+    "endSeconds": 945.4
+  },
+  {
+    "number": 269,
+    "word": "merebɔ mpae",
+    "translation": "I am praying",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 950,
+    "endSeconds": 959.4
+  },
+  {
+    "number": 270,
+    "word": "merekenkan nwoma",
+    "translation": "I am reading a book",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 963,
+    "endSeconds": 972.4
+  },
+  {
+    "number": 271,
+    "word": "meretwere",
+    "translation": "I am writing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 977,
+    "endSeconds": 984.4
+  },
+  {
+    "number": 272,
+    "word": "meretwere krataa",
+    "translation": "I am writing a letter",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 989,
+    "endSeconds": 998.4
+  },
+  {
+    "number": 273,
+    "word": "meretwere nwoma",
+    "translation": "I am writing a book",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1003,
+    "endSeconds": 1012.4
+  },
+  {
+    "number": 274,
+    "word": "meretwerɛ nsɔhwɛ",
+    "translation": "I am writing an exam",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1016,
+    "endSeconds": 1025.4
+  },
+  {
+    "number": 275,
+    "word": "meresua adeɛ",
+    "translation": "I am studying",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1030,
+    "endSeconds": 1039.4
+  },
+  {
+    "number": 276,
+    "word": "merebue pono no",
+    "translation": "I am opening the door",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1043,
+    "endSeconds": 1052.4
+  },
+  {
+    "number": 277,
+    "word": "mereto pono no mu",
+    "translation": "I am closing the door",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1057,
+    "endSeconds": 1065.4
+  },
+  {
+    "number": 278,
+    "word": "merebue mpoma no",
+    "translation": "I am opening the window",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1070,
+    "endSeconds": 1079.4
+  },
+  {
+    "number": 279,
+    "word": "mereto mpoma no mu",
+    "translation": "I am closing the window",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1083,
+    "endSeconds": 1092.4
+  },
+  {
+    "number": 280,
+    "word": "meresɔ kanea no",
+    "translation": "I am turning on the light",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1098,
+    "endSeconds": 1106.4
+  },
+  {
+    "number": 281,
+    "word": "meredum kanea no",
+    "translation": "I am turning off the light",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1112,
+    "endSeconds": 1120.4
+  },
+  {
+    "number": 282,
+    "word": "meretwa mfoni",
+    "translation": "I am taking a photograph",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1126,
+    "endSeconds": 1134.4
+  },
+  {
+    "number": 283,
+    "word": "mereka kaa",
+    "translation": "I am driving",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1138,
+    "endSeconds": 1147.4
+  },
+  {
+    "number": 284,
+    "word": "meretwi sakre",
+    "translation": "I am riding a bicycle",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1184,
+    "endSeconds": 1193.4
+  },
+  {
+    "number": 285,
+    "word": "merehome",
+    "translation": "I am breathing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1208,
+    "endSeconds": 1215.4
+  },
+  {
+    "number": 286,
+    "word": "meregye m'ahome",
+    "translation": "I am resting",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1220,
+    "endSeconds": 1228.4
+  },
+  {
+    "number": 287,
+    "word": "meredwodwo me ho",
+    "translation": "I am relaxing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1233,
+    "endSeconds": 1241.4
+  },
+  {
+    "number": 288,
+    "word": "mereto nko",
+    "translation": "I am dozing off",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1246,
+    "endSeconds": 1254.4
+  },
+  {
+    "number": 289,
+    "word": "mereda",
+    "translation": "I am sleeping",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1258,
+    "endSeconds": 1265.4
+  },
+  {
+    "number": 290,
+    "word": "meresɔ gya",
+    "translation": "I am starting a fire",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1282,
+    "endSeconds": 1290.4
+  },
+  {
+    "number": 291,
+    "word": "merehwɛ ahwehwɛ mu",
+    "translation": "I am looking into the mirror",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1295,
+    "endSeconds": 1304.4
+  },
+  {
+    "number": 292,
+    "word": "meredɔ",
+    "translation": "I am weeding",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1325,
+    "endSeconds": 1331.4
+  },
+  {
+    "number": 293,
+    "word": "merebɔ mmɔden",
+    "translation": "I am trying i.e. PUTTING IN AN EFFORT",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1341,
+    "endSeconds": 1349.4
+  },
+  {
+    "number": 294,
+    "word": "merebɔ wa",
+    "translation": "I am coughing",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1370,
+    "endSeconds": 1378.4
+  },
+  {
+    "number": 295,
+    "word": "merebɔ hwerɛma",
+    "translation": "I am whistling",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1382,
+    "endSeconds": 1390.4
+  },
+  {
+    "number": 296,
+    "word": "merepue",
+    "translation": "I am going out",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1395,
+    "endSeconds": 1402.4
+  },
+  {
+    "number": 297,
+    "word": "merebu nkotodwe",
+    "translation": "I am kneeling",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1407,
+    "endSeconds": 1415.4
+  },
+  {
+    "number": 298,
+    "word": "merekoto",
+    "translation": "I am squatting",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1420,
+    "endSeconds": 1427.4
+  },
+  {
+    "number": 299,
+    "word": "merebo m'ani",
+    "translation": "I am blinking",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1431,
+    "endSeconds": 1440.4
+  },
+  {
+    "number": 300,
+    "word": "merebɔ me nsam",
+    "translation": "I am clapping my hands",
+    "sourceVideo": "phrases-201-300-1a6d5ba037-aac64.mp4",
+    "startSeconds": 1445,
+    "endSeconds": 1458.75
+  }
+]

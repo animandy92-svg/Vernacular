@@ -29,7 +29,15 @@ The import copies H.264 video without re-encoding and converts audio to mono AAC
 python scripts/import-twi-lessons.py /path/to/source-directory --ffmpeg /path/to/ffmpeg
 ```
 
-Playback supports 0.75×, 1× and 1.25× speed, ten-second replay, start over, native fullscreen controls, and a saved position per lesson. It pauses when hidden or another lesson opens. Watching does not award course completion, recall credit or XP. Full recordings are not represented as individually reviewed word clips in the native-audio manifest.
+Playback supports 0.75×, 1× and 1.25× speed, ten-second replay, start over, native fullscreen controls, and a saved position per lesson. It pauses when hidden or another lesson opens. Watching does not award course completion, recall credit or XP.
+
+The 300 numbered items are also cut into separate first-form audio excerpts for Twi's Listening Challenge. English meanings and Twi spellings are transcribed from the matching numbered video slides in `src/data/twi-video-phrases.source.json`; generated paths, byte sizes, hashes and source timings are recorded in `src/data/twi-video-phrases.json`. These excerpts retain LearnAkan attribution and remain separate from the native-speaker review manifest.
+
+Regenerate the reviewed excerpts with:
+
+```text
+python scripts/extract-twi-video-phrases.py --ffmpeg /path/to/ffmpeg
+```
 
 Android bundles all three videos offline. The web app streams them and offers per-lesson offline saving. A separate video cache allows the app shell to install without downloading all lessons. The service worker handles byte-range requests from saved media for offline seeking and removes obsolete media when a new version activates.
 
