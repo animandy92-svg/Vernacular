@@ -1,0 +1,1940 @@
+{
+  "schemaVersion": 1,
+  "reviewStatus": "needs-speaker-review",
+  "notes": [
+    "Ga spellings and English meanings transcribed from the supplied lesson videos. Minor English grammar and punctuation normalized.",
+    "Cuts use the Ga utterances after English prompts; source background music may remain.",
+    "These are attributed lesson excerpts, not independently speaker-certified recordings.",
+    "The greetings lesson contains additional conversational responses whose meaning or standalone audio boundaries were not clear enough to release.",
+    "For the toilet expressions, the polite form is used. Intro previews, recaps, lesson commentary and the daily-routine pop quiz are omitted."
+  ],
+  "sources": [
+    {
+      "key": "body",
+      "file": "Body Parts (Part 1)_ GA Learning with Little Languages_(360P).mp4",
+      "sha256": "a97511191c37b34f2e10c761730b5ecb619c00d3728fdeb9de28ac0de5224541",
+      "durationSeconds": 204.471,
+      "attribution": "Little Languages"
+    },
+    {
+      "key": "greetings",
+      "file": "Greetings _ polite responses _ Learn Ga(360P).mp4",
+      "sha256": "b69956abe83ecf862d133cd8d998b40ded12db9e736c068f2c0794d73621ca81",
+      "durationSeconds": 209.267,
+      "attribution": "Ghan Yobi TV"
+    },
+    {
+      "key": "feelings",
+      "file": "Say how you feel _ Learn Ga(360P).mp4",
+      "sha256": "960bd51f0edd88f872a4fe985dd62f0c37258684dd6c0c07fe812a594f36b2b9",
+      "durationSeconds": 303.1,
+      "attribution": "Ghan Yobi TV"
+    },
+    {
+      "key": "essential",
+      "file": "78 Essential Ga Phrases For Beginners(360P).mp4",
+      "sha256": "fe77f6163d73662656b6194f9e0e3b505bbc068fd779e274e8c8e58416aee20e",
+      "durationSeconds": 699.467,
+      "attribution": "Ghan Yobi TV"
+    },
+    {
+      "key": "routine",
+      "file": "Daily Routine _ Learn Ga(360P).mp4",
+      "sha256": "66ce5beec6c033e058731562bf27a30c1c9079bf682a8e33b92ba93056caf6a9",
+      "durationSeconds": 922.667,
+      "attribution": "Ghan Yobi TV"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "ga-video-body-001",
+      "source": "body",
+      "sourceItem": 1,
+      "word": "Yitso",
+      "translation": "Head",
+      "category": "Body parts",
+      "startSeconds": 17.55,
+      "endSeconds": 21.6
+    },
+    {
+      "id": "ga-video-body-002",
+      "source": "body",
+      "sourceItem": 2,
+      "word": "Hiɛ",
+      "translation": "Face",
+      "category": "Body parts",
+      "startSeconds": 29.2,
+      "endSeconds": 33.3
+    },
+    {
+      "id": "ga-video-body-003",
+      "source": "body",
+      "sourceItem": 3,
+      "word": "Hiɛnaa",
+      "translation": "Forehead",
+      "category": "Body parts",
+      "startSeconds": 40.4,
+      "endSeconds": 45.15
+    },
+    {
+      "id": "ga-video-body-004",
+      "source": "body",
+      "sourceItem": 4,
+      "word": "Hiŋmɛi",
+      "translation": "Eyes",
+      "category": "Body parts",
+      "startSeconds": 52.55,
+      "endSeconds": 56.7
+    },
+    {
+      "id": "ga-video-body-005",
+      "source": "body",
+      "sourceItem": 5,
+      "word": "Toi",
+      "translation": "Ear",
+      "category": "Body parts",
+      "startSeconds": 64.15,
+      "endSeconds": 68.2
+    },
+    {
+      "id": "ga-video-body-006",
+      "source": "body",
+      "sourceItem": 6,
+      "word": "Gugɔ",
+      "translation": "Nose",
+      "category": "Body parts",
+      "startSeconds": 75.85,
+      "endSeconds": 78.9
+    },
+    {
+      "id": "ga-video-body-007",
+      "source": "body",
+      "sourceItem": 7,
+      "word": "Kpai",
+      "translation": "Cheek",
+      "category": "Body parts",
+      "startSeconds": 87.3,
+      "endSeconds": 91.45
+    },
+    {
+      "id": "ga-video-body-008",
+      "source": "body",
+      "sourceItem": 8,
+      "word": "Naabu",
+      "translation": "Mouth",
+      "category": "Body parts",
+      "startSeconds": 97.25,
+      "endSeconds": 101.8
+    },
+    {
+      "id": "ga-video-body-009",
+      "source": "body",
+      "sourceItem": 9,
+      "word": "Na",
+      "translation": "Lip",
+      "category": "Body parts",
+      "startSeconds": 110.45,
+      "endSeconds": 114.0
+    },
+    {
+      "id": "ga-video-body-010",
+      "source": "body",
+      "sourceItem": 10,
+      "word": "Nyanyɔŋ",
+      "translation": "Tooth",
+      "category": "Body parts",
+      "startSeconds": 122.7,
+      "endSeconds": 126.7
+    },
+    {
+      "id": "ga-video-body-011",
+      "source": "body",
+      "sourceItem": 11,
+      "word": "Lilɛi",
+      "translation": "Tongue",
+      "category": "Body parts",
+      "startSeconds": 134.7,
+      "endSeconds": 138.3
+    },
+    {
+      "id": "ga-video-body-012",
+      "source": "body",
+      "sourceItem": 12,
+      "word": "Tsɛŋ",
+      "translation": "Chin",
+      "category": "Body parts",
+      "startSeconds": 145.65,
+      "endSeconds": 149.8
+    },
+    {
+      "id": "ga-video-body-013",
+      "source": "body",
+      "sourceItem": 13,
+      "word": "Kuɛ",
+      "translation": "Neck",
+      "category": "Body parts",
+      "startSeconds": 157.75,
+      "endSeconds": 161.8
+    },
+    {
+      "id": "ga-video-body-014",
+      "source": "body",
+      "sourceItem": 14,
+      "word": "Yitswɛi",
+      "translation": "Hair",
+      "category": "Body parts",
+      "startSeconds": 169.25,
+      "endSeconds": 174.05
+    },
+    {
+      "id": "ga-video-greetings-001",
+      "source": "greetings",
+      "sourceItem": 1,
+      "word": "Ojekoo",
+      "translation": "Good morning",
+      "category": "Greetings and polite responses",
+      "startSeconds": 20.5,
+      "endSeconds": 21.55
+    },
+    {
+      "id": "ga-video-greetings-002",
+      "source": "greetings",
+      "sourceItem": 2,
+      "word": "Owɔŋ?",
+      "translation": "How did you sleep?",
+      "category": "Greetings and polite responses",
+      "startSeconds": 31.9,
+      "endSeconds": 33.04
+    },
+    {
+      "id": "ga-video-greetings-003",
+      "source": "greetings",
+      "sourceItem": 3,
+      "word": "Oshwiee",
+      "translation": "Good afternoon",
+      "category": "Greetings and polite responses",
+      "startSeconds": 40.65,
+      "endSeconds": 43.8
+    },
+    {
+      "id": "ga-video-greetings-004",
+      "source": "greetings",
+      "sourceItem": 4,
+      "word": "M'maokoo",
+      "translation": "Good evening",
+      "category": "Greetings and polite responses",
+      "startSeconds": 46.96,
+      "endSeconds": 47.86
+    },
+    {
+      "id": "ga-video-greetings-005",
+      "source": "greetings",
+      "sourceItem": 5,
+      "word": "Wɔ ojogbaŋŋ",
+      "translation": "Good night",
+      "category": "Greetings and polite responses",
+      "startSeconds": 51.2,
+      "endSeconds": 52.82
+    },
+    {
+      "id": "ga-video-greetings-006",
+      "source": "greetings",
+      "sourceItem": 6,
+      "word": "Na omanye",
+      "translation": "Congratulations",
+      "category": "Greetings and polite responses",
+      "startSeconds": 55.44,
+      "endSeconds": 56.58
+    },
+    {
+      "id": "ga-video-greetings-007",
+      "source": "greetings",
+      "sourceItem": 7,
+      "word": "Miifla bo",
+      "translation": "Welcome",
+      "category": "Greetings and polite responses",
+      "startSeconds": 59.93,
+      "endSeconds": 60.98
+    },
+    {
+      "id": "ga-video-greetings-008",
+      "source": "greetings",
+      "sourceItem": 8,
+      "word": "Yesu eteshi",
+      "translation": "Christ is risen",
+      "category": "Greetings and polite responses",
+      "startSeconds": 65.88,
+      "endSeconds": 67.45
+    },
+    {
+      "id": "ga-video-greetings-009",
+      "source": "greetings",
+      "sourceItem": 9,
+      "word": "Afi oo afi",
+      "translation": "Merry Christmas",
+      "category": "Greetings and polite responses",
+      "startSeconds": 87.52,
+      "endSeconds": 89.36
+    },
+    {
+      "id": "ga-video-greetings-010",
+      "source": "greetings",
+      "sourceItem": 10,
+      "word": "Miibi amɛ",
+      "translation": "Extend my greetings to them",
+      "category": "Greetings and polite responses",
+      "startSeconds": 181.99,
+      "endSeconds": 183.37
+    },
+    {
+      "id": "ga-video-greetings-011",
+      "source": "greetings",
+      "sourceItem": 11,
+      "word": "Yaaba ojogbaŋ",
+      "translation": "Farewell",
+      "category": "Greetings and polite responses",
+      "startSeconds": 193.04,
+      "endSeconds": 194.69
+    },
+    {
+      "id": "ga-video-feelings-001",
+      "source": "feelings",
+      "sourceItem": 1,
+      "word": "Ŋmii eshɛ ŋhe",
+      "translation": "I am happy",
+      "category": "Feelings",
+      "startSeconds": 25.5,
+      "endSeconds": 27.46
+    },
+    {
+      "id": "ga-video-feelings-002",
+      "source": "feelings",
+      "sourceItem": 2,
+      "word": "Ŋwrɛ eho ŋhe",
+      "translation": "I am sad",
+      "category": "Feelings",
+      "startSeconds": 38.62,
+      "endSeconds": 40.8
+    },
+    {
+      "id": "ga-video-feelings-003",
+      "source": "feelings",
+      "sourceItem": 3,
+      "word": "Ŋmii efu",
+      "translation": "I am angry",
+      "category": "Feelings",
+      "startSeconds": 49.78,
+      "endSeconds": 51.46
+    },
+    {
+      "id": "ga-video-feelings-004",
+      "source": "feelings",
+      "sourceItem": 4,
+      "word": "Mii ŋshe gbeyei",
+      "translation": "I am afraid",
+      "category": "Feelings",
+      "startSeconds": 60.0,
+      "endSeconds": 61.94
+    },
+    {
+      "id": "ga-video-feelings-005",
+      "source": "feelings",
+      "sourceItem": 5,
+      "word": "Ŋnãã ekpɛ ŋhe",
+      "translation": "I am surprised",
+      "category": "Feelings",
+      "startSeconds": 69.09,
+      "endSeconds": 71.77
+    },
+    {
+      "id": "ga-video-feelings-006",
+      "source": "feelings",
+      "sourceItem": 6,
+      "word": "Ŋmliŋ efli mi",
+      "translation": "I am excited",
+      "category": "Feelings",
+      "startSeconds": 78.99,
+      "endSeconds": 80.99
+    },
+    {
+      "id": "ga-video-feelings-007",
+      "source": "feelings",
+      "sourceItem": 7,
+      "word": "Ŋfee bisibasaa",
+      "translation": "I am confused",
+      "category": "Feelings",
+      "startSeconds": 89.34,
+      "endSeconds": 92.19
+    },
+    {
+      "id": "ga-video-feelings-008",
+      "source": "feelings",
+      "sourceItem": 8,
+      "word": "Etɔ mi",
+      "translation": "I am tired",
+      "category": "Feelings",
+      "startSeconds": 100.09,
+      "endSeconds": 101.25
+    },
+    {
+      "id": "ga-video-feelings-009",
+      "source": "feelings",
+      "sourceItem": 9,
+      "word": "Wɔnye mi",
+      "translation": "I feel sleepy",
+      "category": "Feelings",
+      "startSeconds": 110.27,
+      "endSeconds": 111.62
+    },
+    {
+      "id": "ga-video-feelings-010",
+      "source": "feelings",
+      "sourceItem": 10,
+      "word": "Miiŋwɔ",
+      "translation": "I am sleeping",
+      "category": "Feelings",
+      "startSeconds": 119.75,
+      "endSeconds": 121.05
+    },
+    {
+      "id": "ga-video-feelings-011",
+      "source": "feelings",
+      "sourceItem": 11,
+      "word": "Ŋhe ŋkpokpo",
+      "translation": "I am nervous",
+      "category": "Feelings",
+      "startSeconds": 129.81,
+      "endSeconds": 131.31
+    },
+    {
+      "id": "ga-video-feelings-012",
+      "source": "feelings",
+      "sourceItem": 12,
+      "word": "Ŋbɛ hewalɛ",
+      "translation": "I am unwell",
+      "category": "Feelings",
+      "startSeconds": 140.21,
+      "endSeconds": 141.68
+    },
+    {
+      "id": "ga-video-feelings-013",
+      "source": "feelings",
+      "sourceItem": 13,
+      "word": "Ŋhe edɔ la",
+      "translation": "I have a high temperature",
+      "category": "Feelings",
+      "startSeconds": 151.47,
+      "endSeconds": 153.71
+    },
+    {
+      "id": "ga-video-feelings-014",
+      "source": "feelings",
+      "sourceItem": 14,
+      "word": "Ŋhiɛ eshwie shi",
+      "translation": "I am disgraced",
+      "category": "Feelings",
+      "startSeconds": 161.46,
+      "endSeconds": 163.48
+    },
+    {
+      "id": "ga-video-feelings-015",
+      "source": "feelings",
+      "sourceItem": 15,
+      "word": "Ŋhe efee shoo",
+      "translation": "I am lonely",
+      "category": "Feelings",
+      "startSeconds": 171.3,
+      "endSeconds": 173.92
+    },
+    {
+      "id": "ga-video-feelings-016",
+      "source": "feelings",
+      "sourceItem": 16,
+      "word": "Ŋhiɛ̃ ŋgbo",
+      "translation": "I am shy",
+      "category": "Feelings",
+      "startSeconds": 181.42,
+      "endSeconds": 182.8
+    },
+    {
+      "id": "ga-video-feelings-017",
+      "source": "feelings",
+      "sourceItem": 17,
+      "word": "Ŋhe ejɔ̃ ŋhe",
+      "translation": "I am disappointed",
+      "category": "Feelings",
+      "startSeconds": 191.6,
+      "endSeconds": 193.56
+    },
+    {
+      "id": "ga-video-feelings-018",
+      "source": "feelings",
+      "sourceItem": 18,
+      "word": "Mii nye awuŋã",
+      "translation": "I am jealous",
+      "category": "Feelings",
+      "startSeconds": 201.7,
+      "endSeconds": 203.61
+    },
+    {
+      "id": "ga-video-feelings-019",
+      "source": "feelings",
+      "sourceItem": 19,
+      "word": "Lasta ŋtsa mi",
+      "translation": "I am sweating",
+      "category": "Feelings",
+      "startSeconds": 210.86,
+      "endSeconds": 213.01
+    },
+    {
+      "id": "ga-video-feelings-020",
+      "source": "feelings",
+      "sourceItem": 20,
+      "word": "Ŋhe edɔ",
+      "translation": "I am hot",
+      "category": "Feelings",
+      "startSeconds": 220.63,
+      "endSeconds": 222.51
+    },
+    {
+      "id": "ga-video-feelings-021",
+      "source": "feelings",
+      "sourceItem": 21,
+      "word": "Fɛ̃i nye mi",
+      "translation": "I am cold",
+      "category": "Feelings",
+      "startSeconds": 230.64,
+      "endSeconds": 233.36
+    },
+    {
+      "id": "ga-video-feelings-022",
+      "source": "feelings",
+      "sourceItem": 22,
+      "word": "Ŋfee bibrisaa",
+      "translation": "I am frustrated",
+      "category": "Feelings",
+      "startSeconds": 241.36,
+      "endSeconds": 243.84
+    },
+    {
+      "id": "ga-video-feelings-023",
+      "source": "feelings",
+      "sourceItem": 23,
+      "word": "Ŋyo yro",
+      "translation": "I am shocked",
+      "category": "Feelings",
+      "startSeconds": 250.84,
+      "endSeconds": 252.1
+    },
+    {
+      "id": "ga-video-feelings-024",
+      "source": "feelings",
+      "sourceItem": 24,
+      "word": "Ekɔɔ ŋhe eko",
+      "translation": "I am not bothered",
+      "category": "Feelings",
+      "startSeconds": 261.24,
+      "endSeconds": 263.71
+    },
+    {
+      "id": "ga-video-feelings-025",
+      "source": "feelings",
+      "sourceItem": 25,
+      "word": "Ŋtsui enyɔ̃ ŋmli",
+      "translation": "I am relieved",
+      "category": "Feelings",
+      "startSeconds": 270.51,
+      "endSeconds": 273.9
+    },
+    {
+      "id": "ga-video-feelings-026",
+      "source": "feelings",
+      "sourceItem": 26,
+      "word": "Ŋna ŋhe suɔ̃lɔ",
+      "translation": "I am in love",
+      "category": "Feelings",
+      "startSeconds": 280.47,
+      "endSeconds": 283.37
+    },
+    {
+      "id": "ga-video-essential-001",
+      "source": "essential",
+      "sourceItem": 1,
+      "word": "Ojekoo",
+      "translation": "Good morning",
+      "category": "Essential phrases",
+      "startSeconds": 3.26,
+      "endSeconds": 4.78
+    },
+    {
+      "id": "ga-video-essential-002",
+      "source": "essential",
+      "sourceItem": 2,
+      "word": "Owɔŋ?",
+      "translation": "How did you sleep?",
+      "category": "Essential phrases",
+      "startSeconds": 8.46,
+      "endSeconds": 9.43
+    },
+    {
+      "id": "ga-video-essential-003",
+      "source": "essential",
+      "sourceItem": 3,
+      "word": "Ŋwɔŋ hi",
+      "translation": "I slept well",
+      "category": "Essential phrases",
+      "startSeconds": 13.24,
+      "endSeconds": 14.49
+    },
+    {
+      "id": "ga-video-essential-004",
+      "source": "essential",
+      "sourceItem": 4,
+      "word": "Oshwiee",
+      "translation": "Good afternoon",
+      "category": "Essential phrases",
+      "startSeconds": 18.65,
+      "endSeconds": 19.89
+    },
+    {
+      "id": "ga-video-essential-005",
+      "source": "essential",
+      "sourceItem": 5,
+      "word": "M'maokoo",
+      "translation": "Good evening",
+      "category": "Essential phrases",
+      "startSeconds": 23.23,
+      "endSeconds": 24.77
+    },
+    {
+      "id": "ga-video-essential-006",
+      "source": "essential",
+      "sourceItem": 6,
+      "word": "Wɔ ojogbaŋŋ",
+      "translation": "Good night",
+      "category": "Essential phrases",
+      "startSeconds": 28.48,
+      "endSeconds": 30.04
+    },
+    {
+      "id": "ga-video-essential-007",
+      "source": "essential",
+      "sourceItem": 7,
+      "word": "O wieɔ Ga?",
+      "translation": "Do you speak Ga?",
+      "category": "Essential phrases",
+      "startSeconds": 33.25,
+      "endSeconds": 34.59
+    },
+    {
+      "id": "ga-video-essential-008",
+      "source": "essential",
+      "sourceItem": 8,
+      "word": "Daabi, ŋwiee Ga",
+      "translation": "No, I do not speak Ga",
+      "category": "Essential phrases",
+      "startSeconds": 40.5,
+      "endSeconds": 43.38
+    },
+    {
+      "id": "ga-video-essential-009",
+      "source": "essential",
+      "sourceItem": 9,
+      "word": "Ŋwieɔ Ga fiofio",
+      "translation": "I speak Ga a little",
+      "category": "Essential phrases",
+      "startSeconds": 48.81,
+      "endSeconds": 51.36
+    },
+    {
+      "id": "ga-video-essential-010",
+      "source": "essential",
+      "sourceItem": 10,
+      "word": "Miitao mawie Ga",
+      "translation": "I want to speak Ga",
+      "category": "Essential phrases",
+      "startSeconds": 56.32,
+      "endSeconds": 58.9
+    },
+    {
+      "id": "ga-video-essential-011",
+      "source": "essential",
+      "sourceItem": 11,
+      "word": "Ofainɛ",
+      "translation": "Please",
+      "category": "Essential phrases",
+      "startSeconds": 62.25,
+      "endSeconds": 63.6
+    },
+    {
+      "id": "ga-video-essential-012",
+      "source": "essential",
+      "sourceItem": 12,
+      "word": "Ofainɛ, tsɔ̃ɔ̃mɔ̃ mi bɔni awieɔ Ga",
+      "translation": "Please teach me how to speak Ga",
+      "category": "Essential phrases",
+      "startSeconds": 71.82,
+      "endSeconds": 76.6
+    },
+    {
+      "id": "ga-video-essential-013",
+      "source": "essential",
+      "sourceItem": 13,
+      "word": "Obaanyɛ ni otsɔ̃ɔ̃ mi Ga wiemɔ̃?",
+      "translation": "Can you teach me Ga?",
+      "category": "Essential phrases",
+      "startSeconds": 83.79,
+      "endSeconds": 87.66
+    },
+    {
+      "id": "ga-video-essential-014",
+      "source": "essential",
+      "sourceItem": 14,
+      "word": "Daabi",
+      "translation": "No",
+      "category": "Essential phrases",
+      "startSeconds": 91.47,
+      "endSeconds": 92.68
+    },
+    {
+      "id": "ga-video-essential-015",
+      "source": "essential",
+      "sourceItem": 15,
+      "word": "Daabi, ŋyɛ̃ŋ mã tsɔ̃ɔ̃ bo Ga",
+      "translation": "No, I can't teach you Ga",
+      "category": "Essential phrases",
+      "startSeconds": 100.15,
+      "endSeconds": 104.0
+    },
+    {
+      "id": "ga-video-essential-016",
+      "source": "essential",
+      "sourceItem": 16,
+      "word": "Ofainɛ kɛ fa mi",
+      "translation": "Please forgive me",
+      "category": "Essential phrases",
+      "startSeconds": 109.72,
+      "endSeconds": 112.27
+    },
+    {
+      "id": "ga-video-essential-017",
+      "source": "essential",
+      "sourceItem": 17,
+      "word": "Efee noko",
+      "translation": "No problem",
+      "category": "Essential phrases",
+      "startSeconds": 116.73,
+      "endSeconds": 118.19
+    },
+    {
+      "id": "ga-video-essential-018",
+      "source": "essential",
+      "sourceItem": 18,
+      "word": "Hɛ̃ɛ̃",
+      "translation": "Yes",
+      "category": "Essential phrases",
+      "startSeconds": 122.07,
+      "endSeconds": 123.34
+    },
+    {
+      "id": "ga-video-essential-019",
+      "source": "essential",
+      "sourceItem": 19,
+      "word": "Hɛ̃ɛ̃, matsɔ̃ɔ̃ bo bɔni awieɔ Ga",
+      "translation": "Yes, I will teach you how to speak Ga",
+      "category": "Essential phrases",
+      "startSeconds": 131.55,
+      "endSeconds": 135.96
+    },
+    {
+      "id": "ga-video-essential-020",
+      "source": "essential",
+      "sourceItem": 20,
+      "word": "Oyiwaladɔ̃ŋŋ",
+      "translation": "Thank you",
+      "category": "Essential phrases",
+      "startSeconds": 139.94,
+      "endSeconds": 141.7
+    },
+    {
+      "id": "ga-video-essential-021",
+      "source": "essential",
+      "sourceItem": 21,
+      "word": "Miŋ daboshi",
+      "translation": "I thank you",
+      "category": "Essential phrases",
+      "startSeconds": 145.53,
+      "endSeconds": 147.01
+    },
+    {
+      "id": "ga-video-essential-022",
+      "source": "essential",
+      "sourceItem": 22,
+      "word": "Kaa dashi",
+      "translation": "Don't mention it",
+      "category": "Essential phrases",
+      "startSeconds": 150.69,
+      "endSeconds": 152.02
+    },
+    {
+      "id": "ga-video-essential-023",
+      "source": "essential",
+      "sourceItem": 23,
+      "word": "Te oyɔɔ tɛ̃ɛ̃?",
+      "translation": "How are you?",
+      "category": "Essential phrases",
+      "startSeconds": 156.98,
+      "endSeconds": 159.16
+    },
+    {
+      "id": "ga-video-essential-024",
+      "source": "essential",
+      "sourceItem": 24,
+      "word": "Ŋyɛ jogbaaŋ",
+      "translation": "I'm fine",
+      "category": "Essential phrases",
+      "startSeconds": 163.56,
+      "endSeconds": 165.16
+    },
+    {
+      "id": "ga-video-essential-025",
+      "source": "essential",
+      "sourceItem": 25,
+      "word": "Ni bohu?",
+      "translation": "And you?",
+      "category": "Essential phrases",
+      "startSeconds": 169.14,
+      "endSeconds": 170.49
+    },
+    {
+      "id": "ga-video-essential-026",
+      "source": "essential",
+      "sourceItem": 26,
+      "word": "Yɛ Nyɔ̃ŋmɔ dromɔ nãa ŋyɛ jogbaŋŋ",
+      "translation": "By God's grace, I'm well",
+      "category": "Essential phrases",
+      "startSeconds": 177.33,
+      "endSeconds": 181.48
+    },
+    {
+      "id": "ga-video-essential-027",
+      "source": "essential",
+      "sourceItem": 27,
+      "word": "Te atsɛɔbo tɛ̃ɛ̃?",
+      "translation": "What's your name?",
+      "category": "Essential phrases",
+      "startSeconds": 186.39,
+      "endSeconds": 188.81
+    },
+    {
+      "id": "ga-video-essential-028",
+      "source": "essential",
+      "sourceItem": 28,
+      "word": "Atsɛɔ mi Tɛte",
+      "translation": "My name is Tettey",
+      "category": "Essential phrases",
+      "startSeconds": 194.09,
+      "endSeconds": 196.33
+    },
+    {
+      "id": "ga-video-essential-029",
+      "source": "essential",
+      "sourceItem": 29,
+      "word": "Atsɛɔ mi Dede",
+      "translation": "My name is Dede",
+      "category": "Essential phrases",
+      "startSeconds": 201.32,
+      "endSeconds": 203.25
+    },
+    {
+      "id": "ga-video-essential-030",
+      "source": "essential",
+      "sourceItem": 30,
+      "word": "Nɛ̃gbɛ ojɛ?",
+      "translation": "Where do you come from?",
+      "category": "Essential phrases",
+      "startSeconds": 208.13,
+      "endSeconds": 209.5
+    },
+    {
+      "id": "ga-video-essential-031",
+      "source": "essential",
+      "sourceItem": 31,
+      "word": "Ŋjɛ Tɛshie",
+      "translation": "I'm from Teshie",
+      "category": "Essential phrases",
+      "startSeconds": 214.6,
+      "endSeconds": 216.07
+    },
+    {
+      "id": "ga-video-essential-032",
+      "source": "essential",
+      "sourceItem": 32,
+      "word": "Ghananyo jibo lo?",
+      "translation": "Are you Ghanaian?",
+      "category": "Essential phrases",
+      "startSeconds": 223.22,
+      "endSeconds": 225.73
+    },
+    {
+      "id": "ga-video-essential-033",
+      "source": "essential",
+      "sourceItem": 33,
+      "word": "Hɛ̃ɛ̃, Ghananyo jimi",
+      "translation": "Yes, I am Ghanaian",
+      "category": "Essential phrases",
+      "startSeconds": 231.97,
+      "endSeconds": 234.66
+    },
+    {
+      "id": "ga-video-essential-034",
+      "source": "essential",
+      "sourceItem": 34,
+      "word": "Daabi, jee Ghananyo jimi",
+      "translation": "No, I am not Ghanaian",
+      "category": "Essential phrases",
+      "startSeconds": 241.98,
+      "endSeconds": 245.52
+    },
+    {
+      "id": "ga-video-essential-035",
+      "source": "essential",
+      "sourceItem": 35,
+      "word": "Togonyo jimi",
+      "translation": "I am Togolese",
+      "category": "Essential phrases",
+      "startSeconds": 250.67,
+      "endSeconds": 252.96
+    },
+    {
+      "id": "ga-video-essential-036",
+      "source": "essential",
+      "sourceItem": 36,
+      "word": "Americanyo jimi",
+      "translation": "I am American",
+      "category": "Essential phrases",
+      "startSeconds": 259.05,
+      "endSeconds": 261.74
+    },
+    {
+      "id": "ga-video-essential-037",
+      "source": "essential",
+      "sourceItem": 37,
+      "word": "Mɛ̃ɛ̃ jakunyo jibo?",
+      "translation": "Which tribe do you belong to?",
+      "category": "Essential phrases",
+      "startSeconds": 267.59,
+      "endSeconds": 270.18
+    },
+    {
+      "id": "ga-video-essential-038",
+      "source": "essential",
+      "sourceItem": 38,
+      "word": "Ganyo jimi",
+      "translation": "I am Ga",
+      "category": "Essential phrases",
+      "startSeconds": 274.6,
+      "endSeconds": 276.5
+    },
+    {
+      "id": "ga-video-essential-039",
+      "source": "essential",
+      "sourceItem": 39,
+      "word": "Ayigbenyo jimi",
+      "translation": "I am Ewe",
+      "category": "Essential phrases",
+      "startSeconds": 280.99,
+      "endSeconds": 283.31
+    },
+    {
+      "id": "ga-video-essential-040",
+      "source": "essential",
+      "sourceItem": 40,
+      "word": "Faŋtenyo jimi",
+      "translation": "I am Fante",
+      "category": "Essential phrases",
+      "startSeconds": 289.04,
+      "endSeconds": 291.63
+    },
+    {
+      "id": "ga-video-essential-041",
+      "source": "essential",
+      "sourceItem": 41,
+      "word": "Nɛ̃gbɛ ohiɔ̃",
+      "translation": "Where do you live?",
+      "category": "Essential phrases",
+      "startSeconds": 295.99,
+      "endSeconds": 297.6
+    },
+    {
+      "id": "ga-video-essential-042",
+      "source": "essential",
+      "sourceItem": 42,
+      "word": "Ŋhiɔ̃ Ga",
+      "translation": "I live in Accra",
+      "category": "Essential phrases",
+      "startSeconds": 301.95,
+      "endSeconds": 303.15
+    },
+    {
+      "id": "ga-video-essential-043",
+      "source": "essential",
+      "sourceItem": 43,
+      "word": "Ŋhiɔ̃ Kumasi",
+      "translation": "I live in Kumasi",
+      "category": "Essential phrases",
+      "startSeconds": 307.44,
+      "endSeconds": 309.2
+    },
+    {
+      "id": "ga-video-essential-044",
+      "source": "essential",
+      "sourceItem": 44,
+      "word": "Ŋhiɔ̃ Ablotsiri",
+      "translation": "I live outside Ghana",
+      "category": "Essential phrases",
+      "startSeconds": 314.51,
+      "endSeconds": 316.58
+    },
+    {
+      "id": "ga-video-essential-045",
+      "source": "essential",
+      "sourceItem": 45,
+      "word": "Enyiɛ̃ oye?",
+      "translation": "How old are you?",
+      "category": "Essential phrases",
+      "startSeconds": 320.89,
+      "endSeconds": 322.68
+    },
+    {
+      "id": "ga-video-essential-046",
+      "source": "essential",
+      "sourceItem": 46,
+      "word": "Ŋye afii nyɔ̃ŋmãi enyɔ̃ kɛ ekpaa",
+      "translation": "I'm 26 years old",
+      "category": "Essential phrases",
+      "startSeconds": 330.12,
+      "endSeconds": 335.0
+    },
+    {
+      "id": "ga-video-essential-047",
+      "source": "essential",
+      "sourceItem": 47,
+      "word": "Ni bohu?",
+      "translation": "And you?",
+      "category": "Essential phrases",
+      "startSeconds": 337.87,
+      "endSeconds": 339.5
+    },
+    {
+      "id": "ga-video-essential-048",
+      "source": "essential",
+      "sourceItem": 48,
+      "word": "Ŋye afii nyɔ̃ŋmãi ekpaa kɛ nɛ̃ɛ̃hu",
+      "translation": "I'm 69 years old",
+      "category": "Essential phrases",
+      "startSeconds": 348.1,
+      "endSeconds": 353.17
+    },
+    {
+      "id": "ga-video-essential-049",
+      "source": "essential",
+      "sourceItem": 49,
+      "word": "Mɛ̃ni ofeɔ?",
+      "translation": "What do you do?",
+      "category": "Essential phrases",
+      "startSeconds": 358.49,
+      "endSeconds": 360.07
+    },
+    {
+      "id": "ga-video-essential-050",
+      "source": "essential",
+      "sourceItem": 50,
+      "word": "Tsɔ̃ɔ̃lɔ jimi",
+      "translation": "I am a teacher",
+      "category": "Essential phrases",
+      "startSeconds": 364.83,
+      "endSeconds": 366.34
+    },
+    {
+      "id": "ga-video-essential-051",
+      "source": "essential",
+      "sourceItem": 51,
+      "word": "Ŋfeɔ Youtube videos, ni Nikaselɔ hu jimi",
+      "translation": "I create YouTube videos, and I am also a student",
+      "category": "Essential phrases",
+      "startSeconds": 378.66,
+      "endSeconds": 385.12
+    },
+    {
+      "id": "ga-video-essential-052",
+      "source": "essential",
+      "sourceItem": 52,
+      "word": "Ŋyɛ hejɔɔmɔ mli shi ŋfeɔ Youtube videos",
+      "translation": "I am retired, but I create YouTube videos",
+      "category": "Essential phrases",
+      "startSeconds": 396.43,
+      "endSeconds": 402.43
+    },
+    {
+      "id": "ga-video-essential-053",
+      "source": "essential",
+      "sourceItem": 53,
+      "word": "Mɛ̃ni ofiɔ kɛ jieɔ ohɛ̃tsrɛrɛ",
+      "translation": "What do you do for fun?",
+      "category": "Essential phrases",
+      "startSeconds": 409.58,
+      "endSeconds": 414.01
+    },
+    {
+      "id": "ga-video-essential-054",
+      "source": "essential",
+      "sourceItem": 54,
+      "word": "Ŋboɔ radio toi ni ŋkwɛɔ TV",
+      "translation": "I listen to the radio and watch TV",
+      "category": "Essential phrases",
+      "startSeconds": 423.36,
+      "endSeconds": 428.28
+    },
+    {
+      "id": "ga-video-essential-055",
+      "source": "essential",
+      "sourceItem": 55,
+      "word": "Ŋsumɔ̃ɔ̃ Facebook waa",
+      "translation": "I enjoy Facebook",
+      "category": "Essential phrases",
+      "startSeconds": 434.87,
+      "endSeconds": 437.87
+    },
+    {
+      "id": "ga-video-essential-056",
+      "source": "essential",
+      "sourceItem": 56,
+      "word": "Oyaa Facebook nɔ̃?",
+      "translation": "Do you go on Facebook?",
+      "category": "Essential phrases",
+      "startSeconds": 444.93,
+      "endSeconds": 447.17
+    },
+    {
+      "id": "ga-video-essential-057",
+      "source": "essential",
+      "sourceItem": 57,
+      "word": "Daabi, ŋyaa Facebook nɔ̃",
+      "translation": "No, I don't go on Facebook",
+      "category": "Essential phrases",
+      "startSeconds": 455.49,
+      "endSeconds": 458.81
+    },
+    {
+      "id": "ga-video-essential-058",
+      "source": "essential",
+      "sourceItem": 58,
+      "word": "Shi ŋsumɔ̃ɔ̃ nfoniri kwɛmɔ̃",
+      "translation": "But I like looking at pictures",
+      "category": "Essential phrases",
+      "startSeconds": 467.51,
+      "endSeconds": 471.01
+    },
+    {
+      "id": "ga-video-essential-059",
+      "source": "essential",
+      "sourceItem": 59,
+      "word": "Mihu nãkãi nɔ̃ŋŋ",
+      "translation": "Me too",
+      "category": "Essential phrases",
+      "startSeconds": 477.34,
+      "endSeconds": 479.77
+    },
+    {
+      "id": "ga-video-essential-060",
+      "source": "essential",
+      "sourceItem": 60,
+      "word": "Oyɛ koloi komɛ̃i yɛ oshia?",
+      "translation": "Do you keep some animals at home?",
+      "category": "Essential phrases",
+      "startSeconds": 488.48,
+      "endSeconds": 491.84
+    },
+    {
+      "id": "ga-video-essential-061",
+      "source": "essential",
+      "sourceItem": 61,
+      "word": "Ŋyɛ gbee kome kɛ alɔntei ejwɛ",
+      "translation": "I have one dog and four cats",
+      "category": "Essential phrases",
+      "startSeconds": 502.42,
+      "endSeconds": 506.99
+    },
+    {
+      "id": "ga-video-essential-062",
+      "source": "essential",
+      "sourceItem": 62,
+      "word": "Ni bohu?",
+      "translation": "And you?",
+      "category": "Essential phrases",
+      "startSeconds": 511.98,
+      "endSeconds": 513.13
+    },
+    {
+      "id": "ga-video-essential-063",
+      "source": "essential",
+      "sourceItem": 63,
+      "word": "Ŋyɛ wuɔi komɛ̃i yɛ shiã",
+      "translation": "I have some chickens at home",
+      "category": "Essential phrases",
+      "startSeconds": 521.06,
+      "endSeconds": 524.18
+    },
+    {
+      "id": "ga-video-essential-064",
+      "source": "essential",
+      "sourceItem": 64,
+      "word": "Ŋkɛ amɛ̃ baaye Blonyã",
+      "translation": "I'll cook them for Christmas",
+      "category": "Essential phrases",
+      "startSeconds": 533.34,
+      "endSeconds": 536.36
+    },
+    {
+      "id": "ga-video-essential-065",
+      "source": "essential",
+      "sourceItem": 65,
+      "word": "Blonya ŋɛ̃ɛ̃ mãtsɛ okplɔ̃ shoo",
+      "translation": "This Christmas I'm throwing a party",
+      "category": "Essential phrases",
+      "startSeconds": 545.56,
+      "endSeconds": 550.06
+    },
+    {
+      "id": "ga-video-essential-066",
+      "source": "essential",
+      "sourceItem": 66,
+      "word": "Obaanyɛ ni owa mi?",
+      "translation": "Can you help me?",
+      "category": "Essential phrases",
+      "startSeconds": 556.71,
+      "endSeconds": 559.14
+    },
+    {
+      "id": "ga-video-essential-067",
+      "source": "essential",
+      "sourceItem": 67,
+      "word": "Mɛ̃ni otaoɔ ni mãfee?",
+      "translation": "What would you like me to do?",
+      "category": "Essential phrases",
+      "startSeconds": 567.23,
+      "endSeconds": 570.29
+    },
+    {
+      "id": "ga-video-essential-068",
+      "source": "essential",
+      "sourceItem": 68,
+      "word": "Obaa tswa lalai kɛkɛ",
+      "translation": "Just play music",
+      "category": "Essential phrases",
+      "startSeconds": 578.07,
+      "endSeconds": 580.95
+    },
+    {
+      "id": "ga-video-essential-069",
+      "source": "essential",
+      "sourceItem": 69,
+      "word": "Noɛ lɛ, mãnyɛ̃ mãfee",
+      "translation": "That I can do",
+      "category": "Essential phrases",
+      "startSeconds": 588.99,
+      "endSeconds": 591.7
+    },
+    {
+      "id": "ga-video-essential-070",
+      "source": "essential",
+      "sourceItem": 70,
+      "word": "Nyɔ̃ŋmɔ ajɔɔ bo",
+      "translation": "God bless you",
+      "category": "Essential phrases",
+      "startSeconds": 597.89,
+      "endSeconds": 600.15
+    },
+    {
+      "id": "ga-video-essential-071",
+      "source": "essential",
+      "sourceItem": 71,
+      "word": "Ŋkɛ ŋwuɔi eko aba lo?",
+      "translation": "Shall I bring some of my chickens?",
+      "category": "Essential phrases",
+      "startSeconds": 609.13,
+      "endSeconds": 612.83
+    },
+    {
+      "id": "ga-video-essential-072",
+      "source": "essential",
+      "sourceItem": 72,
+      "word": "Daabi, niyenii ɛ̃ baafa tsɔ̃",
+      "translation": "No, the food will be too much",
+      "category": "Essential phrases",
+      "startSeconds": 622.16,
+      "endSeconds": 626.01
+    },
+    {
+      "id": "ga-video-essential-073",
+      "source": "essential",
+      "sourceItem": 73,
+      "word": "Ofainɛ hami o nɔ̃mba",
+      "translation": "Please give me your phone number",
+      "category": "Essential phrases",
+      "startSeconds": 634.04,
+      "endSeconds": 637.12
+    },
+    {
+      "id": "ga-video-essential-074",
+      "source": "essential",
+      "sourceItem": 74,
+      "word": "Oyiwaladɔ̃ŋŋ",
+      "translation": "Thank you",
+      "category": "Essential phrases",
+      "startSeconds": 642.47,
+      "endSeconds": 644.13
+    },
+    {
+      "id": "ga-video-essential-075",
+      "source": "essential",
+      "sourceItem": 75,
+      "word": "Mãtswa bo wɔ",
+      "translation": "I'll call you tomorrow",
+      "category": "Essential phrases",
+      "startSeconds": 651.13,
+      "endSeconds": 654.26
+    },
+    {
+      "id": "ga-video-essential-076",
+      "source": "essential",
+      "sourceItem": 76,
+      "word": "Wɔ baa kpe ekoŋŋ",
+      "translation": "We will meet again",
+      "category": "Essential phrases",
+      "startSeconds": 659.08,
+      "endSeconds": 661.79
+    },
+    {
+      "id": "ga-video-essential-077",
+      "source": "essential",
+      "sourceItem": 77,
+      "word": "Mãnã bo wɔ",
+      "translation": "See you tomorrow",
+      "category": "Essential phrases",
+      "startSeconds": 668.0,
+      "endSeconds": 669.85
+    },
+    {
+      "id": "ga-video-essential-078",
+      "source": "essential",
+      "sourceItem": 78,
+      "word": "Nyɔ̃ŋmɔ kɛbo ahishi",
+      "translation": "God be with you",
+      "category": "Essential phrases",
+      "startSeconds": 676.84,
+      "endSeconds": 679.29
+    },
+    {
+      "id": "ga-video-routine-001",
+      "source": "routine",
+      "sourceItem": 1,
+      "word": "Teeshi mrã",
+      "translation": "Wake up early",
+      "category": "Daily routine",
+      "startSeconds": 3.44,
+      "endSeconds": 8.54
+    },
+    {
+      "id": "ga-video-routine-002",
+      "source": "routine",
+      "sourceItem": 2,
+      "word": "Kaa teshi mrã",
+      "translation": "Don't wake up early",
+      "category": "Daily routine",
+      "startSeconds": 14.67,
+      "endSeconds": 16.98
+    },
+    {
+      "id": "ga-video-routine-003",
+      "source": "routine",
+      "sourceItem": 3,
+      "word": "Ŋteeshi daa leebi ŋmɛjii enumɔ̃",
+      "translation": "I wake up at 5:00 am every day",
+      "category": "Daily routine",
+      "startSeconds": 20.06,
+      "endSeconds": 24.42
+    },
+    {
+      "id": "ga-video-routine-004",
+      "source": "routine",
+      "sourceItem": 4,
+      "word": "Ŋmɛ̃ɔ ŋsaa",
+      "translation": "I make my bed",
+      "category": "Daily routine",
+      "startSeconds": 28.65,
+      "endSeconds": 30.17
+    },
+    {
+      "id": "ga-video-routine-005",
+      "source": "routine",
+      "sourceItem": 5,
+      "word": "Ŋshaa ŋdaŋ",
+      "translation": "I brush my teeth",
+      "category": "Daily routine",
+      "startSeconds": 34.35,
+      "endSeconds": 36.61
+    },
+    {
+      "id": "ga-video-routine-006",
+      "source": "routine",
+      "sourceItem": 6,
+      "word": "Daŋshamɔ̃",
+      "translation": "Brushing one's teeth",
+      "category": "Daily routine",
+      "startSeconds": 42.13,
+      "endSeconds": 43.68
+    },
+    {
+      "id": "ga-video-routine-007",
+      "source": "routine",
+      "sourceItem": 7,
+      "word": "Yaa niaŋsɛɛ",
+      "translation": "Go to the toilet (polite)",
+      "category": "Daily routine",
+      "startSeconds": 46.47,
+      "endSeconds": 47.94
+    },
+    {
+      "id": "ga-video-routine-008",
+      "source": "routine",
+      "sourceItem": 8,
+      "word": "Kɛ̃ŋklɛ̃, ŋyaa niaŋsɛɛ",
+      "translation": "Firstly, I go to the toilet",
+      "category": "Daily routine",
+      "startSeconds": 129.21,
+      "endSeconds": 131.86
+    },
+    {
+      "id": "ga-video-routine-009",
+      "source": "routine",
+      "sourceItem": 9,
+      "word": "Ŋjieɔ ŋtale",
+      "translation": "I undress",
+      "category": "Daily routine",
+      "startSeconds": 152.64,
+      "endSeconds": 154.4
+    },
+    {
+      "id": "ga-video-routine-010",
+      "source": "routine",
+      "sourceItem": 10,
+      "word": "Ŋjuɔ ŋhe kɛ samlã",
+      "translation": "I bathe with soap",
+      "category": "Daily routine",
+      "startSeconds": 160.89,
+      "endSeconds": 164.22
+    },
+    {
+      "id": "ga-video-routine-011",
+      "source": "routine",
+      "sourceItem": 11,
+      "word": "He tsumɔ̃mɔ̃",
+      "translation": "To wipe",
+      "category": "Daily routine",
+      "startSeconds": 169.53,
+      "endSeconds": 170.99
+    },
+    {
+      "id": "ga-video-routine-012",
+      "source": "routine",
+      "sourceItem": 12,
+      "word": "Ŋtsumɔ̃ɔ̃ ŋhe kɛ papãŋ",
+      "translation": "I wipe myself with a towel",
+      "category": "Daily routine",
+      "startSeconds": 178.4,
+      "endSeconds": 181.22
+    },
+    {
+      "id": "ga-video-routine-013",
+      "source": "routine",
+      "sourceItem": 13,
+      "word": "Nosɛɛ, ŋsaa ŋhe",
+      "translation": "Next, I dress up",
+      "category": "Daily routine",
+      "startSeconds": 187.12,
+      "endSeconds": 189.95
+    },
+    {
+      "id": "ga-video-routine-014",
+      "source": "routine",
+      "sourceItem": 14,
+      "word": "Tsɛ̃ŋ sheomɔ̃",
+      "translation": "Shaving one's beard",
+      "category": "Daily routine",
+      "startSeconds": 195.25,
+      "endSeconds": 196.81
+    },
+    {
+      "id": "ga-video-routine-015",
+      "source": "routine",
+      "sourceItem": 15,
+      "word": "Ŋkwɛɔ aiŋshwɛ/ashwishwɛ mli kɛ shɛɔ ŋtsɛ̃ŋ",
+      "translation": "I look into the mirror to shave my beard",
+      "category": "Daily routine",
+      "startSeconds": 210.0,
+      "endSeconds": 218.23
+    },
+    {
+      "id": "ga-video-routine-016",
+      "source": "routine",
+      "sourceItem": 16,
+      "word": "Ŋkpaa ŋhe mu",
+      "translation": "I apply lotion to my body",
+      "category": "Daily routine",
+      "startSeconds": 223.55,
+      "endSeconds": 225.8
+    },
+    {
+      "id": "ga-video-routine-017",
+      "source": "routine",
+      "sourceItem": 17,
+      "word": "Ŋkɛ mu ŋma kpaa ŋhe",
+      "translation": "I apply perfume",
+      "category": "Daily routine",
+      "startSeconds": 232.28,
+      "endSeconds": 235.54
+    },
+    {
+      "id": "ga-video-routine-018",
+      "source": "routine",
+      "sourceItem": 18,
+      "word": "Kɛkɛɛ",
+      "translation": "Then",
+      "category": "Daily routine",
+      "startSeconds": 237.5,
+      "endSeconds": 238.37
+    },
+    {
+      "id": "ga-video-routine-019",
+      "source": "routine",
+      "sourceItem": 19,
+      "word": "Kɛkɛɛ, ŋtee kpataashi ŋyahoo leebi niyenii",
+      "translation": "Then, I go to the kitchen to prepare breakfast",
+      "category": "Daily routine",
+      "startSeconds": 250.04,
+      "endSeconds": 256.05
+    },
+    {
+      "id": "ga-video-routine-020",
+      "source": "routine",
+      "sourceItem": 20,
+      "word": "Ŋhoɔ akasã ni ŋkɛ blodo kɛ butru nuɔ̃",
+      "translation": "I cook porridge and eat it with bread and butter",
+      "category": "Daily routine",
+      "startSeconds": 269.36,
+      "endSeconds": 275.84
+    },
+    {
+      "id": "ga-video-routine-021",
+      "source": "routine",
+      "sourceItem": 21,
+      "word": "Beikomɛ̃i",
+      "translation": "Sometimes",
+      "category": "Daily routine",
+      "startSeconds": 280.99,
+      "endSeconds": 282.61
+    },
+    {
+      "id": "ga-video-routine-022",
+      "source": "routine",
+      "sourceItem": 22,
+      "word": "Beikomɛ̃i ɛ̃, ŋyeɔ akwadu kɛkɛ",
+      "translation": "Sometimes, I eat only banana",
+      "category": "Daily routine",
+      "startSeconds": 290.69,
+      "endSeconds": 294.88
+    },
+    {
+      "id": "ga-video-routine-023",
+      "source": "routine",
+      "sourceItem": 23,
+      "word": "Ŋshaa tsɛ̃sii ɛ amli",
+      "translation": "I wash the dishes",
+      "category": "Daily routine",
+      "startSeconds": 300.72,
+      "endSeconds": 303.25
+    },
+    {
+      "id": "ga-video-routine-024",
+      "source": "routine",
+      "sourceItem": 24,
+      "word": "No sɛɛ",
+      "translation": "After that",
+      "category": "Daily routine",
+      "startSeconds": 308.53,
+      "endSeconds": 310.21
+    },
+    {
+      "id": "ga-video-routine-025",
+      "source": "routine",
+      "sourceItem": 25,
+      "word": "No sɛɛ, ŋshiɔ̃ shiã leebi ŋmɛjii ekpaa",
+      "translation": "After that, I leave the house at 6:00 am",
+      "category": "Daily routine",
+      "startSeconds": 319.38,
+      "endSeconds": 324.14
+    },
+    {
+      "id": "ga-video-routine-026",
+      "source": "routine",
+      "sourceItem": 26,
+      "word": "Ŋmɛ̃ɔ trɔtrɔ ni kɛmi yaa nikasemɔ̃he ɛ",
+      "translation": "I wait for a trotro which takes me to school",
+      "category": "Daily routine",
+      "startSeconds": 335.95,
+      "endSeconds": 341.1
+    },
+    {
+      "id": "ga-video-routine-027",
+      "source": "routine",
+      "sourceItem": 27,
+      "word": "Kɛ mii ya nikasemɔ̃he ɛ, ŋkwɛɔ adafii ni atswaa yɛ ŋfone ɛ nɔ̃",
+      "translation": "On my way to school, I watch the news on my phone",
+      "category": "Daily routine",
+      "startSeconds": 355.59,
+      "endSeconds": 363.49
+    },
+    {
+      "id": "ga-video-routine-028",
+      "source": "routine",
+      "sourceItem": 28,
+      "word": "Ŋyaa nikasemɔ tsuɛ̃ mli trɔ̃mɔ̃ɔ̃",
+      "translation": "I go straight to class",
+      "category": "Daily routine",
+      "startSeconds": 369.81,
+      "endSeconds": 374.05
+    },
+    {
+      "id": "ga-video-routine-029",
+      "source": "routine",
+      "sourceItem": 29,
+      "word": "Leebi titri ji mi nikasemɔ̃ bei",
+      "translation": "Most of my classes are in the morning",
+      "category": "Daily routine",
+      "startSeconds": 382.08,
+      "endSeconds": 386.19
+    },
+    {
+      "id": "ga-video-routine-030",
+      "source": "routine",
+      "sourceItem": 30,
+      "word": "Kɛ ŋkpa nikasemɔ̃ɔ̃ ŋyeɔ bei ni eshwɛ ɛ, yɛ wolotoohe we ɛ",
+      "translation": "After class, I spend the day in the library",
+      "category": "Daily routine",
+      "startSeconds": 400.48,
+      "endSeconds": 409.55
+    },
+    {
+      "id": "ga-video-routine-031",
+      "source": "routine",
+      "sourceItem": 31,
+      "word": "Shwane ɛ, ŋyaheɔ niyenii",
+      "translation": "In the afternoon, I buy food",
+      "category": "Daily routine",
+      "startSeconds": 417.08,
+      "endSeconds": 420.43
+    },
+    {
+      "id": "ga-video-routine-032",
+      "source": "routine",
+      "sourceItem": 32,
+      "word": "Ŋtsakɛɔ ŋniyeniŋ ɛ̃ mli kɛ fufui kɛ wonu aloo amãdãŋ tsuru kɛ yɔɔ aloo jɔlɔf",
+      "translation": "I alternate between fufu and soup, plantain and beans, and jollof",
+      "category": "Daily routine",
+      "startSeconds": 440.74,
+      "endSeconds": 453.4
+    },
+    {
+      "id": "ga-video-routine-033",
+      "source": "routine",
+      "sourceItem": 33,
+      "word": "Ŋshiɔ̃ nikasemɔ̃ we ɛ gbɛkɛ ŋmɛjii ejwɛ",
+      "translation": "I leave campus at 4 pm",
+      "category": "Daily routine",
+      "startSeconds": 527.53,
+      "endSeconds": 532.47
+    },
+    {
+      "id": "ga-video-routine-034",
+      "source": "routine",
+      "sourceItem": 34,
+      "word": "Daa Hɔɔ ɔ, ŋkudɔɔ ŋtsɔ̃ne kɛyaa nitsumɔ̃",
+      "translation": "On Saturdays, I drive to work",
+      "category": "Daily routine",
+      "startSeconds": 543.53,
+      "endSeconds": 549.37
+    },
+    {
+      "id": "ga-video-routine-035",
+      "source": "routine",
+      "sourceItem": 35,
+      "word": "Ŋboɔ radio toi yɛ tsɔ̃ne ɛ mli",
+      "translation": "In the car, I listen to the radio",
+      "category": "Daily routine",
+      "startSeconds": 557.51,
+      "endSeconds": 561.62
+    },
+    {
+      "id": "ga-video-routine-036",
+      "source": "routine",
+      "sourceItem": 36,
+      "word": "Kɛ ŋshɛ nitsimɔ he ɛ pɛ, kɛkɛ ŋsu ŋlaptop ɛ",
+      "translation": "Once in the office, I turn on my laptop",
+      "category": "Daily routine",
+      "startSeconds": 572.77,
+      "endSeconds": 579.72
+    },
+    {
+      "id": "ga-video-routine-037",
+      "source": "routine",
+      "sourceItem": 37,
+      "word": "Ŋtsuɔ̃ nii gbimuu ɛ̃ fɛ̃ɛ̃",
+      "translation": "I work all day",
+      "category": "Daily routine",
+      "startSeconds": 586.18,
+      "endSeconds": 589.74
+    },
+    {
+      "id": "ga-video-routine-038",
+      "source": "routine",
+      "sourceItem": 38,
+      "word": "Ŋkwɛɔ wodzi ni a ŋmãŋmai ɛ̃ ni ŋhãã amɛ hetoi",
+      "translation": "I check my inbox and respond to emails",
+      "category": "Daily routine",
+      "startSeconds": 603.67,
+      "endSeconds": 609.82
+    },
+    {
+      "id": "ga-video-routine-039",
+      "source": "routine",
+      "sourceItem": 39,
+      "word": "Ŋya fɔɔ ŋde",
+      "translation": "I wash my hands",
+      "category": "Daily routine",
+      "startSeconds": 616.23,
+      "endSeconds": 618.08
+    },
+    {
+      "id": "ga-video-routine-040",
+      "source": "routine",
+      "sourceItem": 40,
+      "word": "Ŋyeɔ daŋjiemɔ̃ nɔ̃ko",
+      "translation": "I have a snack",
+      "category": "Daily routine",
+      "startSeconds": 623.36,
+      "endSeconds": 625.82
+    },
+    {
+      "id": "ga-video-routine-041",
+      "source": "routine",
+      "sourceItem": 41,
+      "word": "Dãni",
+      "translation": "Before",
+      "category": "Daily routine",
+      "startSeconds": 629.27,
+      "endSeconds": 630.14
+    },
+    {
+      "id": "ga-video-routine-042",
+      "source": "routine",
+      "sourceItem": 42,
+      "word": "Dãni mãye shwãne niyenii ɛ̃, ŋsaa ŋvideos ɛ ŋtɔɔ",
+      "translation": "Before my lunch, I prepare my videos",
+      "category": "Daily routine",
+      "startSeconds": 642.99,
+      "endSeconds": 650.19
+    },
+    {
+      "id": "ga-video-routine-043",
+      "source": "routine",
+      "sourceItem": 43,
+      "word": "Ŋkɔɔ shwãne hejɔɔmɔ̃ bee koni ŋkɛ mãini ŋkɛ tsuɔ̃nii ɛ̃ aya yenii",
+      "translation": "I take a lunch break and eat with my colleagues",
+      "category": "Daily routine",
+      "startSeconds": 663.37,
+      "endSeconds": 672.39
+    },
+    {
+      "id": "ga-video-routine-044",
+      "source": "routine",
+      "sourceItem": 44,
+      "word": "Ŋkuɔ̃ ŋsɛɛ kɛbaa nitsumɔ̃",
+      "translation": "I resume work",
+      "category": "Daily routine",
+      "startSeconds": 678.49,
+      "endSeconds": 682.42
+    },
+    {
+      "id": "ga-video-routine-045",
+      "source": "routine",
+      "sourceItem": 45,
+      "word": "Kɛ ŋkpa, ŋshɛɔ shi gbɛkɛ ŋmɛjii ekpaa",
+      "translation": "When I finish work, I get home at 6 pm",
+      "category": "Daily routine",
+      "startSeconds": 692.06,
+      "endSeconds": 697.1
+    },
+    {
+      "id": "ga-video-routine-046",
+      "source": "routine",
+      "sourceItem": 46,
+      "word": "Nɔ̃ŋŋ pɛ",
+      "translation": "As soon as",
+      "category": "Daily routine",
+      "startSeconds": 700.56,
+      "endSeconds": 702.03
+    },
+    {
+      "id": "ga-video-routine-047",
+      "source": "routine",
+      "sourceItem": 47,
+      "word": "Ŋyafɔɔ ŋde, kɛ ŋshɛ shiã nɔ̃ŋŋ pɛ",
+      "translation": "I wash my hands as soon as I arrive home",
+      "category": "Daily routine",
+      "startSeconds": 713.33,
+      "endSeconds": 718.71
+    },
+    {
+      "id": "ga-video-routine-048",
+      "source": "routine",
+      "sourceItem": 48,
+      "word": "Shiã nitsumɔ̃i",
+      "translation": "House chores",
+      "category": "Daily routine",
+      "startSeconds": 722.56,
+      "endSeconds": 724.46
+    },
+    {
+      "id": "ga-video-routine-049",
+      "source": "routine",
+      "sourceItem": 49,
+      "word": "Mi diɛŋtsɛ, ŋfeɔ ŋshiã nitsumɔ̃i ɛ̃",
+      "translation": "I do my house chores",
+      "category": "Daily routine",
+      "startSeconds": 733.85,
+      "endSeconds": 738.58
+    },
+    {
+      "id": "ga-video-routine-050",
+      "source": "routine",
+      "sourceItem": 50,
+      "word": "Sãne gbaa",
+      "translation": "To chat",
+      "category": "Daily routine",
+      "startSeconds": 744.19,
+      "endSeconds": 745.58
+    },
+    {
+      "id": "ga-video-routine-051",
+      "source": "routine",
+      "sourceItem": 51,
+      "word": "Ŋkɛ ŋnãã gbaa sãne",
+      "translation": "I chat with my grandma",
+      "category": "Daily routine",
+      "startSeconds": 752.5,
+      "endSeconds": 755.62
+    },
+    {
+      "id": "ga-video-routine-052",
+      "source": "routine",
+      "sourceItem": 52,
+      "word": "Ŋnãã hoɔ niyenii ɛ̃ ni miŋmɛ̃ɔ okplɔ̃ɔ̃",
+      "translation": "My grandma cooks and I lay the table",
+      "category": "Daily routine",
+      "startSeconds": 766.44,
+      "endSeconds": 771.35
+    },
+    {
+      "id": "ga-video-routine-053",
+      "source": "routine",
+      "sourceItem": 53,
+      "word": "Ŋkɛ ŋnãã yeɔ nii",
+      "translation": "I eat with grandma",
+      "category": "Daily routine",
+      "startSeconds": 778.0,
+      "endSeconds": 781.4
+    },
+    {
+      "id": "ga-video-routine-054",
+      "source": "routine",
+      "sourceItem": 54,
+      "word": "Wɔ kwɛɔ TV yɛ asaaanɔ̃, kɛ etɔko wɔ",
+      "translation": "We watch TV in the living room if we're not tired",
+      "category": "Daily routine",
+      "startSeconds": 792.54,
+      "endSeconds": 798.15
+    },
+    {
+      "id": "ga-video-routine-055",
+      "source": "routine",
+      "sourceItem": 55,
+      "word": "Beikomɛ̃i ɛ̃, ŋsumɔ̃ɔ̃ mãkãne nii dãni mãwɔ",
+      "translation": "Sometimes, I like to read before sleeping",
+      "category": "Daily routine",
+      "startSeconds": 807.2,
+      "endSeconds": 812.6
+    },
+    {
+      "id": "ga-video-routine-056",
+      "source": "routine",
+      "sourceItem": 56,
+      "word": "Ŋkwɛɔ Youtube yɛ ŋfon ɛ̃ nɔ̃ kɛ ŋkã saa nɔ̃",
+      "translation": "I watch YouTube on my phone when I'm on the bed",
+      "category": "Daily routine",
+      "startSeconds": 822.0,
+      "endSeconds": 827.53
+    },
+    {
+      "id": "ga-video-routine-057",
+      "source": "routine",
+      "sourceItem": 57,
+      "word": "Ŋwɔɔ",
+      "translation": "I sleep",
+      "category": "Daily routine",
+      "startSeconds": 831.82,
+      "endSeconds": 833.02
+    },
+    {
+      "id": "ga-video-feelings-001-alt",
+      "source": "feelings",
+      "sourceItem": 1,
+      "word": "Ŋyɛ miishɛɛ",
+      "translation": "I am happy",
+      "category": "Feelings",
+      "startSeconds": 27.88,
+      "endSeconds": 30.67
+    },
+    {
+      "id": "ga-video-feelings-002-alt",
+      "source": "feelings",
+      "sourceItem": 2,
+      "word": "Ŋbɛ miishɛɛ",
+      "translation": "I am sad",
+      "category": "Feelings",
+      "startSeconds": 41.27,
+      "endSeconds": 44.29
+    },
+    {
+      "id": "ga-video-feelings-012-alt",
+      "source": "feelings",
+      "sourceItem": 12,
+      "word": "Ŋhe nye",
+      "translation": "I am unwell",
+      "category": "Feelings",
+      "startSeconds": 141.87,
+      "endSeconds": 144.18
+    }
+  ]
+}

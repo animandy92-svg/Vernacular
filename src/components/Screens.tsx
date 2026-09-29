@@ -107,7 +107,7 @@ export function LibraryScreen({ active, onSwitch }: { active: LanguageCode; onSw
             <button className={active === language.code ? 'button button--soft' : 'button button--dark'} onClick={() => onSwitch(language.code)}>{active === language.code ? <><Check size={18} /> Active pack</> : <>Switch to {language.name} <ArrowRight size={18} /></>}</button>
           </article>
         ))}
-        <article className="library-card library-card--soon"><div className="library-art"><Sparkles size={32} /><span>Coming next</span></div><div className="library-copy"><span className="eyebrow">GROWING WITH CARE</span><h2>Ewe, Ga & more</h2><p>New packs will arrive after spelling, dialect and audio review with language experts.</p></div><span className="soon-pill"><ShieldCheck size={16} /> Review first</span></article>
+        <article className="library-card library-card--soon"><div className="library-art"><Sparkles size={32} /><span>Coming next</span></div><div className="library-copy"><span className="eyebrow">GROWING WITH CARE</span><h2>Ewe & more</h2><p>New packs will arrive after spelling, dialect and audio review with language experts.</p></div><span className="soon-pill"><ShieldCheck size={16} /> Review first</span></article>
       </div>
     </div>
   )

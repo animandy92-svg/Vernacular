@@ -1,6 +1,7 @@
 import type { CulturalProverb, Language, LanguageCode, PhraseEntry, WordEntry } from '../types'
 import twiWorkbook from './twi-everyday.json' with { type: 'json' }
 import kasemDictionary from './kasem-dictionary.json' with { type: 'json' }
+import gaWorkbook from './ga-everyday.json' with { type: 'json' }
 
 export const LANGUAGES: Language[] = [
   {
@@ -29,6 +30,15 @@ export const LANGUAGES: Language[] = [
     greeting: 'Dɩnle!',
     color: '#6f55b5',
     description: 'Discover Kasena words for family, place, nature and daily life.',
+  },
+  {
+    code: 'ga',
+    name: 'Ga',
+    nativeName: 'Gã',
+    region: 'Accra & coastal Greater Accra',
+    greeting: 'Te tee?',
+    color: '#267fa3',
+    description: 'Learn greetings, numbers and everyday words from Ga life.',
   },
 ]
 
@@ -174,7 +184,53 @@ const importedKasem: WordEntry[] = kasemDictionary.rows.map(({ sourceRow, values
   }
 })
 
-export const FALLBACK_WORDS: WordEntry[] = [...CORE_WORDS, ...importedTwi, ...importedKasem]
+// Source spellings are preserved; pronunciation and examples await speaker review.
+const gaSource = 'https://www.osofo.net/words.htm'
+const gaSource2 = 'https://www.osofo.net/wordsp2.htm'
+const gaEntries: [id: string, spelling: string, translation: string, category: string, source?: string][] = [
+  ['hello', 'Te tee?', 'hello', 'Greetings', gaSource2],
+  ['please', 'Ofaine', 'please', 'Greetings'],
+  ['thanks', 'Oyiwala don', 'thank you', 'Greetings'],
+  ['woman', 'Yoo', 'woman', 'Family'],
+  ['man', 'Nuu', 'man', 'Family'],
+  ['grandmother', 'Naa', 'grandmother', 'Family'],
+  ['grandfather', 'Nii', 'grandfather', 'Family'],
+  ['i', 'Mi', 'I', 'Essentials'],
+  ['you', 'Bo', 'you', 'Essentials'],
+  ['water', 'Nu', 'water', 'Food & drink'],
+  ['food', 'Niyenii', 'food', 'Food & drink'],
+  ['peanut', 'Nkatia', 'peanut', 'Food & drink'],
+  ['pepper', 'Shitor', 'pepper', 'Food & drink'],
+  ['salt', 'Nyoo', 'salt', 'Food & drink'],
+  ['one', 'Ekome', 'one', 'Numbers'],
+  ['two', 'Enyo', 'two', 'Numbers'],
+  ['three', 'Ete', 'three', 'Numbers'],
+  ['four', 'Edwe', 'four', 'Numbers'],
+  ['five', 'Enumo', 'five', 'Numbers'],
+  ['bag', 'Wo', 'bag', 'Everyday life'],
+  ['bed', 'Saatsho', 'bed', 'Everyday life'],
+  ['chair', 'Sein', 'chair', 'Everyday life'],
+  ['table', 'Okplon', 'table', 'Everyday life'],
+  ['flower', 'Fofoi', 'flower', 'Nature'],
+]
+const gaWords: WordEntry[] = gaEntries.map(([id, spelling, translation, category, source]) => ({
+  ...word('ga', id, spelling, translation, category, '', ''),
+  source: source ?? gaSource,
+  sourceAttribution: 'Rev. Peter Addo, Ga Words and Phrases',
+}))
+
+const existingGa = new Set(gaWords.map((entry) => vocabularyKey(entry.word, entry.translation)))
+const importedGa: WordEntry[] = (gaWorkbook.rows as [number, string, string][])
+  .filter(([, english, ga]) => !existingGa.has(vocabularyKey(ga, english)))
+  .map(([number, english, ga]) => ({
+    id: `ga-everyday-${String(number).padStart(4, '0')}`,
+    language: 'ga', word: ga, translation: english, category: 'Everyday vocabulary',
+    difficulty: 'beginner', phonetic: '', example: '',
+    reviewStatus: 'needs-review', visibility: 'public',
+    source: 'ga-everyday-workbook', sourceRow: number + 1,
+  }))
+
+export const FALLBACK_WORDS: WordEntry[] = [...CORE_WORDS, ...importedTwi, ...importedKasem, ...gaWords, ...importedGa]
 
 export const PROVERBS: CulturalProverb[] = [
   {
@@ -215,6 +271,10 @@ export const PROVERBS: CulturalProverb[] = [
 ]
 
 export const PHRASES: PhraseEntry[] = [
+  { id: 'ga-how-are-you', language: 'ga', phrase: 'Te oyoo tee?', translation: 'How are you?' },
+  { id: 'ga-i-am-well', language: 'ga', phrase: 'Miyedzogban', translation: 'I am fine' },
+  { id: 'ga-your-name', language: 'ga', phrase: 'Te atsheo bo tee?', translation: 'What is your name?' },
+  { id: 'ga-water-please', language: 'ga', phrase: 'Ofaine ni ohami nu', translation: 'Please give me some water' },
   { id: 'twi-good-morning', language: 'twi', phrase: 'Mema wo akye', translation: 'Good morning' },
   { id: 'twi-how-are-you', language: 'twi', phrase: 'Wo ho te sɛn?', translation: 'How are you?' },
   { id: 'twi-i-am-well', language: 'twi', phrase: 'Me ho yɛ', translation: 'I am well' },

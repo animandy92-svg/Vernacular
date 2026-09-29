@@ -3,12 +3,13 @@ import { Volume2 } from 'lucide-react'
 import type { WordEntry } from '../types'
 import { nativeRecording } from '../lib/audio'
 import { twiVideoRecording } from '../lib/twi-video'
+import { gaVideoRecording } from '../lib/ga-video'
 
 export function Pronunciation({ entry, compact = false, nativeOnly = false }: { entry: WordEntry; compact?: boolean; nativeOnly?: boolean }) {
   const [message, setMessage] = useState('')
   const audio = useRef<HTMLAudioElement | null>(null)
   const recording = nativeRecording(entry.id, entry.word)
-  const videoRecording = twiVideoRecording(entry.id, entry.word)
+  const videoRecording = twiVideoRecording(entry.id, entry.word) ?? gaVideoRecording(entry.id, entry.word)
   const guide = entry.phonetic ? ' Follow the written guide.' : ''
   useEffect(() => {
     setMessage('')
@@ -26,7 +27,7 @@ export function Pronunciation({ entry, compact = false, nativeOnly = false }: { 
         await player.play()
         setMessage(recording
           ? `${recording.dialect} · ${recording.speaker}${slow ? ' · Slow playback' : ''}`
-          : `LearnAkan video excerpt${slow ? ' · Slow playback' : ''}`)
+          : `${entry.sourceAttribution || 'Language lesson'} video excerpt${slow ? ' · Slow playback' : ''}`)
       } catch { setMessage('This recording could not be played. You can continue with text.') }
       return
     }
@@ -35,7 +36,7 @@ export function Pronunciation({ entry, compact = false, nativeOnly = false }: { 
     try {
       window.speechSynthesis.cancel()
       const utterance = new SpeechSynthesisUtterance(entry.word)
-      const language = entry.language === 'kasem' ? 'xsm' : 'ak'
+      const language = entry.language === 'kasem' ? 'xsm' : entry.language === 'ga' ? 'gaa' : 'ak'
       const voice = window.speechSynthesis.getVoices().find((voice) => voice.lang.toLowerCase().split('-')[0] === language)
       if (!voice) { setMessage(`No matching language voice is installed. Native recordings are being prepared.${guide}`); return }
       utterance.lang = language + '-GH'

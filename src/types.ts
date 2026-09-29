@@ -1,4 +1,4 @@
-export type LanguageCode = 'twi' | 'fante' | 'kasem'
+export type LanguageCode = 'twi' | 'fante' | 'kasem' | 'ga'
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
 export type GameMode = 'unscramble' | 'match' | 'search' | 'crossword' | 'picture' | 'listening' | 'proverb' | 'phrase' | 'daily'
 export type Screen = 'home' | 'course' | 'play' | 'progress' | 'library' | 'leaderboard'

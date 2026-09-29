@@ -49,9 +49,12 @@ export function CourseScreen({ profile, progress, words, today, onLesson, onRevi
     <p className="course-preview-note">Preview course · Guided cards support text practice while language review and individual word recordings are in progress.</p>
     <ReviewCard progress={progress} words={words} today={today} onReview={onReview} />
     {profile.language === 'twi' && <ListeningLibrary />}
-    {COURSE_CHAPTERS.map((chapter, chapterIndex) => <section className={`course-chapter course-chapter--${chapter.environment}`} key={chapter.title}>
-      <div className="chapter-heading"><span>0{chapterIndex + 1}</span><div><span className="eyebrow">{chapterIndex === 2 && profile.language !== 'twi' ? 'FOOD, NUMBERS & EVERYDAY WORDS' : chapter.description}</span><h2>{chapter.title}</h2></div></div>
-      <ol className="course-lessons">{lessons.filter((lesson) => lesson.chapter === chapterIndex).map((lesson) => {
+    {COURSE_CHAPTERS.map((chapter, chapterIndex) => {
+      const chapterLessons = lessons.filter((lesson) => lesson.chapter === chapterIndex)
+      const chapterDone = chapterLessons.filter((lesson) => !!progress.lessons?.[lesson.id]).length
+      return <section className={`course-chapter course-chapter--${chapter.environment}`} key={chapter.title}>
+      <div className="chapter-heading"><span>0{chapterIndex + 1}</span><div className="chapter-heading-copy"><span className="eyebrow">{chapterIndex === 2 && profile.language !== 'twi' ? 'FOOD, NUMBERS & EVERYDAY WORDS' : chapter.description}</span><h2>{chapter.title}</h2><div className="chapter-progress"><span>{chapterDone} of {chapterLessons.length} lessons</span><div className="course-track" role="progressbar" aria-label={`${chapter.title} progress`} aria-valuemin={0} aria-valuemax={chapterLessons.length} aria-valuenow={chapterDone}><span style={{ width: `${chapterDone / chapterLessons.length * 100}%` }} /></div></div></div></div>
+      <ol className="course-lessons">{chapterLessons.map((lesson) => {
         const done = !!progress.lessons?.[lesson.id]
         const unlocked = lessonUnlocked(lesson, progress, profile.language)
         const isNext = current?.id === lesson.id
@@ -61,7 +64,8 @@ export function CourseScreen({ profile, progress, words, today, onLesson, onRevi
           {unlocked && <ArrowRight size={19} />}
         </button></li>
       })}</ol>
-    </section>)}
+    </section>
+    })}
     <section className="course-puzzles"><BookOpen size={22} /><div><h2>In the mood for a puzzle?</h2><p>Your word games are still here whenever you want extra practice.</p></div><button className="button button--ghost" onClick={onPuzzles}>Browse puzzles <ArrowRight size={17} /></button></section>
   </div>
 }

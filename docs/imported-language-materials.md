@@ -42,3 +42,19 @@ python scripts/extract-twi-video-phrases.py --ffmpeg /path/to/ffmpeg
 Android bundles all three videos offline. The web app streams them and offers per-lesson offline saving. A separate video cache allows the app shell to install without downloading all lessons. The service worker handles byte-range requests from saved media for offline seeking and removes obsolete media when a new version activates.
 
 Run `npm test` and `npm run build` to validate source coverage, media hashes, saved positions, offline ranges and build integrity.
+
+## Ga listening game recordings
+
+The five supplied Ga videos provide 189 individual audio excerpts with Ga text and English meanings: 14 body-part words, 11 greetings, 29 feelings expressions (including three separately cut alternatives), 78 essential phrases and 57 daily-routine entries. Selecting Ga and starting Listening Challenge uses this recorded collection. Normal and 0.75× playback are available, with attribution to Little Languages or Ghan Yobi TV.
+
+`src/data/ga-video-phrases.source.json` records the original filenames, video hashes, expressions and cut times. `src/data/ga-video-phrases.json` records the released AAC files and their hashes. The clips are in `public/audio/ga/` and are included in the offline app shell. They remain attributed lesson excerpts with `needs-review` status, separate from the independently reviewed native-speaker manifest.
+
+Spellings and meanings were transcribed from video captions, with minor English grammar and punctuation normalized. Cuts use the Ga utterances after English prompts, generally selecting one repetition. Some source music remains. Intro previews, recaps, commentary, the routine pop quiz and unclear conversational responses in the greetings lesson are omitted. The polite toilet expressions are used. Native-speaker review of the transcriptions and cuts remains outstanding.
+
+Regenerate from the original supplied files:
+
+```text
+python scripts/extract-ga-video-phrases.py --source-dir /path/to/videos --ffmpeg /path/to/ffmpeg
+```
+
+See [the extracted word and meaning list](ga-video-audio.md) for all released clips.

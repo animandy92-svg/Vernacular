@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft, ArrowRight, Check, Flame, Sparkles } from 'lucide-react'
-import { LANGUAGES } from '../data/content'
+import { LANGUAGES, getLanguage } from '../data/content'
 import { DEFAULT_COMPANION } from '../lib/progress'
 import type { CompanionAvatar, Difficulty, LanguageCode, Profile } from '../types'
 import { Companion } from './Companion'
@@ -45,7 +45,7 @@ export function Onboarding({ onComplete, initialProfile, onCancel }: Props) {
 
   const canContinue = step === 0 ? name.trim().length > 1 : step === 2 ? companion.name.trim().length > 1 : true
   const learnerName = localName.trim() || name.trim()
-  const greeting = language === 'kasem' ? 'Dɩnle' : 'Akwaaba'
+  const greeting = getLanguage(language).greeting.replace(/[!?]$/, '')
   const chooseAvatar = (avatar: CompanionAvatar, suggestedName: string) => setCompanion((current) => ({
     ...current,
     avatar,

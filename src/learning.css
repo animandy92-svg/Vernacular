@@ -18,6 +18,10 @@
 .chapter-heading > span { font-size: 2rem; font-weight: 850; color: #ffe0a2; }
 .chapter-heading .eyebrow { font-size: .62rem; color: #fff1d2; line-height: 1.7; }
 .chapter-heading h2 { margin: 5px 0 0; font-size: 1.55rem; }
+.chapter-heading-copy { flex: 1; min-width: 0; }
+.chapter-progress { display: flex; align-items: center; gap: 14px; max-width: 340px; margin-top: 12px; color: #fff; font-size: .76rem; }
+.chapter-progress .course-track { flex: 1; margin: 0; height: 5px; background: #ffffff55; }
+.chapter-progress .course-track > span { background: #ffe0a2; }
 .course-lessons { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
 .course-lesson { width: 100%; border: 1px solid var(--line); border-radius: 18px; padding: 20px; text-align: left; display: flex; align-items: center; gap: 17px; background: var(--paper); cursor: pointer; }
 .course-lesson:hover:not(:disabled) { border-color: #8270b1; background: #fbf9ff; }

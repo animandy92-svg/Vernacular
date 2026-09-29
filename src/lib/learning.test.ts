@@ -89,7 +89,7 @@ describe('memory that reflects delayed recall', () => {
   })
 })
 
-describe.each<LanguageCode>(['twi', 'fante', 'kasem'])('%s course progression', (language) => {
+describe.each<LanguageCode>(['twi', 'fante', 'kasem', 'ga'])('%s course progression', (language) => {
   it('has twenty complete lessons in four chapters using only its own content', () => {
     const lessons = lessonsFor(language)
     expect(lessons).toHaveLength(20)

@@ -9,11 +9,11 @@ const audio = [...new Set(Object.values(recordings).flatMap((recording) => [reco
 for (const path of audio) {
   if (!/^\/audio\/[a-zA-Z0-9_/-]+\.(mp3|ogg|wav|m4a)$/.test(path)) throw new Error(`Invalid native recording path: ${path}`)
 }
-const videoPhrases = JSON.parse(await readFile(new URL('../src/data/twi-video-phrases.json', import.meta.url), 'utf8'))
+const videoPhrases = (await Promise.all(['twi', 'ga'].map(async (language) => JSON.parse(await readFile(new URL(`../src/data/${language}-video-phrases.json`, import.meta.url), 'utf8'))))).flat()
 for (const phrase of videoPhrases) {
-  if (!/^\/audio\/twi\/learnakan-\d{3}\.m4a$/.test(phrase.audio)) throw new Error(`Invalid video phrase audio path: ${phrase.audio}`)
+  if (!/^\/audio\/(twi\/learnakan-\d{3}|ga\/[a-z0-9-]+)\.m4a$/.test(phrase.audio)) throw new Error(`Invalid video phrase audio path: ${phrase.audio}`)
   const bytes = await readFile(new URL(phrase.audio.slice(1), directory))
-  if (bytes.length !== phrase.bytes || createHash('sha256').update(bytes).digest('hex') !== phrase.sha256) throw new Error(`Video phrase audio mismatch: ${phrase.number}`)
+  if (bytes.length !== phrase.bytes || createHash('sha256').update(bytes).digest('hex') !== phrase.sha256) throw new Error(`Video phrase audio mismatch: ${phrase.id ?? phrase.number}`)
 }
 const lessons = JSON.parse(await readFile(new URL('../src/data/twi-lessons.json', import.meta.url), 'utf8'))
 for (const lesson of lessons) {

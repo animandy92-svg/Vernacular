@@ -52,7 +52,7 @@ export const TWI_LESSONS: CourseLesson[] = [
 ]
 
 type LessonSpec = [title: string, goal: string, ids: string[], prompt: string, answer: string]
-function starterCourse(code: 'fante' | 'kasem', specs: LessonSpec[]) {
+function starterCourse(code: 'fante' | 'kasem' | 'ga', specs: LessonSpec[]) {
   return specs.map(([title, goal, ids, prompt, answer], index): CourseLesson => ({
     id: `${code}-foundations-${String(index + 1).padStart(2, '0')}`, chapter: Math.floor(index / 5), title, goal,
     tip: (index + 1) % 5 === 0 ? 'Revisit these familiar expressions, then check what you remember. Completing a checkpoint records practice, not fluency.' : 'Learn each expression first. Picture its meaning, then try the practice without looking back.',
@@ -108,12 +108,37 @@ export const KASEM_LESSONS = starterCourse('kasem', [
   ['Your foundation checkpoint', 'Recall expressions from all four chapters.', ['dinle', 'phrase:it-is-well', 'nu', 'na', 'tono', 'phrase:learning'], 'Choose the expression “I am learning Kasem”.', 'phrase:learning'],
 ])
 
-export const COURSES = { twi: TWI_LESSONS, fante: FANTE_LESSONS, kasem: KASEM_LESSONS }
+export const GA_LESSONS = starterCourse('ga', [
+  ['Your first hello', 'Practise a greeting, please and thank you.', ['hello', 'please', 'thanks'], 'Choose the expression meaning “thank you”.', 'thanks'],
+  ['Checking in', 'Learn a question and response, and revisit hello.', ['hello', 'phrase:how-are-you', 'phrase:i-am-well'], 'Someone asks how you are. Choose “I am fine”.', 'phrase:i-am-well'],
+  ['A little courtesy', 'Recognise please, thank you and a request for water.', ['please', 'thanks', 'phrase:water-please'], 'Choose the word meaning “please”.', 'please'],
+  ['Getting to know someone', 'Practise asking about someone and their name.', ['phrase:how-are-you', 'phrase:i-am-well', 'phrase:your-name'], 'Choose the question “What is your name?”.', 'phrase:your-name'],
+  ['Welcome checkpoint', 'Remember greetings and courtesy.', ['hello', 'please', 'thanks', 'phrase:how-are-you'], 'Choose the question “How are you?”.', 'phrase:how-are-you'],
+  ['People around you', 'Recognise woman, man and you.', ['woman', 'man', 'you'], 'Choose the word meaning “woman”.', 'woman'],
+  ['Grandparents', 'Recognise grandmother, grandfather and I.', ['grandmother', 'grandfather', 'i'], 'Choose the word meaning “grandfather”.', 'grandfather'],
+  ['I and you', 'Practise two pronouns and asking a name.', ['i', 'you', 'phrase:your-name'], 'Choose the word meaning “you”.', 'you'],
+  ['A friendly exchange', 'Revisit a greeting, a question and a response.', ['hello', 'phrase:how-are-you', 'phrase:i-am-well'], 'Choose the response “I am fine”.', 'phrase:i-am-well'],
+  ['People checkpoint', 'Remember words for people and grandparents.', ['woman', 'man', 'grandmother', 'grandfather', 'you'], 'Choose the word meaning “grandmother”.', 'grandmother'],
+  ['Food and water', 'Recognise food and water, and a polite request.', ['food', 'water', 'phrase:water-please'], 'Choose the word meaning “water”.', 'water'],
+  ['One, two, three', 'Practise the first three numbers.', ['one', 'two', 'three'], 'There are two items. Choose “two”.', 'two'],
+  ['Count to five', 'Practise three, four and five.', ['three', 'four', 'five'], 'There are five items. Choose “five”.', 'five'],
+  ['A food list', 'Recognise peanut, pepper and salt.', ['peanut', 'pepper', 'salt'], 'Choose the word meaning “salt”.', 'salt'],
+  ['Market checkpoint', 'Recall food, water and numbers.', ['food', 'water', 'peanut', 'two', 'five'], 'Choose the word meaning “food”.', 'food'],
+  ['Around the home', 'Recognise bed, chair and table.', ['bed', 'chair', 'table'], 'Choose the word meaning “chair”.', 'chair'],
+  ['Everyday objects', 'Practise bag, chair and table.', ['bag', 'chair', 'table'], 'Choose the word meaning “bag”.', 'bag'],
+  ['A flower at home', 'Recognise flower and revisit bed and table.', ['flower', 'bed', 'table'], 'Choose the word meaning “flower”.', 'flower'],
+  ['A polite request', 'Revisit water, please and a complete request.', ['water', 'please', 'phrase:water-please'], 'Choose “Please give me some water”.', 'phrase:water-please'],
+  ['Your foundation checkpoint', 'Recall expressions from all four chapters.', ['hello', 'phrase:i-am-well', 'grandmother', 'water', 'chair', 'three'], 'Choose the word meaning “three”.', 'three'],
+])
+
+export const COURSES = { twi: TWI_LESSONS, fante: FANTE_LESSONS, kasem: KASEM_LESSONS, ga: GA_LESSONS }
 export const lessonsFor = (language: LanguageCode) => COURSES[language]
 
 const phraseWords: WordEntry[] = PHRASES.map((entry) => ({
   id: `course-${entry.id}`, language: entry.language, word: entry.phrase, translation: entry.translation,
-  category: 'Conversation', difficulty: 'beginner', phonetic: '', example: '', reviewStatus: 'needs-review', visibility: 'public', source: 'existing-phrase-pack',
+  category: 'Conversation', difficulty: 'beginner', phonetic: '', example: '', reviewStatus: 'needs-review', visibility: 'public',
+  source: entry.language === 'ga' ? 'https://www.osofo.net/words.htm' : 'existing-phrase-pack',
+  ...(entry.language === 'ga' ? { sourceAttribution: 'Rev. Peter Addo, Ga Words and Phrases' } : {}),
 }))
 const allEntries = new Map([...FALLBACK_WORDS, ...phraseWords].map((entry) => [entry.id, entry]))
 export const COURSE_WORDS = [...new Set(Object.values(COURSES).flat().flatMap((item) => item.wordIds))].map((id) => {

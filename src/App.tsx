@@ -11,6 +11,7 @@ import { dueWords } from './lib/learning'
 import { FALLBACK_WORDS, getWords } from './data/content'
 import { wordsForLevel } from './lib/game'
 import { TWI_VIDEO_PHRASES } from './lib/twi-video'
+import { GA_VIDEO_PHRASES } from './lib/ga-video'
 import type { LeaderboardEntry } from './lib/firebase'
 import { completeSession, currentStreak, dateKey, loadState, saveState } from './lib/progress'
 import type { EnvironmentId, GameMode, GameResult, LanguageCode, Profile, Screen, StoredState, WordEntry } from './types'
@@ -129,8 +130,9 @@ export default function App() {
   const startGame = (mode: GameMode) => {
     const language = state.profile!.language
     const available = words.filter((entry) => entry.language === language)
-    setGameWords(mode === 'listening' && language === 'twi' && TWI_VIDEO_PHRASES.length
-      ? TWI_VIDEO_PHRASES
+    const listeningWords = language === 'twi' ? TWI_VIDEO_PHRASES : language === 'ga' ? GA_VIDEO_PHRASES : []
+    setGameWords(mode === 'listening' && listeningWords.length
+      ? listeningWords
       : wordsForLevel(available.length ? available : getWords(language, FALLBACK_WORDS), state.profile!.level))
     finished.current = false
     setGameMode(mode)
